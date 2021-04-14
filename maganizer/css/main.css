@@ -203,19 +203,33 @@ iframe {
     display: -moz-box;
     display: -ms-flexbox;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     padding: 15px;
-    background: #ebeeef
+    background: #D3D5D5
 }
 
 .wrap-login100 {
+
+    height: 500px;
     width: 670px;
     background: #fff;
     border-radius: 10px;
     overflow: hidden;
-    position: relative
+    position: relative;
+    transition: 700ms;
+}
+
+.long-wrap-login100 {
+
+    height: 680px;
+    width: 670px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    transition: 700ms;
 }
 
 .login100-form-title {
@@ -284,7 +298,11 @@ iframe {
     position: absolute;
     top: 14px;
     left: -105px;
-    width: 80px
+    width: 80px;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-evenly;
 }
 
 .input100 {
@@ -370,7 +388,33 @@ input.input100 {
     flex-wrap: wrap;
 }
 
-.login100-form-btn {
+.sign-in-btn {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    min-width: 160px;
+    height: 50px;
+    background-color: #1015FF;
+    /*#57b846*/
+    border-radius: 25px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    color: #fff;
+    line-height: 1.2;
+    -webkit-transition: all .4s;
+    -o-transition: all .4s;
+    -moz-transition: all .4s;
+    transition: all .4s;
+    font-size: large;
+    font-weight: 500;
+}
+
+.sign-up-btn {
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -383,7 +427,7 @@ input.input100 {
     height: 50px;
     background-color: #57b846;
     border-radius: 25px;
-    font-family: Poppins-Regular;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 16px;
     color: #fff;
     line-height: 1.2;
@@ -395,7 +439,11 @@ input.input100 {
     font-weight: 500;
 }
 
-.login100-form-btn:hover {
+.sign-in-btn:hover {
+    background-color: #333
+}
+
+.sign-up-btn:hover {
     background-color: #333
 }
 
@@ -479,4 +527,109 @@ input.input100 {
         visibility: visible;
         opacity: 1
     }
+}
+
+.nav {
+    width: 100%;
+    height: 100px;
+    padding-top: 40px;
+    opacity: 1;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.nav-up {
+    -webkit-transform: translateY(-100px);
+    transform: translateY(-100px);
+    opacity: 0;
+}
+
+li {
+    padding-left: 10px;
+    font-size: 18px;
+    display: inline;
+    text-align: left;
+    text-transform: uppercase;
+    padding-right: 10px;
+    color: #ffffff;
+}
+
+.signin-active a {
+    padding-bottom: 10px;
+    color: #ffffff;
+    text-decoration: none;
+    border-bottom: solid 2px #1059FF;
+    -webkit-transition: all .25s ease;
+    transition: all .25s ease;
+    cursor: pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.signin-inactive a {
+    padding-bottom: 0;
+    color: rgba(255, 255, 255, .3);
+    text-decoration: none;
+    border-bottom: none;
+    cursor: pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.signin-inactive:hover {
+    color: #1059FF
+}
+
+.signup-inactive:hover {
+    color: #57b846
+}
+
+
+.signup-active a {
+    cursor: pointer;
+    color: #ffffff;
+    text-decoration: none;
+    border-bottom: solid 2px #1059FF;
+    padding-bottom: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.signup-inactive a {
+    cursor: pointer;
+    color: rgba(255, 255, 255, .3);
+    text-decoration: none;
+    -webkit-transition: all .25s ease;
+    transition: all .25s ease;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.form-signup {
+    pointer-events: none;
+    opacity: 0;
+    transition: 700ms;
+    -webkit-transform: translateX(-600px);
+    transform: translateX(-600px);
+    position: relative;
+    top: -370px;
+}
+
+.form-signin {
+    opacity: 1;
+    transition: 700ms;
+}
+
+.form-signin-hidden {
+    pointer-events: none;
+    opacity: 0;
+    transition: 700ms;
+    -webkit-transform: translateX(-600px);
+    transform: translateX(-600px);
+}
+
+.form-signup-hidden {
+    pointer-events: all;
+    opacity: 1;
+    transition: 700ms;
+    top: -370px;
+    position: relative;
+    left: 600px;
 }
