@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Your Profile</title>
+    <title>Edit Your Profile</title>
     <link rel="icon" href="images/cropped-01-progress-32x32.gif" sizes="32x32">
     <link rel="stylesheet" type="text/css" href="css/userProfile.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -22,9 +22,9 @@
                                 <h5 class="user-name">Username</h5>
                                 <h6 class="user-email">User's Email</h6>
                             </div>
-                            <div class="about">
+                            <div>
                                 <h5>About</h5>
-                                <p>About user</p>
+                                <textarea class="form-control">Tell us about you</textarea>
                             </div>
                         </div>
                     </div>
@@ -40,25 +40,25 @@
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="fullName">Full Name</label>
-                                    <h5 class="user-name">User's full name</h5>
+                                    <input type="text" class="form-control" id="fullName" placeholder="Enter full name">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="eMail">Email</label>
-                                    <h5 class="user-name">User's email</h5>
+                                    <input type="email" class="form-control" id="eMail" placeholder="Enter e-mail">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="phone">Phone</label>
-                                    <h5 class="user-name">User's phone number</h5>
+                                    <input type="text" class="form-control" id="phone" placeholder="Enter phone number">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="website">Website URL</label>
-                                    <h5 class="user-name">User's 3d party resource</h5>
+                                    <input type="url" class="form-control" id="website" placeholder="Website url">
                                 </div>
                             </div>
                         </div>
@@ -69,19 +69,19 @@
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="Street">Street</label>
-                                    <h5 class="user-name">User's street</h5>
+                                    <input type="name" class="form-control" id="Street" placeholder="Enter Street">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="ciTy">City</label>
-                                    <h5 class="user-name">User's city</h5>
+                                    <input type="name" class="form-control" id="ciTy" placeholder="Enter City">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="country">Country</label>
-                                    <h5 class="user-name">User's country</h5>
+                                    <input type="text" class="form-control" id="country" placeholder="Enter Country">
                                 </div>
                             </div>
                         </div>
@@ -89,7 +89,9 @@
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="text-right">
                                     <button type="button" id="submit" name="submit"
-                                        class="btn btn-primary">Edit</button>
+                                        class="btn btn-secondary">Cancel</button>
+                                    <button type="button" id="submit" name="submit"
+                                        class="btn btn-primary">Update</button>
                                 </div>
                             </div>
                         </div>
