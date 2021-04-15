@@ -17,7 +17,11 @@
                         <div class="account-settings">
                             <div class="user-profile">
                                 <div class="user-avatar">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin">
+                                    <img id="changeAvatar" src="https://bootdey.com/img/Content/avatar/avatar7.png">
+                                    <div class="file-input">
+                                        <input type="file" id="fileinput" class="file">
+                                        <label for="fileinput">Select file</label>
+                                    </div>
                                 </div>
                                 <h5 class="user-name">Username</h5>
                                 <h6 class="user-email">User's Email</h6>
@@ -100,6 +104,8 @@
             </div>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="js/scripts.js"></script>
 </body>
 
 </html>

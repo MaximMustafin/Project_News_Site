@@ -635,3 +635,7 @@ li {
     position: relative;
     left: 600px;
 }
+
+.btn {
+    cursor: pointer;
+}

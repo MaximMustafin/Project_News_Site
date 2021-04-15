@@ -20,4 +20,20 @@ $(function () {
     });
 });
 
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#changeAvatar').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#fileinput").change(function () {
+    readURL(this);
+});
+
 
