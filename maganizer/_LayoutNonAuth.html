@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/all.min.css">
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css?family=Poppins%3A400%2C500%2C700%7CRaleway%3A500%2C600%7CRoboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto%20Slab%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&subset=latin%2Clatin-ext&display=swap"
+        as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <meta name="robots" content="noindex,nofollow">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="alternate" type="application/rss+xml" title="Maganizer WordPress Theme &raquo; Feed"
+        href="https://preview.spraythemes.com/maganizer/feed/">
+    <link rel="alternate" type="application/rss+xml" title="Maganizer WordPress Theme &raquo; Comments Feed"
+        href="https://preview.spraythemes.com/maganizer/comments/feed/">
+    <link rel="preload" id="wp-block-library-css"
+        href="https://preview.spraythemes.com/maganizer/wp-includes/css/dist/block-library/style.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'" type="text/css" media="all">
+    <link rel="preload" id="wp-block-library-theme-css"
+        href="https://preview.spraythemes.com/maganizer/wp-includes/css/dist/block-library/theme.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'" type="text/css" media="all">
+    <link data-minify="1" rel="preload" id="wc-block-vendors-style-css"
+        href="https://preview.spraythemes.com/maganizer/wp-content/cache/min/1/maganizer/wp-content/plugins/woocommerce/packages/woocommerce-blocks/build/vendors-style-696a07b27d826107c883ee13c3bf0f1d.css"
+        as="style" onload="this.onload=null;this.rel='stylesheet'" type="text/css" media="all">
+    <link data-minify="1" rel="preload" id="wc-block-style-css"
+        href="https://preview.spraythemes.com/maganizer/wp-content/cache/min/1/maganizer/wp-content/plugins/woocommerce/packages/woocommerce-blocks/build/style-619198ef5e47ed70e638b84c92e064f4.css"
+        as="style" onload="this.onload=null;this.rel='stylesheet'" type="text/css" media="all">
+    <link data-minify="1" rel="preload" id="contact-form-7-css"
+        href="https://preview.spraythemes.com/maganizer/wp-content/cache/min/1/maganizer/wp-content/plugins/contact-form-7/includes/css/styles-ec4e57bff0e835ef28b4c89cb1717afb.css"
+        as="style" onload="this.onload=null;this.rel='stylesheet'" type="text/css" media="all">
+    <link data-minify="1" rel="preload" id="woocommerce-layout-css"
+        href="https://preview.spraythemes.com/maganizer/wp-content/cache/min/1/maganizer/wp-content/plugins/woocommerce/assets/css/woocommerce-layout-cc005ffd959c6bb1743989183a963496.css"
+        as="style" onload="this.onload=null;this.rel='stylesheet'" type="text/css" media="all">
+    <link rel="preload" id="woocommerce-smallscreen-css"
+        href="https://preview.spraythemes.com/maganizer/wp-content/cache/busting/1/maganizer/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen-5.0.0.css"
+        as="style" onload="this.onload=null;this.rel='stylesheet'" type="text/css"
+        media="only screen and (max-width: 768px)">
+    <link data-minify="1" rel="preload" id="woocommerce-general-css"
+        href="https://preview.spraythemes.com/maganizer/wp-content/cache/min/1/maganizer/wp-content/plugins/woocommerce/assets/css/woocommerce-cc40354525cf8823ccc9a7aae64db877.css"
+        as="style" onload="this.onload=null;this.rel='stylesheet'" type="text/css" media="all">
+    <style id="woocommerce-inline-inline-css" type="text/css">
+        .woocommerce form .form-row .required {
+            visibility: visible
+        }
+    </style>
+    <link data-minify="1" rel="preload" id="maganizer-style-css"
+        href="https://preview.spraythemes.com/maganizer/wp-content/cache/min/1/maganizer/wp-content/themes/maganizer/style-bcc325fd19686fb7147f5ca545eac7b6.css"
+        as="style" onload="this.onload=null;this.rel='stylesheet'" type="text/css" media="all">
+    <link rel="preload" id="bootstrap-css"
+        href="https://preview.spraythemes.com/maganizer/wp-content/themes/maganizer/css/bootstrap-grid.min.css"
+        as="style" onload="this.onload=null;this.rel='stylesheet'" type="text/css" media="all">
+    <link rel="preload" id="owl-carousel-css"
+        href="https://preview.spraythemes.com/maganizer/wp-content/themes/maganizer/css/owl.carousel.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'" type="text/css" media="all">
+    <link rel="preload" id="font-awesome-four-css"
+        href="https://preview.spraythemes.com/maganizer/wp-content/themes/maganizer/css/all.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'" type="text/css" media="all">
+    <link data-minify="1" rel="preload" id="maganizer-blocks-main-style-css"
+        href="https://preview.spraythemes.com/maganizer/wp-content/cache/min/1/maganizer/wp-content/themes/maganizer/css/wps_style-c4183db079b4e89a7a8d7a285e67dd35.css"
+        as="style" onload="this.onload=null;this.rel='stylesheet'" type="text/css" media="all">
+    <script type="text/javascript" src="js/jquery.min-3.5.1.js" id="jquery-core-js"></script>
+    <link rel="https://api.w.org/" href="https://preview.spraythemes.com/maganizer/wp-json/">
+    <link rel="alternate" type="application/json"
+        href="https://preview.spraythemes.com/maganizer/wp-json/wp/v2/pages/3571">
+    <link rel="EditURI" type="application/rsd+xml" title="RSD"
+        href="https://preview.spraythemes.com/maganizer/xmlrpc.php?rsd">
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml"
+        href="https://preview.spraythemes.com/maganizer/wp-includes/wlwmanifest.xml">
+    <meta name="generator" content="WordPress 5.6.2">
+    <meta name="generator" content="WooCommerce 5.0.0">
+    <link rel="canonical" href="https://preview.spraythemes.com/maganizer/magazine-4/">
+    <link rel="shortlink" href="https://preview.spraythemes.com/maganizer/?p=3571">
+    <style type="text/css">
+        .ae_data .elementor-editor-element-setting {
+            display: none !important
+        }
+    </style>
+    <noscript>
+        <style>
+            .woocommerce-product-gallery {
+                opacity: 1 !important
+            }
+        </style>
+    </noscript>
+    <link rel="icon" href="images/cropped-01-progress-32x32.gif" sizes="32x32">
+    <link rel="icon" href="images/cropped-01-progress-192x192.gif" sizes="192x192">
+    <link rel="apple-touch-icon" href="images/cropped-01-progress-180x180.gif">
+    <meta name="msapplication-TileImage"
+        content="https://preview.spraythemes.com/maganizer/wp-content/uploads/2020/07/cropped-01-progress-270x270.gif">
+    <script>/*! loadCSS rel=preload polyfill. [c]2017 Filament Group, Inc. MIT License */
+        (function (w) {
+            "use strict"; if (!w.loadCSS) { w.loadCSS = function () { } }
+            var rp = loadCSS.relpreload = {}; rp.support = (function () {
+                var ret; try { ret = w.document.createElement("link").relList.supports("preload") } catch (e) { ret = !1 }
+                return function () { return ret }
+            })(); rp.bindMediaToggle = function (link) {
+                var finalMedia = link.media || "all"; function enableStylesheet() { link.media = finalMedia }
+                if (link.addEventListener) { link.addEventListener("load", enableStylesheet) } else if (link.attachEvent) { link.attachEvent("onload", enableStylesheet) }
+                setTimeout(function () { link.rel = "stylesheet"; link.media = "only x" }); setTimeout(enableStylesheet, 3000)
+            }; rp.poly = function () {
+                if (rp.support()) { return }
+                var links = w.document.getElementsByTagName("link"); for (var i = 0; i < links.length; i++) { var link = links[i]; if (link.rel === "preload" && link.getAttribute("as") === "style" && !link.getAttribute("data-loadcss")) { link.setAttribute("data-loadcss", !0); rp.bindMediaToggle(link) } }
+            }; if (!rp.support()) { rp.poly(); var run = w.setInterval(rp.poly, 500); if (w.addEventListener) { w.addEventListener("load", function () { rp.poly(); w.clearInterval(run) }) } else if (w.attachEvent) { w.attachEvent("onload", function () { rp.poly(); w.clearInterval(run) }) } }
+            if (typeof exports !== "undefined") { exports.loadCSS = loadCSS }
+            else { w.loadCSS = loadCSS }
+        }(typeof global !== "undefined" ? global : this))
+    </script>
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="very-top">
+            <div class="container">
+                <div class="row">
+                    <div class="menu-left-side col-md-8">
+                        <div class="menu-top-menu-container">
+                            <ul id="top-menu" class="menu">
+                                <li id="menu-item-2687"
+                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-2687">
+                                    <a>Home</a></li>
+                                <li id="menu-item-3396"
+                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3396">
+                                    <ul class="sub-menu">
+                                        <li id="menu-item-3319"
+                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3319">
+                                            <a>Posts
+                                                Archive</a></li>
+                                        <li id="menu-item-3321"
+                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3321">
+                                            <a>Tags
+                                                Archive</a></li>
+                                        <li id="menu-item-3323"
+                                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3323">
+                                            <a>Category
+                                                Archive</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="today-date col-md-4">
+                        <button id="SignInUp" class="btn btn-success"><a>Sign In/Up</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="top-layer">
+            <div class="container">
+                <div class="row">
+                    <div class="col logo"> <a> <img
+                                src="https://preview.spraythemes.com/maganizer/wp-content/uploads/2020/12/logo.svg"
+                                alt="Maganizer WordPress Theme"> </a></div>
+                    <div class="header-search col-5">
+                        <form role="search" method="get" class="search-form"
+                            action="https://preview.spraythemes.com/maganizer/"> <label> <span
+                                    class="screen-reader-text">Search for:</span> <input type="search"
+                                    class="search-field" placeholder="Search &hellip;" value="" name="s" /> </label>
+                            <input type="submit" class="search-submit" value="Search" /></form>
+                    </div>
+                    <div class="col social-header-icons">
+                        <ul>
+                            <li class="no-margin-social"> <a href="https://www.facebook.com"> <i
+                                        class="fab fa-facebook-f"></i> </a></li>
+                            <li class="no-margin-social"> <a href="http://twitter.com"> <i class="fab fa-twitter"></i>
+                                </a></li>
+                            <li class="no-margin-social"> <a href="http://youtube.com"> <i class="fab fa-youtube"></i>
+                                </a></li>
+                            <li class="no-margin-social"> <a href="http://instagram.com"> <i
+                                        class="fab fa-instagram"></i> </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div>
+        <h1>
+            Main page's content
+        </h1>
+    </div>
+    <footer class="main-footer" style="background-color: #131C23;">
+        <div data-elementor-type="wp-post" data-elementor-id="2649" class="elementor elementor-2649"
+            data-elementor-settings="[]">
+            <div class="elementor-inner">
+                <div class="elementor-section-wrap">
+                    <section
+                        class="elementor-section elementor-top-section elementor-element elementor-element-f666deb elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+                        data-id="f666deb" data-element_type="section"
+                        data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                        <div class="elementor-container elementor-column-gap-default">
+                            <div class="elementor-row">
+                                <div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-80f72fa"
+                                    data-id="80f72fa" data-element_type="column">
+                                    <div class="elementor-column-wrap elementor-element-populated">
+                                        <div class="elementor-widget-wrap">
+                                            <div class="elementor-element elementor-element-bef3c80 elementor-widget elementor-widget-logo-uploader"
+                                                data-id="bef3c80" data-element_type="widget"
+                                                data-widget_type="logo-uploader.default">
+                                                <div class="elementor-widget-container">
+                                                    <div class="logo-uploader"> <a
+                                                            href="https://preview.spraythemes.com/maganizer/"> <img
+                                                                src="https://preview.spraythemes.com/maganizer/wp-content/uploads/2020/12/white-1.svg"
+                                                                alt="Maganizer WordPress Theme"> </a></div>
+                                                </div>
+                                            </div>
+                                            <div class="elementor-element elementor-element-fa1ea8a elementor-widget elementor-widget-text-editor"
+                                                data-id="fa1ea8a" data-element_type="widget"
+                                                data-widget_type="text-editor.default">
+                                                <div class="elementor-widget-container">
+                                                    <div class="elementor-text-editor elementor-clearfix">
+                                                        <p style="color:#597A7A">Lorem ipsum dolor sit amet, consectetur
+                                                            adipiscing elit. Ut
+                                                            elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus
+                                                            leo.</p>
+                                                        <p style="color:#597A7A">Lorem ipsum dolor sit amet, consectetur
+                                                            adipiscing elit.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="elementor-element elementor-element-cd3c29e elementor-widget elementor-widget-shortcode"
+                                                data-id="cd3c29e" data-element_type="widget"
+                                                data-widget_type="shortcode.default">
+                                                <div class="elementor-widget-container">
+                                                    <div class="elementor-shortcode"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-e8d6f71"
+                                    data-id="e8d6f71" data-element_type="column">
+                                    <div class="elementor-column-wrap elementor-element-populated">
+                                        <div class="elementor-widget-wrap">
+                                            <div class="elementor-element elementor-element-8d7c5ef elementor-widget elementor-widget-simple-post-list"
+                                                data-id="8d7c5ef" data-element_type="widget"
+                                                data-widget_type="simple-post-list.default">
+                                                <div class="elementor-widget-container">
+                                                    <div class="simple-post-list">
+                                                        <div class="main-title">
+                                                            <div class="left-side-text">
+                                                                <h2 style="color:white"><span
+                                                                        class="first-class">Editor</span><span
+                                                                        class="highlight">Pic</span></h2> <span
+                                                                    class="sub-text-new">Most Read post</span>
+                                                            </div> <span class="post-counter"> <a
+                                                                    href="https://preview.spraythemes.com/maganizer/category/mix-of-art/">See
+                                                                    All</a> </span>
+                                                        </div>
+                                                        <div class="post-content">
+                                                            <div class="left-post-list-package vertic-post-ss">
+                                                                <div class="list-post">
+                                                                    <div class="post-image-left">
+                                                                        <div class="height-sizer"></div> <noscript
+                                                                            data-img="https://preview.spraythemes.com/maganizer/wp-content/uploads/2020/05/ma-in-black-aviator-sunglasses-with-purple-smoke-917594-scaled-140x100.jpg"
+                                                                            data-webp="https://preview.spraythemes.com/maganizer/wp-content/uploads/2020/05/ma-in-black-aviator-sunglasses-with-purple-smoke-917594-scaled-140x100.jpg.webp"
+                                                                            data-class="attachment-maganizer-small-post-thumb size-maganizer-small-post-thumb wp-post-image"
+                                                                            data-height="100" data-width="140"
+                                                                            class="ewww_webp"><img width="140"
+                                                                                height="100" src="images/Avatar.png"
+                                                                                class="attachment-maganizer-small-post-thumb size-maganizer-small-post-thumb wp-post-image"
+                                                                                loading="lazy"
+                                                                                data-eio="j" /></noscript>
+                                                                    </div>
+                                                                    <div class="content-section-right">
+                                                                        <div class="post-meta-data"> <span
+                                                                                class="posted-by black">By</span> <a
+                                                                                href="https://preview.spraythemes.com/maganizer/author/admin/"
+                                                                                class="meta-links author redlink">Author's
+                                                                                name</a>
+                                                                            <span
+                                                                                class="meta-links post-date black placeright">Post
+                                                                                date</span></div> <a
+                                                                            href="https://preview.spraythemes.com/maganizer/2020/05/30/stylish-man-in-black-aviator-sunglasses-with-purple-smoke/">
+                                                                            <h2 class="simple-title-color"
+                                                                                style="color: #E3E3D7;">Tittle's
+                                                                                place </h2>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-6ad88e3"
+                                    data-id="6ad88e3" data-element_type="column">
+                                    <div class="elementor-column-wrap elementor-element-populated">
+                                        <div class="elementor-widget-wrap">
+                                            <div class="elementor-element elementor-element-00ae696 elementor-widget elementor-widget-all_tag_list"
+                                                data-id="00ae696" data-element_type="widget"
+                                                data-widget_type="all_tag_list.default">
+                                                <div class="elementor-widget-container">
+                                                    <div class="tags-cloud">
+                                                        <div class="main-title">
+                                                            <div class="left-side-text">
+                                                                <h2 style="color:white"><span
+                                                                        class="first-class">Top</span><span
+                                                                        class="highlight">Tags</span></h2> <span
+                                                                    class="sub-text-new">Top Tag Cloud</span>
+                                                            </div> <span class="post-counter"> <span> "tags number"
+                                                                </span> <span class="textfed"> Tags </span> </span>
+                                                        </div>
+                                                        <ul class="all-post-tags ">
+                                                            <li><a href="https://preview.spraythemes.com/maganizer/tag/abstract/"
+                                                                    title="abstract">tag name</a></li>
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
