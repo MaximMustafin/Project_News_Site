@@ -11,7 +11,6 @@ This is a layout for next pages (see 'Site - FrontEnd' in Projects): <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - "Contact Us" <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - "Search Result (No results; Some Results)" <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - "User's profile" <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - "Sign Up" <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - "Change your profile" <br/>
  
 Header <br/>
