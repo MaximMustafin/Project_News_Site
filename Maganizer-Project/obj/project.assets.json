@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Study\\Course 2\\IT\\Семестровая работа 2\\Project_News_Site\\Maganizer-Project\\Maganizer-Project.csproj",
+      "projectUniqueName": "D:\\Study\\Course 2\\IT\\Семестровая работа 2\\Backend\\Project_News_Site\\Maganizer-Project\\Maganizer-Project.csproj",
       "projectName": "Maganizer-Project",
-      "projectPath": "D:\\Study\\Course 2\\IT\\Семестровая работа 2\\Project_News_Site\\Maganizer-Project\\Maganizer-Project.csproj",
+      "projectPath": "D:\\Study\\Course 2\\IT\\Семестровая работа 2\\Backend\\Project_News_Site\\Maganizer-Project\\Maganizer-Project.csproj",
       "packagesPath": "C:\\Users\\Пользователь\\.nuget\\packages\\",
-      "outputPath": "D:\\Study\\Course 2\\IT\\Семестровая работа 2\\Project_News_Site\\Maganizer-Project\\obj\\",
+      "outputPath": "D:\\Study\\Course 2\\IT\\Семестровая работа 2\\Backend\\Project_News_Site\\Maganizer-Project\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Пользователь\\AppData\\Roaming\\NuGet\\NuGet.Config",
