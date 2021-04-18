@@ -5,4 +5,8 @@
     <RootNamespace>Maganizer_Project</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />
+  </ItemGroup>
+
 </Project>
