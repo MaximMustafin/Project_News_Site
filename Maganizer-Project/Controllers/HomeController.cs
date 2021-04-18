@@ -8,18 +8,18 @@ using Microsoft.Extensions.Logging;
 
 namespace Maganizer_Project.Controllers
 {
-    public class PagesController : Controller
+    public class HomeController : Controller
     {
-        private readonly ILogger<PagesController> _logger;
+        private readonly ILogger<HomeController> _logger;
 
-        public PagesController(ILogger<PagesController> logger)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
 
         public IActionResult Index()
         {
-            return View("GetUserProfile");
+            return View("Home");
         }
 
 

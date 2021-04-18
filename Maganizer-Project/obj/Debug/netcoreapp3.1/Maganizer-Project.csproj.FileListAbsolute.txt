@@ -19,7 +19,6 @@ D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_
 D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Maganizer-Project.TagHelpers.input.cache
 D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Maganizer-Project.TagHelpers.output.cache
 D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Maganizer-Project.RazorCoreGenerate.cache
-D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
@@ -33,6 +32,11 @@ D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_
 D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Maganizer-Project.pdb
 D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Maganizer-Project.genruntimeconfig.cache
 D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Maganizer-Project.csproj.CopyComplete
-D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Razor\Views\Pages\SignInUp.cshtml.g.cs
-D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Razor\Views\Pages\EditUserProfile.cshtml.g.cs
-D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Razor\Views\Pages\GetUserProfile.cshtml.g.cs
+D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Razor\Views\UserProfile\EditUserProfile.cshtml.g.cs
+D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Razor\Views\UserProfile\GetUserProfile.cshtml.g.cs
+D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Razor\Views\Post\Post.cshtml.g.cs
+D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Razor\Views\Archives\UserPostArchive.cshtml.g.cs
+D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Razor\Views\Search\NoResults.cshtml.g.cs
+D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ErrorNotFound.cshtml.g.cs
+D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Razor\Views\SignInUp\SignInUp.cshtml.g.cs
+D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Razor\Views\Home\Home.cshtml.g.cs
