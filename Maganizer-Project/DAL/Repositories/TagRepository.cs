@@ -1,10 +1,10 @@
 ﻿using Maganizer_Project.DAL.EF;
 using Maganizer_Project.DAL.Entities;
 using Maganizer_Project.DAL.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Maganizer_Project.DAL.Repositories
 {
@@ -17,32 +17,36 @@ namespace Maganizer_Project.DAL.Repositories
         }
         public void Create(Tag item)
         {
-            throw new NotImplementedException();
+            db.Tags.Add(item);
         }
 
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
-            throw new NotImplementedException();
+            Tag item = db.Tags.Find(id);
+            if (item != null)
+            {
+                db.Tags.Remove(item);
+            }
         }
 
         public IEnumerable<Tag> Find(Func<Tag, bool> predicate)
         {
-            throw new NotImplementedException();
+            return db.Tags.Where(predicate).ToList();
         }
 
-        public Tag Get(int id)
+        public Tag Get(Guid id)
         {
-            throw new NotImplementedException();
+            return db.Tags.Find(id);
         }
 
         public IEnumerable<Tag> GetAll()
         {
-            throw new NotImplementedException();
+            return db.Tags;
         }
 
         public void Update(Tag item)
         {
-            throw new NotImplementedException();
+            db.Entry(item).State = EntityState.Modified;
         }
     }
 }

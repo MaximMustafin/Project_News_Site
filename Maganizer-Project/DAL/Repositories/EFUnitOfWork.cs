@@ -1,32 +1,104 @@
-﻿using Maganizer_Project.DAL.Entities;
+﻿using Maganizer_Project.DAL.EF;
+using Maganizer_Project.DAL.Entities;
 using Maganizer_Project.DAL.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Maganizer_Project.DAL.Repositories
 {
     public class EFUnitOfWork : IUnitOfWork
     {
+        private MaganizerContext db;
+        private AccountRepository accountRepository;
+        private ProfileRepository profileRepository;
+        private PostRepository postRepository;
+        private TagRepository tagRepository;
+        private CommentRepository commentRepository;
+        private CategoryRepository categoryRepository;
+
+        public EFUnitOfWork(MaganizerContext db)
+        {
+            this.db = db;
+        }
+
         public void Save()
         {
-            throw new NotImplementedException();
+            db.SaveChanges();
+        }
+
+        public IRepository<UserAccount> Accounts
+        {
+            get
+            {
+                if(accountRepository == null)
+                {
+                    accountRepository = new AccountRepository(db);
+                }
+                return accountRepository;
+            }
+        }
+
+        public IRepository<UserProfile> Profiles
+        {
+            get
+            {
+                if (profileRepository == null)
+                {
+                    profileRepository = new ProfileRepository(db);
+                }
+                return profileRepository;
+            }
+        }
+
+        public IRepository<Post> Posts
+        {
+            get
+            {
+                if (postRepository == null)
+                {
+                    postRepository = new PostRepository(db);
+                }
+                return postRepository;
+            }
+        }
+
+        public IRepository<Tag> Tags
+        {
+            get
+            {
+                if (tagRepository == null)
+                {
+                    tagRepository = new TagRepository(db);
+                }
+                return tagRepository;
+            }
+        }
+
+        public IRepository<Comment> Comments
+        {
+            get
+            {
+                if (commentRepository == null)
+                {
+                    commentRepository = new CommentRepository(db);
+                }
+                return commentRepository;
+            }
+        }
+
+        public IRepository<Category> Categories
+        {
+            get
+            {
+                if (categoryRepository == null)
+                {
+                    categoryRepository = new CategoryRepository(db);
+                }
+                return categoryRepository;
+            }
         }
 
         private bool disposed = false;
-
-        public IRepository<UserAccount> Accounts => throw new NotImplementedException();
-
-        public IRepository<UserProfile> Profiles => throw new NotImplementedException();
-
-        public IRepository<Post> Posts => throw new NotImplementedException();
-
-        public IRepository<Tag> Tags => throw new NotImplementedException();
-
-        public IRepository<Comment> Comments => throw new NotImplementedException();
-
-        public IRepository<Category> Categories => throw new NotImplementedException();
 
         public virtual void Dispose(bool disposing)
         {
@@ -34,7 +106,7 @@ namespace Maganizer_Project.DAL.Repositories
             {
                 if (disposing)
                 {
-                    //db.Dispose();
+                    db.Dispose();
                 }
                 this.disposed = true;
             }

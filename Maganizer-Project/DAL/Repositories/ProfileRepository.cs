@@ -1,10 +1,10 @@
 ﻿using Maganizer_Project.DAL.EF;
 using Maganizer_Project.DAL.Entities;
 using Maganizer_Project.DAL.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Maganizer_Project.DAL.Repositories
 {
@@ -17,32 +17,36 @@ namespace Maganizer_Project.DAL.Repositories
         }
         public void Create(UserProfile item)
         {
-            throw new NotImplementedException();
+            db.Profiles.Add(item);
         }
 
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
-            throw new NotImplementedException();
+            UserProfile item = db.Profiles.Find(id);
+            if (item != null)
+            {
+                db.Profiles.Remove(item);
+            }
         }
 
         public IEnumerable<UserProfile> Find(Func<UserProfile, bool> predicate)
         {
-            throw new NotImplementedException();
+            return db.Profiles.Where(predicate).ToList();
         }
 
-        public UserProfile Get(int id)
+        public UserProfile Get(Guid id)
         {
-            throw new NotImplementedException();
+            return db.Profiles.Find(id);
         }
 
         public IEnumerable<UserProfile> GetAll()
         {
-            throw new NotImplementedException();
+            return db.Profiles;
         }
 
         public void Update(UserProfile item)
         {
-            throw new NotImplementedException();
+            db.Entry(item).State = EntityState.Modified;
         }
     }
 }
