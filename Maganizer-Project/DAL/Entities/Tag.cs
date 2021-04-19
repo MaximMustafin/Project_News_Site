@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Maganizer_Project.DAL.Entities
 {
@@ -6,5 +7,6 @@ namespace Maganizer_Project.DAL.Entities
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
+        public List<Post> Posts { get; set; }
     }
 }
