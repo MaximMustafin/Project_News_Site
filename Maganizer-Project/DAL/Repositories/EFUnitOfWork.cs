@@ -9,8 +9,8 @@ namespace Maganizer_Project.DAL.Repositories
     public class EFUnitOfWork : IUnitOfWork
     {
         private MaganizerContext db;
-        private AccountRepository accountRepository;
-        private ProfileRepository profileRepository;
+        //private AccountRepository accountRepository;
+        //private ProfileRepository profileRepository;
         private PostRepository postRepository;
         private TagRepository tagRepository;
         private CommentRepository commentRepository;
@@ -26,29 +26,29 @@ namespace Maganizer_Project.DAL.Repositories
             db.SaveChanges();
         }
 
-        public IRepository<UserAccount> Accounts
-        {
-            get
-            {
-                if(accountRepository == null)
-                {
-                    accountRepository = new AccountRepository(db);
-                }
-                return accountRepository;
-            }
-        }
+        //public IRepository<UserAccount> Accounts
+        //{
+        //    get
+        //    {
+        //        if(accountRepository == null)
+        //        {
+        //            accountRepository = new AccountRepository(db);
+        //        }
+        //        return accountRepository;
+        //    }
+        //}
 
-        public IRepository<UserProfile> Profiles
-        {
-            get
-            {
-                if (profileRepository == null)
-                {
-                    profileRepository = new ProfileRepository(db);
-                }
-                return profileRepository;
-            }
-        }
+        //public IRepository<UserProfile> Profiles
+        //{
+        //    get
+        //    {
+        //        if (profileRepository == null)
+        //        {
+        //            profileRepository = new ProfileRepository(db);
+        //        }
+        //        return profileRepository;
+        //    }
+        //}
 
         public IRepository<Post> Posts
         {

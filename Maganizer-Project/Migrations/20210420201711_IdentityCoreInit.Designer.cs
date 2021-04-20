@@ -4,14 +4,16 @@ using Maganizer_Project.DAL.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Maganizer_Project.Migrations
 {
     [DbContext(typeof(MaganizerContext))]
-    partial class MaganizerContextModelSnapshot : ModelSnapshot
+    [Migration("20210420201711_IdentityCoreInit")]
+    partial class IdentityCoreInit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

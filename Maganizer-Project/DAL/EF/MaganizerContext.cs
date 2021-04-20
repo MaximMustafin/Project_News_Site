@@ -1,12 +1,11 @@
 ﻿using Maganizer_Project.DAL.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Maganizer_Project.DAL.EF
 {
-    public class MaganizerContext: DbContext
+    public class MaganizerContext: IdentityDbContext
     {
-        public DbSet<UserAccount> Accounts { get; set; }
-        public DbSet<UserProfile> Profiles { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Category> Categories { get; set; }
