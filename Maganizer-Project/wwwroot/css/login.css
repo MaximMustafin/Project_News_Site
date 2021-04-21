@@ -213,7 +213,6 @@ iframe {
 }
 
 .wrap-login100 {
-
     height: 500px;
     width: 670px;
     background: #fff;
@@ -224,8 +223,7 @@ iframe {
 }
 
 .long-wrap-login100 {
-
-    height: 680px;
+    height:950px;
     width: 670px;
     background: #fff;
     border-radius: 10px;
@@ -292,8 +290,9 @@ iframe {
 }
 
 .label-input100 {
-    font-family: Poppins-Regular;
-    font-size: 15px;
+    font-family: Bahnschrift;
+    font-size: 18px;
+    font-weight: 800;
     color: gray;
     line-height: 1.2;
     text-align: right;

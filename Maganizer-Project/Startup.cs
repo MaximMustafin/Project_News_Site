@@ -6,6 +6,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Maganizer_Project.DAL.Interfaces;
+using Maganizer_Project.DAL.Repositories;
+using Maganizer_Project.BLL.Interfaces;
+using Maganizer_Project.BLL.Services;
 
 namespace Maganizer_Project
 {
@@ -31,6 +35,10 @@ namespace Maganizer_Project
 
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<MaganizerContext>();
+
+            services.AddScoped<IUnitOfWork, EFUnitOfWork>();
+
+            services.AddScoped<IAccountService, AccountService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -57,7 +65,7 @@ namespace Maganizer_Project
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Account}/{action=SignInUp}/{id?}");
             });
         }
     }

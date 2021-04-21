@@ -1,7 +1,7 @@
 ﻿using Maganizer_Project.DAL.EF;
 using Maganizer_Project.DAL.Entities;
 using Maganizer_Project.DAL.Interfaces;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using System;
 
 namespace Maganizer_Project.DAL.Repositories
@@ -9,16 +9,18 @@ namespace Maganizer_Project.DAL.Repositories
     public class EFUnitOfWork : IUnitOfWork
     {
         private MaganizerContext db;
-        //private AccountRepository accountRepository;
+        private UserManager<IdentityUser> userManager;
+        private AccountRepository accountRepository;
         //private ProfileRepository profileRepository;
         private PostRepository postRepository;
         private TagRepository tagRepository;
         private CommentRepository commentRepository;
         private CategoryRepository categoryRepository;
 
-        public EFUnitOfWork(MaganizerContext db)
+        public EFUnitOfWork(MaganizerContext db, UserManager<IdentityUser> userManager)
         {
             this.db = db;
+            this.userManager = userManager;
         }
 
         public void Save()
@@ -26,17 +28,17 @@ namespace Maganizer_Project.DAL.Repositories
             db.SaveChanges();
         }
 
-        //public IRepository<UserAccount> Accounts
-        //{
-        //    get
-        //    {
-        //        if(accountRepository == null)
-        //        {
-        //            accountRepository = new AccountRepository(db);
-        //        }
-        //        return accountRepository;
-        //    }
-        //}
+        public IAccountRepository Accounts
+        {
+            get
+            {
+                if (accountRepository == null)
+                {
+                    accountRepository = new AccountRepository(userManager);
+                }
+                return accountRepository;
+            }
+        }
 
         //public IRepository<UserProfile> Profiles
         //{

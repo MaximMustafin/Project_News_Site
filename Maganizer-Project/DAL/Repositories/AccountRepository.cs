@@ -1,24 +1,31 @@
 ﻿using Maganizer_Project.DAL.EF;
 using Maganizer_Project.DAL.Entities;
 using Maganizer_Project.DAL.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Maganizer_Project.DAL.Repositories
 {
-    public class AccountRepository /*: IRepository<UserAccount>*/
+    public class AccountRepository: IAccountRepository
     {
-        //private MaganizerContext db;
-        //public AccountRepository(MaganizerContext context)
-        //{
-        //    this.db = context;
-        //}
-        //public void Create(UserAccount item)
-        //{
-        //    db.Accounts.Add(item);
-        //}
+
+        private UserManager<IdentityUser> db;
+        public AccountRepository(UserManager<IdentityUser> context)
+        {
+            this.db = context;
+        }
+
+        public async Task<IdentityResult> Create(UserAccount item)
+        {
+            var result = await db.CreateAsync(item.IdentityUser, item.Password);
+            return result;
+        }
+
+   
 
         //public void Delete(Guid id)
         //{

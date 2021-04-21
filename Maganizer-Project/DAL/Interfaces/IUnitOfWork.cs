@@ -1,11 +1,12 @@
 ﻿using Maganizer_Project.DAL.Entities;
+using Maganizer_Project.DAL.Repositories;
 using System;
 
 namespace Maganizer_Project.DAL.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
-        //IRepository<UserAccount> Accounts { get; }
+        IAccountRepository Accounts { get; }
         //IRepository<UserProfile> Profiles { get; }
         IRepository<Post> Posts { get; }
         IRepository<Tag> Tags { get; }
