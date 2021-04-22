@@ -2,6 +2,7 @@
 using Maganizer_Project.BLL.DTO;
 using Maganizer_Project.BLL.Interfaces;
 using System.Threading.Tasks;
+using Maganizer_Project.WEB.Models;
 
 namespace Maganizer_Project.Controllers
 {
@@ -18,21 +19,32 @@ namespace Maganizer_Project.Controllers
             return View("SignInUp");
         }
 
-        [Route("signInUp")]
+        [Route("signUp")]
         [HttpPost]
-        public async Task<IActionResult> SignInUp(SignUpUserDTO signUpModel)
+        public async Task<IActionResult> SignUp(SignInUpViewModel SignInUpModel)
         {
             if (ModelState.IsValid)
             {
-                var result = await accountService.CreateUserAsync(signUpModel);
+                var result = await accountService.CreateUserAsync(SignInUpModel.SignUpUser);
                 if (!result.Succeeded)
                 {
                     foreach(var error in result.Errors)
                     {
                         ModelState.AddModelError("", error.Description);
                     }
-                }
-                //ModelState.Clear();
+                }               
+            }
+
+            return View("SignInUp");
+        }
+
+        [Route("signIn")]
+        [HttpPost]
+        public IActionResult SignIn(SignInUpViewModel SignInUpModel, string RememberMe)
+        {
+            if (ModelState.IsValid)
+            {
+                //some code
             }
 
             return View("SignInUp");

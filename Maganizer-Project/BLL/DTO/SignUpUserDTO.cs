@@ -4,10 +4,12 @@ namespace Maganizer_Project.BLL.DTO
 {
     public class SignUpUserDTO
     {
-        [Required(ErrorMessage = "Please enter your full name")]
-        [Display(Name = "Fullname")]
-        public string Fullname { get; set; }
-
+        [RegularExpression(@"^(?=[a-zA-Z0-9._]{8,20}$)(?!.*[_.]{2})[^_.].*[^_.]$",
+            ErrorMessage = "Your username can be 8-20 characters long. " +
+            "No \"_\" or \".\" at the beginning. " +
+            "No \"__\" or \"_.\" or \"._\" or \"..\" inside. " +
+            "Allowed characters - Aa-Zz; 0-9. " +
+            "No \"_\" or \".\" at the end")]
         [Required(ErrorMessage ="Please enter your username")]
         [Display(Name = "Username")]
         public string NewUsername { get; set; }

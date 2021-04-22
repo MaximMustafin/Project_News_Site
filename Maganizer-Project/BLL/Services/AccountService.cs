@@ -14,18 +14,18 @@ namespace Maganizer_Project.BLL.Services
         {
             DataBase = unitOfWork;
         }
-        public async Task<IdentityResult> CreateUserAsync(SignUpUserDTO signUpUser)
+        public async Task<IdentityResult> CreateUserAsync(SignUpUserDTO signUpModel)
         {
-            IdentityUser identityUser = new IdentityUser()
+            AspNetUsersExtension identityUser = new AspNetUsersExtension()
             {
-                UserName = signUpUser.NewUsername,
-                Email = signUpUser.Email
+                UserName = signUpModel.NewUsername,
+                Email = signUpModel.Email
             };
 
             UserAccount user = new UserAccount()
             {
                 IdentityUser = identityUser,
-                Password = signUpUser.NewPassword
+                Password = signUpModel.NewPassword
             };
 
             return await DataBase.Accounts.Create(user);         

@@ -13,8 +13,8 @@ namespace Maganizer_Project.DAL.Repositories
     public class AccountRepository: IAccountRepository
     {
 
-        private UserManager<IdentityUser> db;
-        public AccountRepository(UserManager<IdentityUser> context)
+        private UserManager<AspNetUsersExtension> db;
+        public AccountRepository(UserManager<AspNetUsersExtension> context)
         {
             this.db = context;
         }

@@ -10,6 +10,7 @@ using Maganizer_Project.DAL.Interfaces;
 using Maganizer_Project.DAL.Repositories;
 using Maganizer_Project.BLL.Interfaces;
 using Maganizer_Project.BLL.Services;
+using Maganizer_Project.DAL.Entities;
 
 namespace Maganizer_Project
 {
@@ -33,8 +34,17 @@ namespace Maganizer_Project
 
             });
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
+            services.AddIdentity<AspNetUsersExtension, IdentityRole>()
                 .AddEntityFrameworkStores<MaganizerContext>();
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 8;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireLowercase = true;
+            });
 
             services.AddScoped<IUnitOfWork, EFUnitOfWork>();
 

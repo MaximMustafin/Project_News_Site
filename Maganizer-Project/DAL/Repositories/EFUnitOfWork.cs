@@ -9,7 +9,7 @@ namespace Maganizer_Project.DAL.Repositories
     public class EFUnitOfWork : IUnitOfWork
     {
         private MaganizerContext db;
-        private UserManager<IdentityUser> userManager;
+        private UserManager<AspNetUsersExtension> userManager;
         private AccountRepository accountRepository;
         //private ProfileRepository profileRepository;
         private PostRepository postRepository;
@@ -17,7 +17,7 @@ namespace Maganizer_Project.DAL.Repositories
         private CommentRepository commentRepository;
         private CategoryRepository categoryRepository;
 
-        public EFUnitOfWork(MaganizerContext db, UserManager<IdentityUser> userManager)
+        public EFUnitOfWork(MaganizerContext db, UserManager<AspNetUsersExtension> userManager)
         {
             this.db = db;
             this.userManager = userManager;

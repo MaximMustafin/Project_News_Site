@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Maganizer_Project.DAL.EF
 {
-    public class MaganizerContext: IdentityDbContext
+    public class MaganizerContext: IdentityDbContext<AspNetUsersExtension>
     {
         public DbSet<Post> Posts { get; set; }
         public DbSet<Comment> Comments { get; set; }
