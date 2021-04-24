@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Maganizer_Project.BLL.DTO;
 using Maganizer_Project.BLL.Interfaces;
 using System.Threading.Tasks;
 using Maganizer_Project.WEB.Models;
+using Maganizer_Project.BLL.DTO;
+using System;
 
 namespace Maganizer_Project.Controllers
 {
@@ -13,19 +14,37 @@ namespace Maganizer_Project.Controllers
         {
             this.accountService = accountService;
         }
-        [Route("signInUp")]
-        public IActionResult SignInUp()
+
+        //GET
+        [Route("SignIn")]
+        public IActionResult SignIn()
         {
-            return View("SignInUp");
+            return View("SignIn");
         }
 
-        [Route("signUp")]
+        //GET
+        [Route("SignUp")]
+        public IActionResult SignUp()
+        {
+            return View("SignUp");
+        }
+
+        //POST
+        [Route("SignUp")]
         [HttpPost]
-        public async Task<IActionResult> SignUp(SignInUpViewModel SignInUpModel)
+        public async Task<IActionResult> SignUp(SignUpViewModel signUpModel)
         {
             if (ModelState.IsValid)
             {
-                var result = await accountService.CreateUserAsync(SignInUpModel.SignUpUser);
+                var signUpDTO = new SignUpUserDTO()
+                {
+                    Username = signUpModel.Username,
+                    Email = signUpModel.Email,
+                    Password = signUpModel.Password,
+                };
+
+                var result = await accountService.CreateUser(signUpDTO);
+
                 if (!result.Succeeded)
                 {
                     foreach(var error in result.Errors)
@@ -35,19 +54,45 @@ namespace Maganizer_Project.Controllers
                 }               
             }
 
-            return View("SignInUp");
+            return View("SignUp", signUpModel);
         }
 
-        [Route("signIn")]
+        //POST
+        [Route("SignIn")]
         [HttpPost]
-        public IActionResult SignIn(SignInUpViewModel SignInUpModel, string RememberMe)
+        public async Task<IActionResult> SignIn(SignInViewModel signInModel, string RememberMe)
         {
             if (ModelState.IsValid)
             {
-                //some code
-            }
+                bool RememberMeBool = false;
 
-            return View("SignInUp");
+                if (RememberMe == "on")
+                {
+                    RememberMeBool = true;
+                }
+
+                var signInDTO = new SignInUserDTO()
+                {
+                    Username = signInModel.Username,
+                    Password = signInModel.Password,
+                    RememberMe = RememberMeBool
+                };
+
+                var result = await accountService.SignInAsync(signInDTO);
+
+                if (result.Succeeded)
+                {
+                    Console.WriteLine("Sign In is successful!");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Username or password are wrong. Please try again");
+                }
+
+            }
+            
+
+            return View("SignIn", signInModel);
         }
     }
 }

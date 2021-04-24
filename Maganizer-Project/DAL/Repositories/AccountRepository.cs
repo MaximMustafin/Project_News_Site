@@ -13,15 +13,23 @@ namespace Maganizer_Project.DAL.Repositories
     public class AccountRepository: IAccountRepository
     {
 
-        private UserManager<AspNetUsersExtension> db;
-        public AccountRepository(UserManager<AspNetUsersExtension> context)
+        private UserManager<AspNetUsersExtension> userManager;
+        private SignInManager<AspNetUsersExtension> signInManager; 
+        public AccountRepository(UserManager<AspNetUsersExtension> userManager, SignInManager<AspNetUsersExtension> signInManager)
         {
-            this.db = context;
+            this.userManager = userManager;
+            this.signInManager = signInManager;
         }
 
-        public async Task<IdentityResult> Create(UserAccount item)
+        public async Task<IdentityResult> CreateAsync(UserAccount item)
         {
-            var result = await db.CreateAsync(item.IdentityUser, item.Password);
+            var result = await userManager.CreateAsync(item.IdentityUser, item.Password);
+            return result;
+        }
+
+        public async Task<SignInResult> PasswordSignInAsync(string Username, string Password, bool RememberMe)
+        {
+            var result = await signInManager.PasswordSignInAsync(Username, Password, RememberMe, false);
             return result;
         }
 

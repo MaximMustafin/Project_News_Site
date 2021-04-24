@@ -10,25 +10,32 @@ namespace Maganizer_Project.BLL.Services
     public class AccountService : IAccountService
     {
         IUnitOfWork DataBase { get; set; }
+
         public AccountService(IUnitOfWork unitOfWork)
         {
             DataBase = unitOfWork;
         }
-        public async Task<IdentityResult> CreateUserAsync(SignUpUserDTO signUpModel)
+
+        public async Task<IdentityResult> CreateUser(SignUpUserDTO signUpDTO)
         {
             AspNetUsersExtension identityUser = new AspNetUsersExtension()
             {
-                UserName = signUpModel.NewUsername,
-                Email = signUpModel.Email
+                UserName = signUpDTO.Username,
+                Email = signUpDTO.Email
             };
 
             UserAccount user = new UserAccount()
             {
                 IdentityUser = identityUser,
-                Password = signUpModel.NewPassword
+                Password = signUpDTO.Password
             };
 
-            return await DataBase.Accounts.Create(user);         
+            return await DataBase.Accounts.CreateAsync(user);         
+        }
+
+        public async Task<SignInResult> SignInAsync(SignInUserDTO signInDTO)
+        {
+            return await DataBase.Accounts.PasswordSignInAsync(signInDTO.Username, signInDTO.Password, signInDTO.RememberMe);
         }
     }
 }

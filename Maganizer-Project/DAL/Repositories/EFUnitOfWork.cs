@@ -10,6 +10,7 @@ namespace Maganizer_Project.DAL.Repositories
     {
         private MaganizerContext db;
         private UserManager<AspNetUsersExtension> userManager;
+        private SignInManager<AspNetUsersExtension> signInManager;
         private AccountRepository accountRepository;
         //private ProfileRepository profileRepository;
         private PostRepository postRepository;
@@ -17,10 +18,12 @@ namespace Maganizer_Project.DAL.Repositories
         private CommentRepository commentRepository;
         private CategoryRepository categoryRepository;
 
-        public EFUnitOfWork(MaganizerContext db, UserManager<AspNetUsersExtension> userManager)
+        public EFUnitOfWork(MaganizerContext db, UserManager<AspNetUsersExtension> userManager,
+                            SignInManager<AspNetUsersExtension> signInManager)
         {
             this.db = db;
             this.userManager = userManager;
+            this.signInManager = signInManager;
         }
 
         public void Save()
@@ -34,7 +37,7 @@ namespace Maganizer_Project.DAL.Repositories
             {
                 if (accountRepository == null)
                 {
-                    accountRepository = new AccountRepository(userManager);
+                    accountRepository = new AccountRepository(userManager, signInManager);
                 }
                 return accountRepository;
             }

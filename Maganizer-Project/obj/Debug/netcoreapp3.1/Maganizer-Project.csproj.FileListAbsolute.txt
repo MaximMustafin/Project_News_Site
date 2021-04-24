@@ -87,4 +87,5 @@ D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_
 D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
 D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
-D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Razor\Views\Account\SignInUp.cshtml.g.cs
+D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Razor\Views\Account\SignIn.cshtml.g.cs
+D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Razor\Views\Account\SignUp.cshtml.g.cs

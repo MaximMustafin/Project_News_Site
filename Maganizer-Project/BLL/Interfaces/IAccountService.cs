@@ -6,6 +6,7 @@ namespace Maganizer_Project.BLL.Interfaces
 {
     public interface IAccountService
     {
-        Task<IdentityResult> CreateUserAsync(SignUpUserDTO signUpUser);
+        Task<IdentityResult> CreateUser(SignUpUserDTO signUpUser);
+        Task<SignInResult> SignInAsync(SignInUserDTO signInUser);
     }
 }

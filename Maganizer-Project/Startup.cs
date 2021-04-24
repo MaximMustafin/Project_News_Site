@@ -44,6 +44,7 @@ namespace Maganizer_Project
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = true;
                 options.Password.RequireLowercase = true;
+                options.User.RequireUniqueEmail = true;
             });
 
             services.AddScoped<IUnitOfWork, EFUnitOfWork>();
@@ -75,7 +76,7 @@ namespace Maganizer_Project
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Account}/{action=SignInUp}/{id?}");
+                    pattern: "{controller=Account}/{action=SignIn}/{id?}");
             });
         }
     }
