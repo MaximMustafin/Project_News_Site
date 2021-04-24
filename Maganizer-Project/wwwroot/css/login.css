@@ -213,25 +213,21 @@ iframe {
 }
 
 .wrap-login100 {
-
-    height: 500px;
+    height: 600px;
     width: 670px;
     background: #fff;
     border-radius: 10px;
     overflow: hidden;
     position: relative;
-    transition: 700ms;
 }
 
 .long-wrap-login100 {
-
-    height: 680px;
+    height:800px;
     width: 670px;
     background: #fff;
     border-radius: 10px;
     overflow: hidden;
     position: relative;
-    transition: 700ms;
 }
 
 .login100-form-title {
@@ -292,8 +288,9 @@ iframe {
 }
 
 .label-input100 {
-    font-family: Poppins-Regular;
-    font-size: 15px;
+    font-family: Bahnschrift;
+    font-size: 18px;
+    font-weight: 800;
     color: gray;
     line-height: 1.2;
     text-align: right;
@@ -569,18 +566,18 @@ li {
 
 .signin-inactive a {
     padding-bottom: 0;
-    color: rgba(255, 255, 255, .3);
+    color: #fff;
     text-decoration: none;
     border-bottom: none;
     cursor: pointer;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.signin-inactive:hover {
+.signin-inactive a:hover {
     color: #1059FF
 }
 
-.signup-inactive:hover {
+.signup-inactive a:hover {
     color: #57b846
 }
 
@@ -596,44 +593,11 @@ li {
 
 .signup-inactive a {
     cursor: pointer;
-    color: rgba(255, 255, 255, .3);
+    color: #fff;
     text-decoration: none;
     -webkit-transition: all .25s ease;
     transition: all .25s ease;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-
-.form-signup {
-    pointer-events: none;
-    opacity: 0;
-    transition: 700ms;
-    -webkit-transform: translateX(-600px);
-    transform: translateX(-600px);
-    position: relative;
-    top: -370px;
-}
-
-.form-signin {
-    opacity: 1;
-    transition: 700ms;
-}
-
-.form-signin-hidden {
-    pointer-events: none;
-    opacity: 0;
-    transition: 700ms;
-    -webkit-transform: translateX(-600px);
-    transform: translateX(-600px);
-}
-
-.form-signup-hidden {
-    pointer-events: all;
-    opacity: 1;
-    transition: 700ms;
-    top: -370px;
-    position: relative;
-    left: 600px;
 }
 
 .btn {

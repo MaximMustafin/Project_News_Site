@@ -1,7 +1,7 @@
 ﻿using Maganizer_Project.DAL.EF;
 using Maganizer_Project.DAL.Entities;
 using Maganizer_Project.DAL.Interfaces;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using System;
 
 namespace Maganizer_Project.DAL.Repositories
@@ -9,16 +9,21 @@ namespace Maganizer_Project.DAL.Repositories
     public class EFUnitOfWork : IUnitOfWork
     {
         private MaganizerContext db;
+        private UserManager<AspNetUsersExtension> userManager;
+        private SignInManager<AspNetUsersExtension> signInManager;
         private AccountRepository accountRepository;
-        private ProfileRepository profileRepository;
+        //private ProfileRepository profileRepository;
         private PostRepository postRepository;
         private TagRepository tagRepository;
         private CommentRepository commentRepository;
         private CategoryRepository categoryRepository;
 
-        public EFUnitOfWork(MaganizerContext db)
+        public EFUnitOfWork(MaganizerContext db, UserManager<AspNetUsersExtension> userManager,
+                            SignInManager<AspNetUsersExtension> signInManager)
         {
             this.db = db;
+            this.userManager = userManager;
+            this.signInManager = signInManager;
         }
 
         public void Save()
@@ -26,29 +31,29 @@ namespace Maganizer_Project.DAL.Repositories
             db.SaveChanges();
         }
 
-        public IRepository<UserAccount> Accounts
+        public IAccountRepository Accounts
         {
             get
             {
-                if(accountRepository == null)
+                if (accountRepository == null)
                 {
-                    accountRepository = new AccountRepository(db);
+                    accountRepository = new AccountRepository(userManager, signInManager);
                 }
                 return accountRepository;
             }
         }
 
-        public IRepository<UserProfile> Profiles
-        {
-            get
-            {
-                if (profileRepository == null)
-                {
-                    profileRepository = new ProfileRepository(db);
-                }
-                return profileRepository;
-            }
-        }
+        //public IRepository<UserProfile> Profiles
+        //{
+        //    get
+        //    {
+        //        if (profileRepository == null)
+        //        {
+        //            profileRepository = new ProfileRepository(db);
+        //        }
+        //        return profileRepository;
+        //    }
+        //}
 
         public IRepository<Post> Posts
         {
