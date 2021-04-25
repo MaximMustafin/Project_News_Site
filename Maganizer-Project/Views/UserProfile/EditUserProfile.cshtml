@@ -1,6 +1,5 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Maganizer_Project.BLL.DTO.EditProfileDTO
+
 @{
     Layout = "_Layout";
     ViewData["Title"] = "Edit Your profile";
@@ -35,7 +34,7 @@
                             </div>
                             <div>
                                 <h5>About</h5>
-                                <textarea class="form-control">Tell us about you</textarea>
+                                <textarea class="form-control">@Model.About</textarea>
                             </div>
                         </div>
                     </div>

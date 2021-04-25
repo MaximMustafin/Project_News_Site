@@ -8,5 +8,9 @@ namespace Maganizer_Project.DAL.Interfaces
     {
         Task<IdentityResult> CreateAsync(UserAccount item);
         Task<SignInResult> PasswordSignInAsync(string Username, string Password, bool RememberMe);
+        Task SignOutAsync();
+        void UpdateAsync(AspNetUsersExtension newProfileInfo);
+        
+
     }
 }

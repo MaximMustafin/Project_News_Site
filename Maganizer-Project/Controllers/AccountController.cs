@@ -94,5 +94,12 @@ namespace Maganizer_Project.Controllers
 
             return View("SignIn", signInModel);
         }
+
+        //POST
+        public async Task<IActionResult> SignOut()
+        {
+            await accountService.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

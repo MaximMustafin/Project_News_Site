@@ -8,5 +8,6 @@ namespace Maganizer_Project.BLL.Interfaces
     {
         Task<IdentityResult> CreateUser(SignUpUserDTO signUpUser);
         Task<SignInResult> SignInAsync(SignInUserDTO signInUser);
+        Task SignOutAsync();
     }
 }

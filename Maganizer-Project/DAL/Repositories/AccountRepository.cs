@@ -33,7 +33,17 @@ namespace Maganizer_Project.DAL.Repositories
             return result;
         }
 
-   
+        public async Task SignOutAsync()
+        {
+            await signInManager.SignOutAsync();
+        }
+
+        public async void UpdateAsync(AspNetUsersExtension newProfileInfo)
+        {
+            await userManager.UpdateAsync(newProfileInfo);
+        }
+
+
 
         //public void Delete(Guid id)
         //{

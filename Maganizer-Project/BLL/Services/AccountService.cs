@@ -37,5 +37,10 @@ namespace Maganizer_Project.BLL.Services
         {
             return await DataBase.Accounts.PasswordSignInAsync(signInDTO.Username, signInDTO.Password, signInDTO.RememberMe);
         }
+
+        public async Task SignOutAsync()
+        {
+            await DataBase.Accounts.SignOutAsync();
+        }
     }
 }
