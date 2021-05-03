@@ -1,0 +1,113 @@
+﻿@using Maganizer_Project.DAL.Entities
+@inject Microsoft.AspNetCore.Identity.SignInManager<ApplicationUser> _signInManager
+
+@if (_signInManager.IsSignedIn(User))
+{
+    <div class="container">
+        <div class="row">
+            <div class="menu-left-side col-md-8">
+                <div class="menu-top-menu-container">
+                    <ul id="top-menu" class="menu">
+                        <li id="menu-item-2687"
+                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-2687">
+                            <a>Home</a>
+                        </li>
+                        <li id="menu-item-3396"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3396">
+                            <a asp-controller="UserProfile" asp-action="Index" asp-route-username="@User.Identity.Name">My Profile</a>
+                        </li>
+                        <li id="menu-item-3396"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3396">
+                            <ul class="sub-menu">
+                                <li id="menu-item-3319"
+                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3319">
+                                    <a>
+                                        Posts
+                                        Archive
+                                    </a>
+                                </li>
+                                <li id="menu-item-3321"
+                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3321">
+                                    <a>
+                                        Tags
+                                        Archive
+                                    </a>
+                                </li>
+                                <li id="menu-item-3323"
+                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3323">
+                                    <a>
+                                        Category
+                                        Archive
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li id="menu-item-3396"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3396">
+                            <a>Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="today-date col-md-4">
+                <div>
+                    <a asp-controller="Account" asp-action="SignOut"><button class="btn btn-danger">Sign Out</button></a>
+                </div>
+                <i class="far fa-calendar-alt"></i>Today's date
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="container">
+        <div class="row">
+            <div class="menu-left-side col-md-8">
+                <div class="menu-top-menu-container">
+                    <ul id="top-menu" class="menu">
+                        <li id="menu-item-2687"
+                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-2687">
+                            <a>Home</a>
+                        </li>
+                        <li id="menu-item-3396"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3396">
+                            <ul class="sub-menu">
+                                <li id="menu-item-3319"
+                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3319">
+                                    <a>
+                                        Posts
+                                        Archive
+                                    </a>
+                                </li>
+                                <li id="menu-item-3321"
+                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3321">
+                                    <a>
+                                        Tags
+                                        Archive
+                                    </a>
+                                </li>
+                                <li id="menu-item-3323"
+                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3323">
+                                    <a>
+                                        Category
+                                        Archive
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="today-date col-md-4">
+                <div>
+                    <a asp-controller="Account" asp-action="SignIn"><button class="btn btn-primary">Sign In</button></a>
+                    <a asp-controller="Account" asp-action="SignUp"><button class="btn btn-success">Sign Up</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+}

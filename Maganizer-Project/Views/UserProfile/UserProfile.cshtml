@@ -1,4 +1,6 @@
-﻿
+﻿@model Maganizer_Project.WEB.Models.UserProfileViewModel
+@using Maganizer_Project.DAL.Entities 
+@inject Microsoft.AspNetCore.Identity.SignInManager<ApplicationUser> _signInManager
 
 @{
     Layout = "_Layout";
@@ -9,7 +11,6 @@
 <html>
 
 <head>
-    <title>Your Profile</title>
     <link rel="stylesheet" type="text/css" href="~/css/userProfile.css">
     <link rel="stylesheet" type="text/css" href="~/css/bootstrap.min.css">
 </head>
@@ -23,14 +24,29 @@
                         <div class="account-settings">
                             <div class="user-profile">
                                 <div class="user-avatar">
+                                    @if(Model.Avatar == null)
+                                    {
                                     <img src="https://bootdey.com/img/Content/avatar/avatar7.png">
+                                    }
+                                    else
+                                    {
+                                    <img src="data:image/jpeg; base64, @(Convert.ToBase64String(Model.Avatar))">
+                                    }
+
                                 </div>
-                                <h5 class="user-name">Username</h5>
-                                <h6 class="user-email">User's Email</h6>
+                                <h5 class="user-name">@Model.Username</h5>
+                                <h6 class="user-email">@Model.Email</h6>
                             </div>
                             <div class="about">
                                 <h5>About</h5>
-                                <p>About user</p>
+                                @if (Model.About == null)
+                                {
+                            <p>This user hasn't yet set the information about himself</p>
+                                }
+                                else
+                                {
+                                    <p>@Model.About</p>
+                                }
                             </div>
                         </div>
                     </div>
@@ -45,26 +61,43 @@
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
-                                    <label for="fullName">Full Name</label>
-                                    <h5 class="user-name">User's full name</h5>
+                                    <h5><label for="fullName">Full Name</label></h5>
+                                    @if (Model.FullName == " ")
+                                    {
+                                        <h7 class="user-name">This user hasn't yet set his full name</h7>
+                                    }
+                                    else
+                                    {
+                                        <h5 class="user-name">@Model.FullName</h5>
+                                    }
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
-                                    <label for="eMail">Email</label>
-                                    <h5 class="user-name">User's email</h5>
+                                    <h5><label for="phone">Phone</label></h5>
+                                    @if (Model.PhoneNumber == null)
+                                    {
+                                <h7 class="user-name">This user hasn't yet set his phonenumber</h7>
+                                    }
+                                    else
+                                    {
+                                        <h5 class="user-name">@Model.PhoneNumber</h5>
+                                    }
+
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
-                                    <label for="phone">Phone</label>
-                                    <h5 class="user-name">User's phone number</h5>
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label for="website">Website URL</label>
-                                    <h5 class="user-name">User's 3d party resource</h5>
+                                    <h5><label for="website">Website URL</label></h5>
+                                    @if (Model.WebSiteUrl == null)
+                                    {
+                                <h7 class="user-name">This user hasn't yet set his 3d party website</h7>
+                                    }
+                                    else
+                                    {
+                                <h5 class="user-name">@Model.WebSiteUrl</h5>
+                                    }
+
                                 </div>
                             </div>
                         </div>
@@ -74,33 +107,65 @@
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
-                                    <label for="Street">Street</label>
-                                    <h5 class="user-name">User's street</h5>
+                                    <h5><label for="Street">Street</label></h5>
+                                    @if (Model.Street == null)
+                                    {
+                                <h7 class="user-name">This user hasn't yet set his living street</h7>
+                                    }
+                                    else
+                                    {
+                                        <h5 class="user-name">@Model.Street</h5>
+                                    }
+
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
-                                    <label for="ciTy">City</label>
-                                    <h5 class="user-name">User's city</h5>
+                                    <h5><label for="ciTy">City</label></h5>
+                                    @if (Model.City == null)
+                                    {
+                                <h7 class="user-name">This user hasn't yet set his living city</h7>
+                                    }
+                                    else
+                                    {
+                                        <h5 class="user-name">@Model.City</h5>
+                                    }
+
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
-                                    <label for="country">Country</label>
-                                    <h5 class="user-name">User's country</h5>
+                                    <h5><label for="country">Country</label></h5>
+                                    @if (Model.Country == null)
+                                    {
+                                <h7 class="user-name">This user hasn't yet set his living country</h7>
+                                    }
+                                    else
+                                    {
+                                        <h5 class="user-name">@Model.Country</h5>
+                                    }
+
                                 </div>
                             </div>
                         </div>
-                        <div class="row gutters">
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div class="text-right">
-                                    <button type="button" id="submit" name="submit"
-                                            class="btn btn-primary">
-                                        Edit
-                                    </button>
+
+                        @if (User.Identity.Name == Model.Username)
+                        {
+                            <div class="row gutters">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="text-right">
+                                        <a asp-controller="UserProfile" asp-action="EditProfile" asp-route-username="@Model.Username">
+                                            <button type="button" id="submit" name="submit"
+                                                    class="btn btn-warning">
+                                                Edit
+                                            </button>
+                                        </a>
+                                        
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        }
+
                     </div>
                 </div>
             </div>

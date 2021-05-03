@@ -7652,3 +7652,10 @@ header.header-style-three .container {
 .main-title .post-counter {
     border-color: var(--e-global-color-primary)
 }
+
+.very-top
+{
+    display:flex;
+    flex-direction:row;
+
+}

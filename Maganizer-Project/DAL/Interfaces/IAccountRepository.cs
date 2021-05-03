@@ -1,5 +1,7 @@
 ﻿using Maganizer_Project.DAL.Entities;
 using Microsoft.AspNetCore.Identity;
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Maganizer_Project.DAL.Interfaces
@@ -9,8 +11,7 @@ namespace Maganizer_Project.DAL.Interfaces
         Task<IdentityResult> CreateAsync(UserAccount item);
         Task<SignInResult> PasswordSignInAsync(string Username, string Password, bool RememberMe);
         Task SignOutAsync();
-        void UpdateAsync(AspNetUsersExtension newProfileInfo);
+        public Task<ApplicationUser> GetByName(string username);
         
-
     }
 }

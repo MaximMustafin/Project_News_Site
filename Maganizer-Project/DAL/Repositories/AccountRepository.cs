@@ -1,11 +1,6 @@
-﻿using Maganizer_Project.DAL.EF;
-using Maganizer_Project.DAL.Entities;
+﻿using Maganizer_Project.DAL.Entities;
 using Maganizer_Project.DAL.Interfaces;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Maganizer_Project.DAL.Repositories
@@ -13,9 +8,9 @@ namespace Maganizer_Project.DAL.Repositories
     public class AccountRepository: IAccountRepository
     {
 
-        private UserManager<AspNetUsersExtension> userManager;
-        private SignInManager<AspNetUsersExtension> signInManager; 
-        public AccountRepository(UserManager<AspNetUsersExtension> userManager, SignInManager<AspNetUsersExtension> signInManager)
+        private UserManager<ApplicationUser> userManager;
+        private SignInManager<ApplicationUser> signInManager;
+        public AccountRepository(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
@@ -29,7 +24,7 @@ namespace Maganizer_Project.DAL.Repositories
 
         public async Task<SignInResult> PasswordSignInAsync(string Username, string Password, bool RememberMe)
         {
-            var result = await signInManager.PasswordSignInAsync(Username, Password, RememberMe, false);
+            var result = await signInManager.PasswordSignInAsync(Username, Password, RememberMe, false);        
             return result;
         }
 
@@ -38,12 +33,10 @@ namespace Maganizer_Project.DAL.Repositories
             await signInManager.SignOutAsync();
         }
 
-        public async void UpdateAsync(AspNetUsersExtension newProfileInfo)
+        public async Task<ApplicationUser> GetByName(string username)
         {
-            await userManager.UpdateAsync(newProfileInfo);
+            return await userManager.FindByNameAsync(username);
         }
-
-
 
         //public void Delete(Guid id)
         //{

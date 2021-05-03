@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 
 namespace Maganizer_Project.BLL.Services
 {
-    public class AccountService : IAccountService
+    public class UserAccountService : IAccountService
     {
         IUnitOfWork DataBase { get; set; }
 
-        public AccountService(IUnitOfWork unitOfWork)
+        public UserAccountService(IUnitOfWork unitOfWork)
         {
             DataBase = unitOfWork;
         }
 
         public async Task<IdentityResult> CreateUser(SignUpUserDTO signUpDTO)
         {
-            AspNetUsersExtension identityUser = new AspNetUsersExtension()
+            ApplicationUser identityUser = new ApplicationUser()
             {
                 UserName = signUpDTO.Username,
                 Email = signUpDTO.Email
@@ -30,12 +30,26 @@ namespace Maganizer_Project.BLL.Services
                 Password = signUpDTO.Password
             };
 
-            return await DataBase.Accounts.CreateAsync(user);         
+            var result = await DataBase.Accounts.CreateAsync(user);
+
+            if (result.Succeeded)
+            {
+                UserProfile userProfile = new UserProfile()
+                {
+                    ApplicationUserId = user.IdentityUser.Id
+                };
+
+                DataBase.UserProfiles.Create(userProfile);
+                DataBase.Save();
+            }
+            
+            return result;         
         }
 
         public async Task<SignInResult> SignInAsync(SignInUserDTO signInDTO)
         {
-            return await DataBase.Accounts.PasswordSignInAsync(signInDTO.Username, signInDTO.Password, signInDTO.RememberMe);
+            return await DataBase.Accounts.PasswordSignInAsync(signInDTO.Username, signInDTO.Password,
+                                                               signInDTO.RememberMe);
         }
 
         public async Task SignOutAsync()

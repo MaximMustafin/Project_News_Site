@@ -26,6 +26,8 @@ namespace Maganizer_Project
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddHttpContextAccessor();
+            services.AddSession();
 
             services.AddDbContext<MaganizerContext>(options =>
             {
@@ -34,7 +36,7 @@ namespace Maganizer_Project
 
             });
 
-            services.AddIdentity<AspNetUsersExtension, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<MaganizerContext>();
 
             services.Configure<IdentityOptions>(options =>
@@ -47,9 +49,15 @@ namespace Maganizer_Project
                 options.User.RequireUniqueEmail = true;
             });
 
+            services.ConfigureApplicationCookie(config =>
+            {
+                config.LoginPath = Configuration["Application:LoginPath"];
+            });
+
             services.AddScoped<IUnitOfWork, EFUnitOfWork>();
 
-            services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<IAccountService, UserAccountService>();
+            services.AddScoped<IUserProfileService, UserProfileService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -64,6 +72,7 @@ namespace Maganizer_Project
             //        await next();
             //    }
             //});
+            app.UseSession();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -77,7 +86,7 @@ namespace Maganizer_Project
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Account}/{action=SignIn}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id}");
             });
         }
     }
