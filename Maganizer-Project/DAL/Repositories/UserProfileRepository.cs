@@ -30,9 +30,21 @@ namespace Maganizer_Project.DAL.Repositories
             return db.UserProfiles;
         }
 
+        public UserProfile GetByAccountId(string id)
+        {
+            return db.UserProfiles.FirstOrDefault(x => x.ApplicationUserId == id);
+        }
+
         public void Update(UserProfile item)
         {
-            db.Entry(item).State = EntityState.Modified;
+            //TODO
+            //db.UserProfiles.Attach(item);
+            //db.UserProfiles.Remove(item);
+            //db.SaveChanges();
+
+            //db.UserProfiles.Update(item);
+            //db.SaveChanges();
+
         }
     }
 }

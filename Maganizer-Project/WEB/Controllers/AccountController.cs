@@ -17,23 +17,23 @@ namespace Maganizer_Project.Controllers
         }
 
         //GET
-        [Route("signIn")]
-        public IActionResult signIn()
+        [Route("SignIn")]
+        public IActionResult SignIn()
         {
             return View("SignIn");
         }
 
         //GET
-        [Route("signUp")]
-        public IActionResult signUp()
+        [Route("SignUp")]
+        public IActionResult SignUp()
         {
             return View("SignUp");
         }
 
         //POST
-        [Route("signUp")]
+        [Route("SignUp")]
         [HttpPost]
-        public async Task<IActionResult> signUp(SignUpViewModel signUpModel)
+        public async Task<IActionResult> SignUp(SignUpViewModel signUpModel)
         {
             if (ModelState.IsValid)
             {
@@ -64,24 +64,17 @@ namespace Maganizer_Project.Controllers
         }
 
         //POST
-        [Route("signIn")]
+        [Route("SignIn")]
         [HttpPost]
-        public async Task<IActionResult> signIn(SignInViewModel signInModel, string RememberMe)
+        public async Task<IActionResult> SignIn(SignInViewModel signInModel, string RememberMe)
         {
             if (ModelState.IsValid)
-            {
-                bool RememberMeBool = false;
-
-                if (RememberMe == "on")
-                {
-                    RememberMeBool = true;
-                }
-
+            {               
                 var signInDTO = new SignInUserDTO()
                 {
                     Username = signInModel.Username,
                     Password = signInModel.Password,
-                    RememberMe = RememberMeBool
+                    RememberMe = RememberMe
                 };
 
                 var result = await accountService.SignInAsync(signInDTO);                          

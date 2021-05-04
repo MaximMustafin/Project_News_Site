@@ -3,7 +3,6 @@ using Maganizer_Project.BLL.Interfaces;
 using Maganizer_Project.WEB.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.IO;
 
 namespace Maganizer_Project.Controllers
 {
@@ -17,17 +16,10 @@ namespace Maganizer_Project.Controllers
         }
 
         //GET
-        [Route("users")]
-        [HttpGet("{username}")]
-        public IActionResult Index(string username)
+        [Route("MyProfile")]
+        public IActionResult GetMyProfile()
         {
-            if(username == null)
-            {
-                return View("ErrorNotFound");
-            }
-
-            UserProfileDTO profileInfo = profileService.GetProfile(username);
-
+            UserProfileDTO profileInfo = profileService.GetProfile(User.Identity.Name);
             if(profileInfo == null)
             {
                 return View("ErrorNotFound");
@@ -35,7 +27,6 @@ namespace Maganizer_Project.Controllers
 
             var profileViewModel = new UserProfileViewModel()
             {
-                Id = profileInfo.Id,
                 Username = profileInfo.Username,
                 Email = profileInfo.Email,
                 PhoneNumber = profileInfo.PhoneNumber,
@@ -52,20 +43,23 @@ namespace Maganizer_Project.Controllers
             return View("UserProfile", profileViewModel);   
         }
 
+        //TODO
+        //[Route("Users")]
+        //GetProfile
+
         //GET
-        [Route("UpdateProfile")]
-        [HttpGet("{username}")]
-        public IActionResult EditProfile(string username)
-        {
-            if(User.Identity.Name != username)
+        [Route("EditProfile")]
+        [HttpGet]
+        public IActionResult EditProfile()
+        {            
+            UserProfileDTO profileInfo = profileService.GetProfile(User.Identity.Name);
+            if(profileInfo == null)
             {
                 return View("ErrorNotFound");
             }
-            UserProfileDTO profileInfo = profileService.GetProfile(username);
 
             var editProfileViewModel = new EditUserProfileViewModel()
             {
-                Id = profileInfo.Id,
                 Username = profileInfo.Username,
                 Email = profileInfo.Email,
                 PhoneNumber = profileInfo.PhoneNumber,
@@ -82,28 +76,13 @@ namespace Maganizer_Project.Controllers
             return View("EditUserProfile", editProfileViewModel);
         }
 
-        [Route("UpdateProfile")]
+        [Route("EditProfile")]
         [HttpPost]
         public IActionResult EditProfile(EditUserProfileViewModel editProfileModel)
-        {
-            byte[] imageData = null;
-            byte[] newAvatar;
-            if (editProfileModel.NewAvatar != null)
+        {  
+            EditUserProfileDTO editProfileDTO = new EditUserProfileDTO()
             {
-                using (var binaryReader = new BinaryReader(editProfileModel.NewAvatar.OpenReadStream()))
-                {
-                    imageData = binaryReader.ReadBytes((int)editProfileModel.NewAvatar.Length);
-                }
-               newAvatar = imageData;
-            }
-            else
-            {
-                newAvatar = editProfileModel.OldAvatar;
-            }
-
-            EditProfileDTO editProfileDTO = new EditProfileDTO()
-            {
-                Id = editProfileModel.Id,
+                Username = User.Identity.Name,
                 FirstName = editProfileModel.FirstName,
                 LastName = editProfileModel.LastName,
                 PhoneNumber = editProfileModel.PhoneNumber,
@@ -112,12 +91,13 @@ namespace Maganizer_Project.Controllers
                 City = editProfileModel.City,
                 Street = editProfileModel.Street,
                 About = editProfileModel.About,
-                Avatar = newAvatar
+                NewAvatar = editProfileModel.NewAvatar,
+                OldAvatar = editProfileModel.OldAvatar
             };
 
             profileService.UpdateProfile(editProfileDTO);
        
-            return RedirectToAction("Index", editProfileModel.Username);
+            return RedirectToAction("GetMyProfile");
         }
 
     }

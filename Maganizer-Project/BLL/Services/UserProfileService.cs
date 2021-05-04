@@ -2,10 +2,8 @@
 using Maganizer_Project.BLL.Interfaces;
 using Maganizer_Project.DAL.Entities;
 using Maganizer_Project.DAL.Interfaces;
-using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Maganizer_Project.BLL.Services
 {
@@ -31,9 +29,13 @@ namespace Maganizer_Project.BLL.Services
 
             var userProfile = userProfiles.FirstOrDefault(x => x.ApplicationUserId == accountResult.Result.Id);
             
+            if(userProfile == null)
+            {
+                return null;
+            }
+
             return new UserProfileDTO()
             {
-                Id = userProfile.Id,
                 Username = accountResult.Result.UserName,
                 Email = accountResult.Result.Email,
                 About = userProfile.About,
@@ -48,11 +50,31 @@ namespace Maganizer_Project.BLL.Services
             };
 
         }
-        public void UpdateProfile(EditProfileDTO editProfileDTO)
+        public void UpdateProfile(EditUserProfileDTO editProfileDTO)
         {
+            var account = DataBase.Accounts.GetByName(editProfileDTO.Username);
+
+            byte[] imageData = null;
+            byte[] newAvatar;
+
+            if (editProfileDTO.NewAvatar != null)
+            {
+                using (var binaryReader = new BinaryReader(editProfileDTO.NewAvatar.OpenReadStream()))
+                {
+                    imageData = binaryReader.ReadBytes((int)editProfileDTO.NewAvatar.Length);
+                }
+                newAvatar = imageData;
+            }
+            else
+            {
+                newAvatar = editProfileDTO.OldAvatar;
+            }
+
+            var profileId = DataBase.UserProfiles.GetByAccountId(account.Result.Id).Id;
+
             UserProfile userProfile = new UserProfile()
             {
-                Id = editProfileDTO.Id,
+                Id = profileId,
                 FirstName = editProfileDTO.FirstName,
                 LastName = editProfileDTO.LastName,
                 Country = editProfileDTO.Country,
@@ -60,7 +82,8 @@ namespace Maganizer_Project.BLL.Services
                 Street = editProfileDTO.Street,
                 About = editProfileDTO.About,
                 WebSiteUrl = editProfileDTO.WebSiteUrl,
-                Avatar = editProfileDTO.Avatar
+                Avatar = newAvatar,
+                ApplicationUserId = account.Result.Id
             };
 
             DataBase.UserProfiles.Update(userProfile);

@@ -48,8 +48,14 @@ namespace Maganizer_Project.BLL.Services
 
         public async Task<SignInResult> SignInAsync(SignInUserDTO signInDTO)
         {
+            bool RememberMeBool = false;
+
+            if (signInDTO.RememberMe == "on")
+            {
+                RememberMeBool = true;
+            }
             return await DataBase.Accounts.PasswordSignInAsync(signInDTO.Username, signInDTO.Password,
-                                                               signInDTO.RememberMe);
+                                                               RememberMeBool);
         }
 
         public async Task SignOutAsync()

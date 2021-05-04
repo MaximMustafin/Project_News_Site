@@ -1,11 +1,10 @@
-﻿using Maganizer_Project.BLL.Infrastructure;
-using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Http;
 
 namespace Maganizer_Project.BLL.DTO
 {
-    public class EditProfileDTO
+    public class EditUserProfileDTO
     {
-        public int Id { get; set; }
+        public string Username { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }
@@ -14,6 +13,7 @@ namespace Maganizer_Project.BLL.DTO
         public string City { get; set; }
         public string Street { get; set; }
         public string About { get; set; }
-        public byte[] Avatar { get; set; }
+        public IFormFile NewAvatar { get; set; }
+        public byte[] OldAvatar { get; set; }
     }
 }

@@ -23,7 +23,7 @@
                         <div class="card-body">
                             <div class="account-settings">
                                 <div class="user-profile">
-                                    <div class="user-avatar">
+                                    <div class="user-avatar">                                     
                                         @if (Model.OldAvatar == null)
                                         {
                                             <img id="changeAvatar" src="https://bootdey.com/img/Content/avatar/avatar7.png">
@@ -32,10 +32,11 @@
                                         {
                                             <img id="changeAvatar" src="data:image/jpeg; base64, @(Convert.ToBase64String(Model.OldAvatar))">
                                         }
-                                        <div class="file-input">
-                                            <input asp-for="NewAvatar" type="file" id="fileinput" class="file">
-                                            <label for="fileinput">Select file</label>
-                                        </div>
+                                    <div class="file-input">
+                                        <input asp-for="NewAvatar" type="file" id="fileinput" class="file">
+                                        <input hidden asp-for="OldAvatar" value="@Model.OldAvatar" type="file" id="fileinput" class="file">
+                                        <label for="fileinput">Select file</label>
+                                    </div>
                                     </div>
                                     <h5 class="user-name">@Model.Username</h5>
                                     <h6 class="user-email">@Model.Email</h6>
@@ -167,11 +168,11 @@
                             <div class="row gutters">
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                     <div class="text-right">
-                                        @*<button asp-action="Index" asp-route-username="@Model.Username" id="submit" name="submit"
+                                        <a asp-controller="UserProfile" asp-action="GetMyProfile"><button type="button" id="submit" name="submit"
                                                 class="btn btn-secondary">
                                             Cancel
-                                        </button>*@
-                                        <button asp-action="SubmitEditProfile" type="submit" id="submit" name="submit"
+                                        </button></a>
+                                        <button asp-action="EditProfile" type="submit" id="submit" name="submit"
                                                 class="btn btn-primary">
                                             Update
                                         </button>
