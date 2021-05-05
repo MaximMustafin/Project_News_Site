@@ -37,7 +37,6 @@ namespace Maganizer_Project.BLL.Services
             return new UserProfileDTO()
             {
                 Username = userProfile.ApplicationUser.UserName,
-                Email = userProfile.ApplicationUser.Email,
                 About = userProfile.About,
                 FirstName = userProfile.FirstName,
                 LastName = userProfile.LastName,
@@ -53,7 +52,6 @@ namespace Maganizer_Project.BLL.Services
         public void UpdateProfile(EditUserProfileDTO editProfileDTO)
         {
             var account = DataBase.Accounts.GetByName(editProfileDTO.Username);
-            //account.Result.PhoneNumber = editProfileDTO.PhoneNumber;
 
             byte[] imageData = null;
             byte[] newAvatar;
@@ -90,7 +88,6 @@ namespace Maganizer_Project.BLL.Services
 
             DataBase.UserProfiles.Update(userProfile);
             DataBase.Save();
-            //DataBase.Accounts.Update(account.Result);
 
         }
 

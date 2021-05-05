@@ -17,6 +17,7 @@ namespace Maganizer_Project.Controllers
 
         //GET
         [Route("MyProfile")]
+        [HttpGet]
         public IActionResult GetMyProfile()
         {
             UserProfileDTO profileInfo = profileService.GetProfile(User.Identity.Name);
@@ -28,7 +29,6 @@ namespace Maganizer_Project.Controllers
             var profileViewModel = new UserProfileViewModel()
             {
                 Username = profileInfo.Username,
-                Email = profileInfo.Email,
                 EmailForContacts = profileInfo.EmailForContacts,
                 WebSiteUrl = profileInfo.WebSiteUrl,
                 Country = profileInfo.Country,
@@ -63,7 +63,6 @@ namespace Maganizer_Project.Controllers
             var profileViewModel = new UserProfileViewModel()
             {
                 Username = profileInfo.Username,
-                Email = profileInfo.Email,
                 EmailForContacts = profileInfo.EmailForContacts,
                 WebSiteUrl = profileInfo.WebSiteUrl,
                 Country = profileInfo.Country,
