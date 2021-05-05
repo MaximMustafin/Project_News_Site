@@ -11,7 +11,7 @@ namespace Maganizer_Project.DAL.Interfaces
         Task<IdentityResult> CreateAsync(UserAccount item);
         Task<SignInResult> PasswordSignInAsync(string Username, string Password, bool RememberMe);
         Task SignOutAsync();
-        public Task<ApplicationUser> GetByName(string username);
-        
+        Task<ApplicationUser> GetByName(string username);
+
     }
 }

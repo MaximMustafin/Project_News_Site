@@ -94,10 +94,11 @@ namespace Maganizer_Project.Controllers
         }
 
         //POST
+        [Route("SignOut")]
         public async Task<IActionResult> SignOut()
         {
             await accountService.SignOutAsync();
-            return RedirectToAction("Index", "UserProfile");
+            return RedirectToAction("SignIn");
         }
     }
 }

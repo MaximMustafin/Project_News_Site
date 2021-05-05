@@ -36,12 +36,12 @@ namespace Maganizer_Project.BLL.Services
 
             return new UserProfileDTO()
             {
-                Username = accountResult.Result.UserName,
-                Email = accountResult.Result.Email,
+                Username = userProfile.ApplicationUser.UserName,
+                Email = userProfile.ApplicationUser.Email,
                 About = userProfile.About,
                 FirstName = userProfile.FirstName,
                 LastName = userProfile.LastName,
-                PhoneNumber = accountResult.Result.PhoneNumber,
+                EmailForContacts = userProfile.EmailForContacts,
                 WebSiteUrl = userProfile.WebSiteUrl,
                 Country = userProfile.Country,
                 City = userProfile.City,
@@ -53,6 +53,7 @@ namespace Maganizer_Project.BLL.Services
         public void UpdateProfile(EditUserProfileDTO editProfileDTO)
         {
             var account = DataBase.Accounts.GetByName(editProfileDTO.Username);
+            //account.Result.PhoneNumber = editProfileDTO.PhoneNumber;
 
             byte[] imageData = null;
             byte[] newAvatar;
@@ -67,7 +68,7 @@ namespace Maganizer_Project.BLL.Services
             }
             else
             {
-                newAvatar = editProfileDTO.OldAvatar;
+                newAvatar = null;
             }
 
             var profileId = DataBase.UserProfiles.GetByAccountId(account.Result.Id).Id;
@@ -82,14 +83,16 @@ namespace Maganizer_Project.BLL.Services
                 Street = editProfileDTO.Street,
                 About = editProfileDTO.About,
                 WebSiteUrl = editProfileDTO.WebSiteUrl,
+                EmailForContacts = editProfileDTO.EmailForContacts,
                 Avatar = newAvatar,
                 ApplicationUserId = account.Result.Id
             };
 
             DataBase.UserProfiles.Update(userProfile);
             DataBase.Save();
-        }
+            //DataBase.Accounts.Update(account.Result);
 
+        }
 
     }
 }

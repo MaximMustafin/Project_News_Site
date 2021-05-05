@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Maganizer_Project.Migrations
 {
     [DbContext(typeof(MaganizerContext))]
-    [Migration("20210503170639_AddUserProfile")]
+    [Migration("20210505155813_AddUserProfile")]
     partial class AddUserProfile
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -106,6 +106,9 @@ namespace Maganizer_Project.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Country")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmailForContacts")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")

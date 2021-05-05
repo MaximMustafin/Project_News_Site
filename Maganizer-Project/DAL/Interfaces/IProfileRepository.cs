@@ -12,6 +12,6 @@ namespace Maganizer_Project.DAL.Interfaces
         //IEnumerable<T> Find(Func<T, Boolean> predicate);
         void Create(UserProfile item);
         void Update(UserProfile item);
-        //void Delete(Guid id);
+        void Delete(int id);
     }
 }

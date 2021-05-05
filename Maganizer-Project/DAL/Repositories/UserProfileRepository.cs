@@ -20,6 +20,13 @@ namespace Maganizer_Project.DAL.Repositories
             db.UserProfiles.Add(item);
         }
 
+        public void Delete(int id)
+        {
+            UserProfile userProfile = db.UserProfiles.Find(id);
+            if (userProfile != null)
+                db.UserProfiles.Remove(userProfile);
+        }
+
         public UserProfile Get(int? id)
         {
             return db.UserProfiles.Find(id);
@@ -37,14 +44,28 @@ namespace Maganizer_Project.DAL.Repositories
 
         public void Update(UserProfile item)
         {
-            //TODO
-            //db.UserProfiles.Attach(item);
-            //db.UserProfiles.Remove(item);
-            //db.SaveChanges();
+            UserProfile userProfile = db.UserProfiles.Find(item.Id);
+            if (userProfile != null)
+            {
+                userProfile.FirstName = item.FirstName;
+                userProfile.LastName = item.LastName;
+                userProfile.Country = item.Country;
+                userProfile.City = item.City;
+                userProfile.Street = item.Street;
+                userProfile.About = item.About;
+                userProfile.WebSiteUrl = item.WebSiteUrl;
+                userProfile.EmailForContacts = item.EmailForContacts;
 
-            //db.UserProfiles.Update(item);
-            //db.SaveChanges();
+                if(item.Avatar != null)
+                {
+                    userProfile.Avatar = item.Avatar;
+                }               
 
+                db.UserProfiles.Update(userProfile);
+
+                db.SaveChanges();
+            }
+                   
         }
     }
 }

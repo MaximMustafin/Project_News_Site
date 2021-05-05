@@ -9,7 +9,7 @@ namespace Maganizer_Project.Controllers
     [Authorize]
     public class UserProfileController : Controller
     {
-        IUserProfileService profileService;
+        private readonly IUserProfileService profileService;
         public UserProfileController(IUserProfileService profileService)
         {
             this.profileService = profileService;
@@ -29,7 +29,7 @@ namespace Maganizer_Project.Controllers
             {
                 Username = profileInfo.Username,
                 Email = profileInfo.Email,
-                PhoneNumber = profileInfo.PhoneNumber,
+                EmailForContacts = profileInfo.EmailForContacts,
                 WebSiteUrl = profileInfo.WebSiteUrl,
                 Country = profileInfo.Country,
                 City = profileInfo.City,
@@ -43,9 +43,40 @@ namespace Maganizer_Project.Controllers
             return View("UserProfile", profileViewModel);   
         }
 
-        //TODO
-        //[Route("Users")]
-        //GetProfile
+        //GET
+        [Route("Users")]
+        [HttpGet("username")]
+        public IActionResult GetProfile(string username)
+        {
+            if(User.Identity.Name == username)
+            {
+                return RedirectToAction("GetMyProfile");
+            }
+
+            UserProfileDTO profileInfo = profileService.GetProfile(username);
+
+            if (profileInfo == null)
+            {
+                return View("ErrorNotFound");
+            }
+
+            var profileViewModel = new UserProfileViewModel()
+            {
+                Username = profileInfo.Username,
+                Email = profileInfo.Email,
+                EmailForContacts = profileInfo.EmailForContacts,
+                WebSiteUrl = profileInfo.WebSiteUrl,
+                Country = profileInfo.Country,
+                City = profileInfo.City,
+                Street = profileInfo.Street,
+                About = profileInfo.About,
+                FullName = profileInfo.FirstName + " " + profileInfo.LastName,
+                Avatar = profileInfo.Avatar,
+            };
+
+
+            return View("UserProfile", profileViewModel);
+        }
 
         //GET
         [Route("EditProfile")]
@@ -60,9 +91,7 @@ namespace Maganizer_Project.Controllers
 
             var editProfileViewModel = new EditUserProfileViewModel()
             {
-                Username = profileInfo.Username,
-                Email = profileInfo.Email,
-                PhoneNumber = profileInfo.PhoneNumber,
+                EmailForContacts = profileInfo.EmailForContacts,
                 WebSiteUrl = profileInfo.WebSiteUrl,
                 Country = profileInfo.Country,
                 City = profileInfo.City,
@@ -76,28 +105,36 @@ namespace Maganizer_Project.Controllers
             return View("EditUserProfile", editProfileViewModel);
         }
 
+        //POST
         [Route("EditProfile")]
         [HttpPost]
-        public IActionResult EditProfile(EditUserProfileViewModel editProfileModel)
-        {  
-            EditUserProfileDTO editProfileDTO = new EditUserProfileDTO()
+        public IActionResult EditProfile(EditUserProfileViewModel editProfileViewModel)
+        {
+            if (ModelState.IsValid)
             {
-                Username = User.Identity.Name,
-                FirstName = editProfileModel.FirstName,
-                LastName = editProfileModel.LastName,
-                PhoneNumber = editProfileModel.PhoneNumber,
-                WebSiteUrl = editProfileModel.WebSiteUrl,
-                Country = editProfileModel.Country,
-                City = editProfileModel.City,
-                Street = editProfileModel.Street,
-                About = editProfileModel.About,
-                NewAvatar = editProfileModel.NewAvatar,
-                OldAvatar = editProfileModel.OldAvatar
-            };
+                EditUserProfileDTO editProfileDTO = new EditUserProfileDTO()
+                {
+                    Username = User.Identity.Name,
+                    FirstName = editProfileViewModel.FirstName,
+                    LastName = editProfileViewModel.LastName,
+                    EmailForContacts = editProfileViewModel.EmailForContacts,
+                    WebSiteUrl = editProfileViewModel.WebSiteUrl,
+                    Country = editProfileViewModel.Country,
+                    City = editProfileViewModel.City,
+                    Street = editProfileViewModel.Street,
+                    About = editProfileViewModel.About,
+                    NewAvatar = editProfileViewModel.NewAvatar,
+                };
 
-            profileService.UpdateProfile(editProfileDTO);
-       
-            return RedirectToAction("GetMyProfile");
+                profileService.UpdateProfile(editProfileDTO);
+
+                return RedirectToAction("GetMyProfile");
+            }
+
+            editProfileViewModel.OldAvatar = profileService.GetProfile(User.Identity.Name).Avatar;
+
+            return View("EditUserProfile", editProfileViewModel);
+            
         }
 
     }

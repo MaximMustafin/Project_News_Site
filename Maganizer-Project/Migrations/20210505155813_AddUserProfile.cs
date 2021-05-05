@@ -15,6 +15,7 @@ namespace Maganizer_Project.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmailForContacts = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     City = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Street = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -37,7 +38,8 @@ namespace Maganizer_Project.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_UserProfiles_ApplicationUserId",
                 table: "UserProfiles",
-                column: "ApplicationUserId");
+                column: "ApplicationUserId",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

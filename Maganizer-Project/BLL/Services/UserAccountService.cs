@@ -62,5 +62,6 @@ namespace Maganizer_Project.BLL.Services
         {
             await DataBase.Accounts.SignOutAsync();
         }
+
     }
 }

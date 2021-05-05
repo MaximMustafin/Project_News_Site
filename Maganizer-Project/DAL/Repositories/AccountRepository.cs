@@ -7,7 +7,6 @@ namespace Maganizer_Project.DAL.Repositories
 {
     public class AccountRepository: IAccountRepository
     {
-
         private UserManager<ApplicationUser> userManager;
         private SignInManager<ApplicationUser> signInManager;
         public AccountRepository(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)

@@ -28,7 +28,7 @@ namespace Maganizer_Project.BLL.Infrastructure
 
         public string GetErrorMessage()
         {
-            return $"Maximum allowed file size is { _maxFileSize} megabyte.";
+            return $"Maximum allowed file size is { _maxFileSize / (1024 * 1024) } megabyte.";
         }
     }
 }
