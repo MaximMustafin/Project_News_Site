@@ -4,20 +4,20 @@
 
 @{
     Layout = "_Layout";
+    @if(Model.Username == User.Identity.Name)
+    {
+        ViewData["Title"] = "My profile | Maganizer";
+    }
+    else
+    {
+        ViewData["Title"] = $"{@Model.Username} • user info | Maganizer";
+    }
 }
 
 <!DOCTYPE html>
 <html>
 
 <head>
-    @if (Model.Username == User.Identity.Name)
-    {
-        <title>My profile | Maganizer</title>
-    }
-    else
-    {
-        <title>@Model.Username • user info | Maganizer</title>
-    }
     <link rel="stylesheet" type="text/css" href="~/css/userProfile.css">
     <link rel="stylesheet" type="text/css" href="~/css/bootstrap.min.css">
 </head>
@@ -42,7 +42,6 @@
 
                                 </div>
                                 <h5 class="user-name">@Model.Username</h5>
-                                <h6 class="user-email">@Model.Email</h6>
                             </div>
                             <div class="about">
                                 <h5>About</h5>

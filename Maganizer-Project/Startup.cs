@@ -61,17 +61,16 @@ namespace Maganizer_Project
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-            //TODO
-            //app.Use(async (context, next) =>
-            //{
-            //    await next();
-            //    if (context.Response.StatusCode == 404)
-            //    {
-            //        context.Request.Path = "/SignIn";
-            //        await next();
-            //    }
-            //});
+        {           
+            app.Use(async (context, next) =>
+            {
+                await next();
+                if (context.Response.StatusCode == 404 && context.Request.Path != "/missing")
+                {
+                    context.Request.Path = "/missing";
+                    await next();
+                }
+            });
             app.UseSession();
 
             app.UseHttpsRedirection();

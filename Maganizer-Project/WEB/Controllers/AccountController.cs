@@ -18,6 +18,7 @@ namespace Maganizer_Project.Controllers
 
         //GET
         [Route("SignIn")]
+        [HttpGet]
         public IActionResult SignIn()
         {
             return View("SignIn");
@@ -25,6 +26,7 @@ namespace Maganizer_Project.Controllers
 
         //GET
         [Route("SignUp")]
+        [HttpGet]
         public IActionResult SignUp()
         {
             return View("SignUp");
@@ -95,6 +97,7 @@ namespace Maganizer_Project.Controllers
 
         //POST
         [Route("SignOut")]
+        [HttpPost]
         public async Task<IActionResult> SignOut()
         {
             await accountService.SignOutAsync();

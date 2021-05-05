@@ -55,7 +55,7 @@
                 <div>
                     <a asp-controller="Account" asp-action="SignOut"><button type="button" class="btn btn-danger">Sign Out</button></a>
                 </div>
-                <i class="far fa-calendar-alt"></i>Today's date
+                <i class="far fa-calendar-alt"></i>@DateTime.Now.ToString("dddd, dd MMMM yyyy")
             </div>
         </div>
     </div>
