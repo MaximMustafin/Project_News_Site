@@ -8,45 +8,45 @@ using System.Linq;
 
 namespace Maganizer_Project.DAL.Repositories
 {
-    public class TagRepository : IRepository<Tag>
-    {
-        private MaganizerContext db;
-        public TagRepository(MaganizerContext context)
-        {
-            this.db = context;
-        }
-        public void Create(Tag item)
-        {
-            db.Tags.Add(item);
-        }
+    //public class TagRepository : IRepository<Tag>
+    //{
+    //    private MaganizerContext db;
+    //    public TagRepository(MaganizerContext context)
+    //    {
+    //        this.db = context;
+    //    }
+    //    public void Create(Tag item)
+    //    {
+    //        db.Tags.Add(item);
+    //    }
 
-        public void Delete(Guid id)
-        {
-            Tag item = db.Tags.Find(id);
-            if (item != null)
-            {
-                db.Tags.Remove(item);
-            }
-        }
+    //    public void Delete(Guid id)
+    //    {
+    //        Tag item = db.Tags.Find(id);
+    //        if (item != null)
+    //        {
+    //            db.Tags.Remove(item);
+    //        }
+    //    }
 
-        public IEnumerable<Tag> Find(Func<Tag, bool> predicate)
-        {
-            return db.Tags.Where(predicate).ToList();
-        }
+    //    public IEnumerable<Tag> Find(Func<Tag, bool> predicate)
+    //    {
+    //        return db.Tags.Where(predicate).ToList();
+    //    }
 
-        public Tag Get(Guid id)
-        {
-            return db.Tags.Find(id);
-        }
+    //    public Tag Get(Guid id)
+    //    {
+    //        return db.Tags.Find(id);
+    //    }
 
-        public IEnumerable<Tag> GetAll()
-        {
-            return db.Tags;
-        }
+    //    public IEnumerable<Tag> GetAll()
+    //    {
+    //        return db.Tags;
+    //    }
 
-        public void Update(Tag item)
-        {
-            db.Entry(item).State = EntityState.Modified;
-        }
-    }
+    //    public void Update(Tag item)
+    //    {
+    //        db.Entry(item).State = EntityState.Modified;
+    //    }
+    //}
 }

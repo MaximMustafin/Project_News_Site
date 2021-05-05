@@ -7,11 +7,11 @@ namespace Maganizer_Project.DAL.Interfaces
     public interface IUnitOfWork : IDisposable
     {
         IAccountRepository Accounts { get; }
-        //IRepository<UserProfile> Profiles { get; }
-        IRepository<Post> Posts { get; }
-        IRepository<Tag> Tags { get; }
-        IRepository<Comment> Comments { get; }
-        IRepository<Category> Categories { get; }
+        IProfileRepository UserProfiles { get; }
+        //IRepository<Post> Posts { get; }
+        //IRepository<Tag> Tags { get; }
+        //IRepository<Comment> Comments { get; }
+        //IRepository<Category> Categories { get; }
         void Save();
     }
 }

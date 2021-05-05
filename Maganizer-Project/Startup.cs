@@ -26,6 +26,8 @@ namespace Maganizer_Project
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddHttpContextAccessor();
+            services.AddSession();
 
             services.AddDbContext<MaganizerContext>(options =>
             {
@@ -34,7 +36,7 @@ namespace Maganizer_Project
 
             });
 
-            services.AddIdentity<AspNetUsersExtension, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<MaganizerContext>();
 
             services.Configure<IdentityOptions>(options =>
@@ -47,36 +49,44 @@ namespace Maganizer_Project
                 options.User.RequireUniqueEmail = true;
             });
 
+            services.ConfigureApplicationCookie(config =>
+            {
+                config.LoginPath = Configuration["Application:LoginPath"];
+            });
+
             services.AddScoped<IUnitOfWork, EFUnitOfWork>();
 
-            services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<IAccountService, UserAccountService>();
+            services.AddScoped<IUserProfileService, UserProfileService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-                
-                app.UseHsts();
-            }
+            //TODO
+            //app.Use(async (context, next) =>
+            //{
+            //    await next();
+            //    if (context.Response.StatusCode == 404)
+            //    {
+            //        context.Request.Path = "/SignIn";
+            //        await next();
+            //    }
+            //});
+            app.UseSession();
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
 
             app.UseAuthentication();
-            //app.UseAuthorization();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Account}/{action=SignIn}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id}");
             });
         }
     }

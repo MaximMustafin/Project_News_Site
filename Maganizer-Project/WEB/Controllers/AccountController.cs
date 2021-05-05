@@ -4,12 +4,13 @@ using System.Threading.Tasks;
 using Maganizer_Project.WEB.Models;
 using Maganizer_Project.BLL.DTO;
 using System;
+using Microsoft.AspNetCore.Http;
 
 namespace Maganizer_Project.Controllers
 {
     public class AccountController : Controller
     {
-        IAccountService accountService;
+        private readonly IAccountService accountService;
         public AccountController(IAccountService accountService)
         {
             this.accountService = accountService;
@@ -51,7 +52,12 @@ namespace Maganizer_Project.Controllers
                     {
                         ModelState.AddModelError("", error.Description);
                     }
-                }               
+
+                    return View("SignUp", signUpModel);
+                }
+
+                return View("SignIn");
+                
             }
 
             return View("SignUp", signUpModel);
@@ -63,26 +69,19 @@ namespace Maganizer_Project.Controllers
         public async Task<IActionResult> SignIn(SignInViewModel signInModel, string RememberMe)
         {
             if (ModelState.IsValid)
-            {
-                bool RememberMeBool = false;
-
-                if (RememberMe == "on")
-                {
-                    RememberMeBool = true;
-                }
-
+            {               
                 var signInDTO = new SignInUserDTO()
                 {
                     Username = signInModel.Username,
                     Password = signInModel.Password,
-                    RememberMe = RememberMeBool
+                    RememberMe = RememberMe
                 };
 
-                var result = await accountService.SignInAsync(signInDTO);
+                var result = await accountService.SignInAsync(signInDTO);                          
 
                 if (result.Succeeded)
                 {
-                    Console.WriteLine("Sign In is successful!");
+                    return View("SignIn");
                 }
                 else
                 {
@@ -91,8 +90,15 @@ namespace Maganizer_Project.Controllers
 
             }
             
-
             return View("SignIn", signInModel);
+        }
+
+        //POST
+        [Route("SignOut")]
+        public async Task<IActionResult> SignOut()
+        {
+            await accountService.SignOutAsync();
+            return RedirectToAction("SignIn");
         }
     }
 }

@@ -1,0 +1,141 @@
+﻿using Maganizer_Project.BLL.DTO;
+using Maganizer_Project.BLL.Interfaces;
+using Maganizer_Project.WEB.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Maganizer_Project.Controllers
+{
+    [Authorize]
+    public class UserProfileController : Controller
+    {
+        private readonly IUserProfileService profileService;
+        public UserProfileController(IUserProfileService profileService)
+        {
+            this.profileService = profileService;
+        }
+
+        //GET
+        [Route("MyProfile")]
+        public IActionResult GetMyProfile()
+        {
+            UserProfileDTO profileInfo = profileService.GetProfile(User.Identity.Name);
+            if(profileInfo == null)
+            {
+                return View("ErrorNotFound");
+            }
+
+            var profileViewModel = new UserProfileViewModel()
+            {
+                Username = profileInfo.Username,
+                Email = profileInfo.Email,
+                EmailForContacts = profileInfo.EmailForContacts,
+                WebSiteUrl = profileInfo.WebSiteUrl,
+                Country = profileInfo.Country,
+                City = profileInfo.City,
+                Street = profileInfo.Street,
+                About = profileInfo.About,
+                FullName = profileInfo.FirstName + " " + profileInfo.LastName,
+                Avatar = profileInfo.Avatar,
+            };
+
+
+            return View("UserProfile", profileViewModel);   
+        }
+
+        //GET
+        [Route("Users")]
+        [HttpGet("username")]
+        public IActionResult GetProfile(string username)
+        {
+            if(User.Identity.Name == username)
+            {
+                return RedirectToAction("GetMyProfile");
+            }
+
+            UserProfileDTO profileInfo = profileService.GetProfile(username);
+
+            if (profileInfo == null)
+            {
+                return View("ErrorNotFound");
+            }
+
+            var profileViewModel = new UserProfileViewModel()
+            {
+                Username = profileInfo.Username,
+                Email = profileInfo.Email,
+                EmailForContacts = profileInfo.EmailForContacts,
+                WebSiteUrl = profileInfo.WebSiteUrl,
+                Country = profileInfo.Country,
+                City = profileInfo.City,
+                Street = profileInfo.Street,
+                About = profileInfo.About,
+                FullName = profileInfo.FirstName + " " + profileInfo.LastName,
+                Avatar = profileInfo.Avatar,
+            };
+
+
+            return View("UserProfile", profileViewModel);
+        }
+
+        //GET
+        [Route("EditProfile")]
+        [HttpGet]
+        public IActionResult EditProfile()
+        {            
+            UserProfileDTO profileInfo = profileService.GetProfile(User.Identity.Name);
+            if(profileInfo == null)
+            {
+                return View("ErrorNotFound");
+            }
+
+            var editProfileViewModel = new EditUserProfileViewModel()
+            {
+                EmailForContacts = profileInfo.EmailForContacts,
+                WebSiteUrl = profileInfo.WebSiteUrl,
+                Country = profileInfo.Country,
+                City = profileInfo.City,
+                Street = profileInfo.Street,
+                About = profileInfo.About,
+                FirstName = profileInfo.FirstName,
+                LastName = profileInfo.LastName,
+                OldAvatar = profileInfo.Avatar,
+            };
+
+            return View("EditUserProfile", editProfileViewModel);
+        }
+
+        //POST
+        [Route("EditProfile")]
+        [HttpPost]
+        public IActionResult EditProfile(EditUserProfileViewModel editProfileViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                EditUserProfileDTO editProfileDTO = new EditUserProfileDTO()
+                {
+                    Username = User.Identity.Name,
+                    FirstName = editProfileViewModel.FirstName,
+                    LastName = editProfileViewModel.LastName,
+                    EmailForContacts = editProfileViewModel.EmailForContacts,
+                    WebSiteUrl = editProfileViewModel.WebSiteUrl,
+                    Country = editProfileViewModel.Country,
+                    City = editProfileViewModel.City,
+                    Street = editProfileViewModel.Street,
+                    About = editProfileViewModel.About,
+                    NewAvatar = editProfileViewModel.NewAvatar,
+                };
+
+                profileService.UpdateProfile(editProfileDTO);
+
+                return RedirectToAction("GetMyProfile");
+            }
+
+            editProfileViewModel.OldAvatar = profileService.GetProfile(User.Identity.Name).Avatar;
+
+            return View("EditUserProfile", editProfileViewModel);
+            
+        }
+
+    }
+}
