@@ -37,6 +37,21 @@ namespace Maganizer_Project.DAL.Repositories
             return await userManager.FindByNameAsync(username);
         }
 
+        public async Task<string> GetEmailConfirmationToken(ApplicationUser user)
+        {
+            return await userManager.GenerateEmailConfirmationTokenAsync(user);
+        }
+
+        public async Task<ApplicationUser> GetById(string id)
+        {
+            return await userManager.FindByIdAsync(id);
+        }
+
+        public async Task<IdentityResult> ConfirmEmailAsync(ApplicationUser user, string code)
+        {
+            return await userManager.ConfirmEmailAsync(user, code);
+        }
+
         //public void Delete(Guid id)
         //{
         //    UserAccount item = db.Accounts.Find(id);

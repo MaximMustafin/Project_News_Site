@@ -12,6 +12,9 @@ namespace Maganizer_Project.DAL.Interfaces
         Task<SignInResult> PasswordSignInAsync(string Username, string Password, bool RememberMe);
         Task SignOutAsync();
         Task<ApplicationUser> GetByName(string username);
+        Task<ApplicationUser> GetById(string id);
+        Task<string> GetEmailConfirmationToken(ApplicationUser user);
+        Task<IdentityResult> ConfirmEmailAsync(ApplicationUser user, string code);
 
     }
 }

@@ -3,17 +3,18 @@ using Maganizer_Project.BLL.Interfaces;
 using System.Threading.Tasks;
 using Maganizer_Project.WEB.Models;
 using Maganizer_Project.BLL.DTO;
-using System;
-using Microsoft.AspNetCore.Http;
+using NETCore.MailKit.Core;
 
 namespace Maganizer_Project.Controllers
 {
     public class AccountController : Controller
     {
         private readonly IAccountService accountService;
-        public AccountController(IAccountService accountService)
+        private readonly IEmailService emailService;
+        public AccountController(IAccountService accountService, IEmailService emailService)
         {
             this.accountService = accountService;
+            this.emailService = emailService;
         }
 
         //GET
@@ -48,9 +49,9 @@ namespace Maganizer_Project.Controllers
 
                 var result = await accountService.CreateUser(signUpDTO);
 
-                if (!result.Succeeded)
+                if (!result.Result.Succeeded)
                 {
-                    foreach(var error in result.Errors)
+                    foreach(var error in result.Result.Errors)
                     {
                         ModelState.AddModelError("", error.Description);
                     }
@@ -58,12 +59,36 @@ namespace Maganizer_Project.Controllers
                     return View("SignUp", signUpModel);
                 }
 
-                return View("SignIn");
-                
+                //email verification
+                var code = result.VerificationCode;
+                var verificationLink = Url.RouteUrl("VerifyEmail", new { userId = result.UserId, code }, Request.Scheme, Request.Host.ToString());
+                //var verificationLink = Url.Action("VerifyEmail", "Account", new { userId = result.UserId, code}, Request.Scheme, Request.Host.ToString());
+                await emailService.SendAsync(result.Email, "Maganizer account verification",  $"<p>Hi {result.Username},</p>" +
+                    $"<p>You can visit this link below to finish verification:</p>" +
+                    $"<a href=\"{verificationLink}\">Verify Email</a>" +
+                    $"<p>If you did not request this, please REPLY IMMEDIATELY as your account may be in danger.</p>", true);
+
+                return RedirectToAction("EmailVerification");              
             }
 
             return View("SignUp", signUpModel);
         }
+
+        [Route("VerifyEmail")]
+        public async Task<IActionResult> VerifyEmail(string userId, string code)
+        {
+            var result = await accountService.ConfirmEmail(userId, code);
+
+            if (result != null && result.Succeeded)
+            {
+                return View();
+            }
+
+            return BadRequest();
+        }
+
+        [Route("EmailVerification")]
+        public IActionResult EmailVerification() => View("EmailVerification");
 
         //POST
         [Route("SignIn")]
@@ -88,6 +113,7 @@ namespace Maganizer_Project.Controllers
                 else
                 {
                     ModelState.AddModelError("", "Username or password are wrong. Please try again");
+                    ModelState.AddModelError("", "Your email can be not verified. Please check and verify your email before to sign in");
                 }
 
             }

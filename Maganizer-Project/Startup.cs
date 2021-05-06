@@ -11,6 +11,8 @@ using Maganizer_Project.DAL.Repositories;
 using Maganizer_Project.BLL.Interfaces;
 using Maganizer_Project.BLL.Services;
 using Maganizer_Project.DAL.Entities;
+using NETCore.MailKit.Extensions;
+using NETCore.MailKit.Infrastructure.Internal;
 
 namespace Maganizer_Project
 {
@@ -36,8 +38,9 @@ namespace Maganizer_Project
 
             });
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<MaganizerContext>();
+            services.AddIdentity<ApplicationUser, IdentityRole>(config => { config.SignIn.RequireConfirmedEmail = true; })
+                .AddEntityFrameworkStores<MaganizerContext>()
+                .AddDefaultTokenProviders();
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -54,6 +57,12 @@ namespace Maganizer_Project
                 config.LoginPath = Configuration["Application:LoginPath"];
             });
 
+            var mailKitOptions = Configuration.GetSection("Email").Get<MailKitOptions>();
+            services.AddMailKit(config => 
+            {
+                config.UseMailKit(mailKitOptions);
+            });
+
             services.AddScoped<IUnitOfWork, EFUnitOfWork>();
 
             services.AddScoped<IAccountService, UserAccountService>();
@@ -65,7 +74,7 @@ namespace Maganizer_Project
             app.Use(async (context, next) =>
             {
                 await next();
-                if (context.Response.StatusCode == 404 && context.Request.Path != "/missing")
+                if (context.Response.StatusCode == 404)
                 {
                     context.Request.Path = "/missing";
                     await next();

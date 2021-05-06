@@ -3,6 +3,7 @@ using Maganizer_Project.BLL.Interfaces;
 using Maganizer_Project.DAL.Entities;
 using Maganizer_Project.DAL.Interfaces;
 using Microsoft.AspNetCore.Identity;
+using System.Security.Policy;
 using System.Threading.Tasks;
 
 namespace Maganizer_Project.BLL.Services
@@ -16,7 +17,7 @@ namespace Maganizer_Project.BLL.Services
             DataBase = unitOfWork;
         }
 
-        public async Task<IdentityResult> CreateUser(SignUpUserDTO signUpDTO)
+        public async Task<SignUpResultDTO> CreateUser(SignUpUserDTO signUpDTO)
         {
             ApplicationUser identityUser = new ApplicationUser()
             {
@@ -30,9 +31,12 @@ namespace Maganizer_Project.BLL.Services
                 Password = signUpDTO.Password
             };
 
-            var result = await DataBase.Accounts.CreateAsync(user);
+            SignUpResultDTO resultDTO = new SignUpResultDTO()
+            {
+                Result = await DataBase.Accounts.CreateAsync(user)
+            }; 
 
-            if (result.Succeeded)
+            if (resultDTO.Result.Succeeded)
             {
                 UserProfile userProfile = new UserProfile()
                 {
@@ -41,9 +45,30 @@ namespace Maganizer_Project.BLL.Services
 
                 DataBase.UserProfiles.Create(userProfile);
                 DataBase.Save();
+
+                var code = await DataBase.Accounts.GetEmailConfirmationToken(identityUser);
+
+                resultDTO.VerificationCode = code;
+                resultDTO.UserId = identityUser.Id;
+                resultDTO.Email = identityUser.Email;
+                resultDTO.Username = identityUser.UserName;
             }
             
-            return result;         
+            return resultDTO;         
+        }
+
+        public async Task<IdentityResult> ConfirmEmail(string userId, string code)
+        {
+            var user = await DataBase.Accounts.GetById(userId);
+
+            if(user == null)
+            {
+                return null;
+            }
+
+            var result = await DataBase.Accounts.ConfirmEmailAsync(user, code);
+
+            return result;
         }
 
         public async Task<SignInResult> SignInAsync(SignInUserDTO signInDTO)
