@@ -38,7 +38,7 @@ namespace Maganizer_Project
 
             });
 
-            services.AddIdentity<ApplicationUser, IdentityRole>(config => { config.SignIn.RequireConfirmedEmail = true; })
+            services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<MaganizerContext>()
                 .AddDefaultTokenProviders();
 
@@ -50,6 +50,7 @@ namespace Maganizer_Project
                 options.Password.RequireUppercase = true;
                 options.Password.RequireLowercase = true;
                 options.User.RequireUniqueEmail = true;
+                //options.SignIn.RequireConfirmedEmail;
             });
 
             services.ConfigureApplicationCookie(config =>

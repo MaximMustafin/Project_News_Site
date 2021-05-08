@@ -5920,6 +5920,22 @@ section {
     display: block
 }
 
+#footer {
+    background-color: #131C23;
+}
+
+.first-class {
+    color: #F6F6F6;
+}
+
+#sub-text-new {
+    color: #9A9A9A;
+}
+
+.highlight {
+    color: #F6F6F6;
+}
+
 a {
     background-color: transparent
 }

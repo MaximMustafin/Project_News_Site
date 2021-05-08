@@ -1,0 +1,11 @@
+﻿@model Maganizer_Project.WEB.Models.TagsViewModel
+
+    <ul class="all-post-tags ">
+        @foreach (var x in Model.Tags)
+        {
+            <li><a title="@x.Name">@x.Name</a></li>
+
+        }
+    </ul>
+
+
