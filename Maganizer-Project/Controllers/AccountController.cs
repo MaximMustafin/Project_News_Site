@@ -61,8 +61,7 @@ namespace Maganizer_Project.Controllers
 
                 //email verification
                 var code = result.VerificationCode;
-                var verificationLink = Url.RouteUrl("VerifyEmail", new { userId = result.UserId, code }, Request.Scheme, Request.Host.ToString());
-                //var verificationLink = Url.Action("VerifyEmail", "Account", new { userId = result.UserId, code}, Request.Scheme, Request.Host.ToString());
+                var verificationLink = Url.Action(nameof(VerifyEmail), "Account", new { userId = result.UserId, code}, Request.Scheme, Request.Host.ToString());
                 await emailService.SendAsync(result.Email, "Maganizer account verification",  $"<p>Hi {result.Username},</p>" +
                     $"<p>You can visit this link below to finish verification:</p>" +
                     $"<a href=\"{verificationLink}\">Verify Email</a>" +

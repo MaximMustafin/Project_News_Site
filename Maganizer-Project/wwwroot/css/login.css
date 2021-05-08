@@ -616,3 +616,8 @@ li {
 .crunch {
     margin-left: 40px;
 }
+
+.toSignIn {
+    font-size: 1.5em;
+    font-weight: bolder
+}

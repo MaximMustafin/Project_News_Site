@@ -50,7 +50,7 @@ namespace Maganizer_Project
                 options.Password.RequireUppercase = true;
                 options.Password.RequireLowercase = true;
                 options.User.RequireUniqueEmail = true;
-                //options.SignIn.RequireConfirmedEmail;
+                options.SignIn.RequireConfirmedEmail = true;
             });
 
             services.ConfigureApplicationCookie(config =>
