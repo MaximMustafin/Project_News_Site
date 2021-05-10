@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Maganizer_Project.BLL.DTO;
 using Maganizer_Project.BLL.Interfaces;
+using Maganizer_Project.Extensions;
 using Maganizer_Project.WEB.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,14 +18,21 @@ namespace Maganizer_Project.WEB.Controllers
             this.tagService = tagService;
         }
 
-        public IActionResult GetTags()
+        [HttpGet("Footer/GetTags")]
+        public ActionResult GetTags()
         {
-            IEnumerable<TagDTO> tags = tagService.GetTags();
-            var tagsViewModel = new TagsViewModel()
+            if (HttpRequestExtensions.IsAjaxRequest(Request))
             {
-                Tags = tags.ToList()
-            };
-            return PartialView("_TagsInfo", tagsViewModel);
+                IEnumerable<TagDTO> tags = tagService.GetTags();
+                var tagsViewModel = new TagsViewModel()
+                {
+                    Tags = tags.ToList()
+                };
+                return PartialView("_TagsInfo", tagsViewModel);
+            }
+
+            return View("ErrorNotFound");
+
         }
     }
 }

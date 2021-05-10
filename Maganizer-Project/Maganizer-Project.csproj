@@ -20,4 +20,8 @@
     <ProjectReference Include="..\Maganizer-Project.BLL\Maganizer-Project.BLL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\uploads\" />
+  </ItemGroup>
+
 </Project>

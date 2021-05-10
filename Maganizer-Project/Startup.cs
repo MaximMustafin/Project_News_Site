@@ -33,8 +33,8 @@ namespace Maganizer_Project
 
             services.AddDbContext<MaganizerContext>(options =>
             {
-                var connectionString = Configuration.GetConnectionString("DefaultConnection");
-                options.UseSqlServer(connectionString);
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+                                    b => b.MigrationsAssembly("Maganizer-Project"));
 
             });
 
@@ -68,6 +68,8 @@ namespace Maganizer_Project
 
             services.AddScoped<IAccountService, UserAccountService>();
             services.AddScoped<IUserProfileService, UserProfileService>();
+            services.AddScoped<IPostService, PostService>();
+            services.AddScoped<ITagService, TagService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

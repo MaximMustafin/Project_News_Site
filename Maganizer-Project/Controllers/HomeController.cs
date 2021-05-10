@@ -13,12 +13,6 @@ namespace Maganizer_Project.Controllers
 {
     public class HomeController : Controller
     {
-        [Route("Home")]
-        public IActionResult Index()
-        {
-            return View("Home");
-        }
-
         private readonly IWebHostEnvironment _hostingEnvironment;
 
         public HomeController(IWebHostEnvironment hostingEnvironment)
@@ -26,9 +20,14 @@ namespace Maganizer_Project.Controllers
             _hostingEnvironment = hostingEnvironment;
         }
 
-        [HttpPost("UploadFiles")]
+        [HttpGet("UploadFiles")]
+        public IActionResult Index()
+        {
+            return View("Home");
+        }
+
         [Produces("application/json")]
-        public async Task<IActionResult> Post(List<IFormFile> files, Test test)
+        public async Task<IActionResult> Post(List<IFormFile> files)
         {
             // Get the file from the POST request
             var theFile = HttpContext.Request.Form.Files.GetFile("file");
@@ -50,10 +49,6 @@ namespace Maganizer_Project.Controllers
 
             // Build the full path inclunding the file name
             string link = Path.Combine(fileRoute, name);
-
-            // Create directory if it does not exist.
-            FileInfo dir = new FileInfo(fileRoute);
-            dir.Directory.Create();
 
             // Basic validation on mime types and file extension
             string[] imageMimetypes = { "image/gif", "image/jpeg", "image/pjpeg", "image/x-png", "image/png", "image/svg+xml" };

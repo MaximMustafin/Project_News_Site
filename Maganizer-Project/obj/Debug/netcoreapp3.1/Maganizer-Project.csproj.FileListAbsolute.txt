@@ -104,3 +104,5 @@ D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_
 D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\bin\Debug\netcoreapp3.1\Maganizer-Project.DAL.dll
 D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\bin\Debug\netcoreapp3.1\Maganizer-Project.BLL.pdb
 D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\bin\Debug\netcoreapp3.1\Maganizer-Project.DAL.pdb
+D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Razor\Views\Admin\PostEditor.cshtml.g.cs
+D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AdminLayout.cshtml.g.cs

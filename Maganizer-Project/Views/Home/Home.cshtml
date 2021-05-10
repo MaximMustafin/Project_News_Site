@@ -1,39 +1,30 @@
-﻿@model Maganizer_Project.Models.Test
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
-    <!-- Include Editor style. -->
-    <link href="https://cdn.jsdelivr.net/npm/froala-editor@3.0.0-beta.1/css/froala_editor.pkgd.min.css" rel="stylesheet"
-          type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-    <!-- Include Editor JS files. -->
-    <script type="text/javascript"
-            src="https://cdn.jsdelivr.net/npm/froala-editor@3.0.0-beta.1//js/froala_editor.pkgd.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/js/froala_editor.pkgd.min.js"></script>
 
     <div class="sample">
-        <h2>File upload example.</h2>
-        <form asp-action="Post">
-            <textarea asp-for="Content" id="edit" name="content"></textarea>
-            <button type="submit">Ok</button>
+        <h2>Image upload example.</h2>
+        <form>
+            <textarea id="edit" name="content"></textarea>
         </form>
     </div>
 
     <!-- Initialize the editor. -->
     <script>
         new FroalaEditor('#edit', {
-            // Set the file upload URL.
-            fileUploadURL: '/UploadFiles',
+            // Set the image upload URL.
+            imageUploadURL: '/UploadFiles',
 
-            fileUploadParams: {
+            imageUploadParams: {
                 id: 'my_editor'
             }
         })
     </script>
 </body>
-
 </html>
