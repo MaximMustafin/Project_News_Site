@@ -13,7 +13,7 @@ namespace Maganizer_Project.DAL.Repositories
         private readonly SignInManager<ApplicationUser> signInManager;
         private AccountRepository accountRepository;
         private UserProfileRepository profileRepository;
-        //private PostRepository postRepository;
+        private PostRepository postRepository;
         private TagRepository tagRepository;
         //private CommentRepository commentRepository;
         //private CategoryRepository categoryRepository;
@@ -55,17 +55,17 @@ namespace Maganizer_Project.DAL.Repositories
             }
         }
 
-        //public IRepository<Post> Posts
-        //{
-        //    get
-        //    {
-        //        if (postRepository == null)
-        //        {
-        //            postRepository = new PostRepository(db);
-        //        }
-        //        return postRepository;
-        //    }
-        //}
+        public IRepository<Post> Posts
+        {
+            get
+            {
+                if (postRepository == null)
+                {
+                    postRepository = new PostRepository(db);
+                }
+                return postRepository;
+            }
+        }
 
         public IRepository<Tag> Tags
         {

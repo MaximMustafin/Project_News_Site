@@ -12,7 +12,7 @@ namespace Maganizer_Project.BLL.Services
 {
     public class TagService : ITagService
     {
-        IUnitOfWork DataBase { get; set; }
+        private IUnitOfWork DataBase { get; set; }
 
         public TagService(IUnitOfWork unitOfWork)
         {

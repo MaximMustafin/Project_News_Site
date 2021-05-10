@@ -8,7 +8,7 @@ namespace Maganizer_Project.DAL.Interfaces
     {
         IAccountRepository Accounts { get; }
         IProfileRepository UserProfiles { get; }
-        //IRepository<Post> Posts { get; }
+        IRepository<Post> Posts { get; }
         IRepository<Tag> Tags { get; }
         //IRepository<Comment> Comments { get; }
         //IRepository<Category> Categories { get; }

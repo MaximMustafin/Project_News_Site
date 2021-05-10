@@ -10,7 +10,7 @@ namespace Maganizer_Project.BLL.Services
 {
     public class UserAccountService : IAccountService
     {
-        IUnitOfWork DataBase { get; set; }
+        private IUnitOfWork DataBase { get; set; }
 
         public UserAccountService(IUnitOfWork unitOfWork)
         {

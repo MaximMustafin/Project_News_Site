@@ -9,7 +9,7 @@ namespace Maganizer_Project.BLL.Services
 {
     public class UserProfileService : IUserProfileService
     {
-        IUnitOfWork DataBase { get; set; }
+        private IUnitOfWork DataBase { get; set; }
         
         public UserProfileService(IUnitOfWork unitOfWork)
         {

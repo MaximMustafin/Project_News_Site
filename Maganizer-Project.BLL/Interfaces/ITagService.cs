@@ -7,4 +7,5 @@ namespace Maganizer_Project.BLL.Interfaces
     {
         IEnumerable<TagDTO> GetTags();
     }
+
 }

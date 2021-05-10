@@ -8,6 +8,6 @@ namespace Maganizer_Project.DAL.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Name { get; set; }
-        //public List<Post> Posts { get; set; }
+        public List<Post> Posts { get; set; }
     }
 }
