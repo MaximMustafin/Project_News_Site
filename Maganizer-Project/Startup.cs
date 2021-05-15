@@ -33,7 +33,7 @@ namespace Maganizer_Project
 
             services.AddDbContext<MaganizerContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"),
                                     b => b.MigrationsAssembly("Maganizer-Project"));
 
             });

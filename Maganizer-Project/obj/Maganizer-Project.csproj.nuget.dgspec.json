@@ -122,13 +122,13 @@
               "target": "Package",
               "version": "[5.0.0, )"
             },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[5.0.0, )"
-            },
             "NETCore.MailKit": {
               "target": "Package",
               "version": "[2.0.2, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[5.0.0, )"
             }
           },
           "imports": [
@@ -205,7 +205,7 @@
               "target": "Package",
               "version": "[5.0.0, )"
             },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[5.0.0, )"
             }
