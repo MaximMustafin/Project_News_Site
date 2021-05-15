@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Maganizer_Project.Migrations
 {
     [DbContext(typeof(MaganizerContext))]
-    [Migration("20210510060320_AddPostsAndTags")]
+    [Migration("20210513231133_AddPostsAndTags")]
     partial class AddPostsAndTags
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -98,6 +98,9 @@ namespace Maganizer_Project.Migrations
 
                     b.Property<DateTime>("DateOfCreation")
                         .HasColumnType("datetime2");
+
+                    b.Property<byte[]>("FeaturedImage")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");

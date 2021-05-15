@@ -1,4 +1,5 @@
 ﻿using Maganizer_Project.BLL.DTO;
+using Maganizer_Project.BLL.Infrastructure;
 using Maganizer_Project.BLL.Interfaces;
 using Maganizer_Project.DAL.Entities;
 using Maganizer_Project.DAL.Interfaces;
@@ -53,16 +54,11 @@ namespace Maganizer_Project.BLL.Services
         {
             var account = DataBase.Accounts.GetByName(editProfileDTO.Username);
 
-            byte[] imageData = null;
             byte[] newAvatar;
 
             if (editProfileDTO.NewAvatar != null)
             {
-                using (var binaryReader = new BinaryReader(editProfileDTO.NewAvatar.OpenReadStream()))
-                {
-                    imageData = binaryReader.ReadBytes((int)editProfileDTO.NewAvatar.Length);
-                }
-                newAvatar = imageData;
+                newAvatar = ImageConvertion.ConvertToByteArray(editProfileDTO.NewAvatar);
             }
             else
             {

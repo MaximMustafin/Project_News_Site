@@ -6,12 +6,18 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Maganizer_Project.WEB.Controllers
 {
-    public class ErrorNotFoundController : Controller
+    public class ErrorController : Controller
     {
         [Route("missing")]
-        public IActionResult Index() 
+        public IActionResult Missing() 
         {
             return View("ErrorNotFound");
+        }
+
+        [Route("wrong")]
+        public IActionResult Wrong()
+        {
+            return View("ErrorWentWrong");
         }
     }
 }

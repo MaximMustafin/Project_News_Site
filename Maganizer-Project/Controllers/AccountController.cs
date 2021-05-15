@@ -120,9 +120,7 @@ namespace Maganizer_Project.Controllers
             return View("SignIn", signInModel);
         }
 
-        //POST
         [Route("SignOut")]
-        [HttpPost]
         public async Task<IActionResult> SignOut()
         {
             await accountService.SignOutAsync();

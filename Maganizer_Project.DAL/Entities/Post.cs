@@ -12,6 +12,7 @@ namespace Maganizer_Project.DAL.Entities
         //public Category Category { get; set; }
         public string Content { get; set; }
         public DateTime DateOfCreation { get; set; }
+        public byte[] FeaturedImage { get; set; }
         public List<Tag> Tags { get; set; }
     }
 }

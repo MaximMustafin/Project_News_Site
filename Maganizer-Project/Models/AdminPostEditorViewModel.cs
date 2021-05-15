@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Maganizer_Project.BLL.Infrastructure;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -18,7 +19,11 @@ namespace Maganizer_Project.Models
 
         [Required(ErrorMessage = "Please enter at least one tag")]
         [StringLength(100)]
+        [MaxTagsAmount(5)]
         public string Tags { get; set; }
+
+        [Required(ErrorMessage = "Please choose a featured image")]
+        public IFormFile FeaturedImage { get; set; }
         public bool SuccessPost { get; set; }
     }
 }

@@ -35,13 +35,14 @@ namespace Maganizer_Project.Controllers
         public IActionResult MakePost(AdminPostEditorViewModel editorViewModel)
         {
             if (ModelState.IsValid)
-            {              
-                PostDTO postDTO = new PostDTO()
+            {
+                SaveNewImage(new List<IFormFile>() { editorViewModel.FeaturedImage });
+                EditPostDTO postDTO = new EditPostDTO()
                 {
                     Name = editorViewModel.PostName,
                     Content = editorViewModel.PostContent,
-                    Tags = editorViewModel.Tags
-
+                    Tags = editorViewModel.Tags,
+                    FeaturedImage = editorViewModel.FeaturedImage
                 };             
 
                 postService.AddPost(postDTO);
@@ -53,19 +54,21 @@ namespace Maganizer_Project.Controllers
 
         [HttpPost("UploadFiles")]
         [Produces("application/json")]
-        public async Task<IActionResult> Post(List<IFormFile> files)
+        public async Task<IActionResult> SaveNewImage(List<IFormFile> file)
         {
-            // Get the file from the POST request
-            var theFile = HttpContext.Request.Form.Files.GetFile("file");
+            if(file == null)
+            {
+                var ex = new ArgumentException();
+                return Json(ex.Message);
+            }
+
+            IFormFile theFile = file[0];
 
             // Get the server path, wwwroot
             string webRootPath = _hostingEnvironment.WebRootPath;
 
             // Building the path to the uploads directory
             var fileRoute = Path.Combine(webRootPath, "uploads");
-
-            // Get the mime type
-            var mimeType = HttpContext.Request.Form.Files.GetFile("file").ContentType;
 
             // Get File Extension
             string extension = System.IO.Path.GetExtension(theFile.FileName);
@@ -77,12 +80,11 @@ namespace Maganizer_Project.Controllers
             string link = Path.Combine(fileRoute, name);
 
             // Basic validation on mime types and file extension
-            string[] imageMimetypes = { "image/gif", "image/jpeg", "image/pjpeg", "image/x-png", "image/png", "image/svg+xml" };
             string[] imageExt = { ".gif", ".jpeg", ".jpg", ".png", ".svg", ".blob" };
 
             try
             {
-                if (Array.IndexOf(imageMimetypes, mimeType) >= 0 && (Array.IndexOf(imageExt, extension) >= 0))
+                if ((Array.IndexOf(imageExt, extension) >= 0))
                 {
                     // Copy contents to memory stream.
                     Stream stream;
@@ -99,8 +101,10 @@ namespace Maganizer_Project.Controllers
                     }
 
                     // Return the file path as json
-                    Hashtable imageUrl = new Hashtable();
-                    imageUrl.Add("link", "/uploads/" + name);
+                    Hashtable imageUrl = new Hashtable
+                    {
+                        { "link", "/uploads/" + name }
+                    };
 
                     return Json(imageUrl);
                 }

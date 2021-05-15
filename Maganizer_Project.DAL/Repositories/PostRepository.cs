@@ -32,7 +32,7 @@ namespace Maganizer_Project.DAL.Repositories
 
         public IEnumerable<Post> Find(Func<Post, bool> predicate)
         {
-            return db.Posts.Where(predicate).ToList();
+            return db.Posts.Include(o => o.Tags).Where(predicate).ToList();
         }
 
         public Post Get(Guid id)

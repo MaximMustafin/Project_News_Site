@@ -2,9 +2,13 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "https://localhost/Maganizer-Project",
+      "sslPort": 0
+    },
     "iisExpress": {
-      "applicationUrl": "http://localhost:8720",
-      "sslPort": 44327
+      "applicationUrl": "https://localhost:8720",
+      "sslPort": 0
     }
   },
   "profiles": {
@@ -20,7 +24,7 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "http://localhost:5000"
+      "applicationUrl": "https://localhost:5000"
     }
   }
 }

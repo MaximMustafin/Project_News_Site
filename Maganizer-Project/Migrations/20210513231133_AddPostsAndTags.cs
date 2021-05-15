@@ -15,7 +15,8 @@ namespace Maganizer_Project.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DateOfCreation = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    DateOfCreation = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FeaturedImage = table.Column<byte[]>(type: "varbinary(max)", nullable: true)
                 },
                 constraints: table =>
                 {
