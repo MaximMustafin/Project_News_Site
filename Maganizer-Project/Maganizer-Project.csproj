@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Maganizer_Project</RootNamespace>
+    <UserSecretsId>fc69f1d5-282c-4b38-9ad7-a7f783817b9f</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
