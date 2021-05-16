@@ -84,3 +84,5 @@ D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_
 D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\bin\Debug\netcoreapp3.1\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Maganizer-Project.csproj.CoreCompileInputs.cache
 D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Maganizer-Project.MvcApplicationPartsAssemblyInfo.cache
+D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.json
+D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.local.json

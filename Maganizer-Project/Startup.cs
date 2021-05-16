@@ -18,13 +18,9 @@ namespace Maganizer_Project
 {
     public class Startup
     {
-        private readonly IConfigurationRoot _connectionString;
-        public Startup(IConfiguration configuration, IWebHostEnvironment hostEnvironment)
+        public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
-            _connectionString = new ConfigurationBuilder().
-                                SetBasePath(hostEnvironment.ContentRootPath).
-                                AddJsonFile("DbSettings.json").Build();
+            Configuration = configuration;           
         }
 
         public IConfiguration Configuration { get; }
@@ -37,7 +33,7 @@ namespace Maganizer_Project
 
             services.AddDbContext<MaganizerContext>(options =>
             {
-                options.UseNpgsql(_connectionString.GetConnectionString("DefaultConnection"),
+                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"),
                                     b => b.MigrationsAssembly("Maganizer-Project"));
 
             });
