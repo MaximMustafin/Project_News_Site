@@ -20,7 +20,7 @@ namespace Maganizer_Project.Controllers
 
         public IActionResult Index()
         {
-            return View("Home");
+            return View("EmailVerification");
         }
 
         

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Maganizer_Project.Models.EmailVerificationViewModel
+
+@{
     Layout = null;
 }
 
@@ -56,6 +58,17 @@
 
                     <div class="crunch">
                         <p><h2>Please check your email to verify it.</h2></p>
+                    </div>
+
+                    <br>
+                    
+                    <div class="container">
+                        <p><h2>If you didn't get your verification email, please <a class="link" asp-route-verificationCode ="@Model.VerificationCode"
+                                                                                         asp-route-userId="@Model.UserId"
+                                                                                         asp-route-email="@Model.Email"
+                                                                                         asp-route-username="@Model.Username"
+                                                                                         asp-controller="Account"
+                                                                                         asp-action="SendMessage">click here</a> to send it one more time</h2></p>
                     </div>
                 </div>
                 

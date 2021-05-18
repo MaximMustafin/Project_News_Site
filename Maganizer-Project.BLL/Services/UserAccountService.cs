@@ -46,7 +46,7 @@ namespace Maganizer_Project.BLL.Services
                 DataBase.UserProfiles.Create(userProfile);
                 DataBase.Save();
 
-                var code = await DataBase.Accounts.GetEmailConfirmationToken(identityUser);
+                var code = GetEmailVerificationInfo(identityUser.UserName).Result.VerificationCode;
 
                 resultDTO.VerificationCode = code;
                 resultDTO.UserId = identityUser.Id;
@@ -71,7 +71,7 @@ namespace Maganizer_Project.BLL.Services
             return result;
         }
 
-        public async Task<SignInResult> SignInAsync(SignInUserDTO signInDTO)
+        public async Task<SignInResultDTO> SignInAsync(SignInUserDTO signInDTO)
         {
             bool RememberMeBool = false;
 
@@ -79,13 +79,34 @@ namespace Maganizer_Project.BLL.Services
             {
                 RememberMeBool = true;
             }
-            return await DataBase.Accounts.PasswordSignInAsync(signInDTO.Username, signInDTO.Password,
-                                                               RememberMeBool);
+
+            var result = new SignInResultDTO()
+            {
+                SignInResult = await DataBase.Accounts.PasswordSignInAsync(signInDTO.Username, signInDTO.Password,
+                                                               RememberMeBool),
+                EmailConfirmed = DataBase.Accounts.GetByName(signInDTO.Username).Result.EmailConfirmed
+            };
+
+
+            return result;
         }
 
         public async Task SignOutAsync()
         {
             await DataBase.Accounts.SignOutAsync();
+        }
+
+        public async Task<EmailVerificationInfoDTO> GetEmailVerificationInfo(string username)
+        {
+            var user = await DataBase.Accounts.GetByName(username);
+            var code = await DataBase.Accounts.GetEmailConfirmationToken(user);
+            return new EmailVerificationInfoDTO()
+            {
+                VerificationCode = code,
+                UserId = user.Id,
+                Email = user.Email,
+                Username = user.UserName
+            };
         }
 
     }

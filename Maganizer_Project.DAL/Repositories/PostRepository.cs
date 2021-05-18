@@ -18,6 +18,21 @@ namespace Maganizer_Project.DAL.Repositories
         }
         public void Create(Post item)
         {
+            var tags = new List<Tag>();
+            for(int i = 0; i < item.Tags.Count(); i++)
+            {
+                var tag_in_db = db.Tags.Where(x => x.Name == item.Tags[i].Name).FirstOrDefault();
+                if(tag_in_db != null)
+                {
+                    tags.Add(tag_in_db);
+                }
+                else 
+                {
+                    tags.Add(item.Tags[i]);
+                }
+            }
+            item.Tags = tags;
+
             db.Posts.Add(item);
         }
 

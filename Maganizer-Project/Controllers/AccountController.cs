@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Maganizer_Project.WEB.Models;
 using Maganizer_Project.BLL.DTO;
 using NETCore.MailKit.Core;
+using Maganizer_Project.Models;
 
 namespace Maganizer_Project.Controllers
 {
@@ -60,23 +61,34 @@ namespace Maganizer_Project.Controllers
                 }
 
                 //email verification
-                var code = result.VerificationCode;
-                var verificationLink = Url.Action(nameof(VerifyEmail), "Account", new { userId = result.UserId, code}, Request.Scheme, Request.Host.ToString());
-                await emailService.SendAsync(result.Email, "Maganizer account verification",  $"<p>Hi {result.Username},</p>" +
-                    $"<p>You can visit this link below to finish verification:</p>" +
-                    $"<a href=\"{verificationLink}\">Verify Email</a>" +
-                    $"<p>If you did not request this, please REPLY IMMEDIATELY as your account may be in danger.</p>", true);
-
-                return RedirectToAction("EmailVerification");              
+                return await SendMessage(result.VerificationCode, result.UserId, result.Email, result.Username);             
             }
 
             return View("SignUp", signUpModel);
         }
 
-        [Route("VerifyEmail")]
-        public async Task<IActionResult> VerifyEmail(string userId, string code)
+        public async Task<IActionResult> SendMessage(string verificationCode, string userId, string email, string username)
         {
-            var result = await accountService.ConfirmEmail(userId, code);
+            var code = verificationCode;
+            var verificationLink = Url.Action(nameof(VerifyEmail), "Account", new { UserId = userId, code }, Request.Scheme, Request.Host.ToString());
+            await emailService.SendAsync(email, "Maganizer account verification", $"<p>Hi {username},</p>" +
+                $"<p>You can visit this link below to finish verification:</p>" +
+                $"<a href=\"{verificationLink}\">Verify Email</a>" +
+                $"<p>If you did not request this, please REPLY IMMEDIATELY as your account may be in danger.</p>", true);
+
+            return RedirectToAction("EmailVerification", new EmailVerificationViewModel()
+            {
+                VerificationCode = verificationCode,
+                UserId = userId,
+                Email = email,
+                Username = username
+            });
+        }
+
+        [Route("VerifyEmail")]
+        public async Task<IActionResult> VerifyEmail(string UserId, string code)
+        {
+            var result = await accountService.ConfirmEmail(UserId, code);
 
             if (result != null && result.Succeeded)
             {
@@ -87,7 +99,7 @@ namespace Maganizer_Project.Controllers
         }
 
         [Route("EmailVerification")]
-        public IActionResult EmailVerification() => View("EmailVerification");
+        public IActionResult EmailVerification(EmailVerificationViewModel emailVerificationViewModel) => View("EmailVerification", emailVerificationViewModel);
 
         //POST
         [Route("SignIn")]
@@ -105,14 +117,26 @@ namespace Maganizer_Project.Controllers
 
                 var result = await accountService.SignInAsync(signInDTO);                          
 
-                if (result.Succeeded)
+                if (result.SignInResult.Succeeded)
                 {
                     return View("SignIn");
                 }
                 else
                 {
+                    if (!result.EmailConfirmed)
+                    {
+                        var emailVerificationInfoDTO = await accountService.GetEmailVerificationInfo(signInModel.Username);
+                        var emailVerificationViewModel = new EmailVerificationViewModel()
+                        {
+                            VerificationCode = emailVerificationInfoDTO.VerificationCode,
+                            UserId = emailVerificationInfoDTO.UserId,
+                            Username = emailVerificationInfoDTO.Username,
+                            Email = emailVerificationInfoDTO.Email
+                        };
+
+                        return View("EmailVerification", emailVerificationViewModel);
+                    }
                     ModelState.AddModelError("", "Username or password are wrong. Please try again");
-                    ModelState.AddModelError("", "Your email can be not verified. Please check and verify your email before to sign in");
                 }
 
             }

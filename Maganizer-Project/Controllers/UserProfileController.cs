@@ -3,6 +3,7 @@ using Maganizer_Project.BLL.Interfaces;
 using Maganizer_Project.WEB.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace Maganizer_Project.Controllers
 {
@@ -18,9 +19,9 @@ namespace Maganizer_Project.Controllers
         //GET
         [Route("MyProfile")]
         [HttpGet]
-        public IActionResult GetMyProfile()
+        public async Task<IActionResult> GetMyProfile()
         {
-            UserProfileDTO profileInfo = profileService.GetProfile(User.Identity.Name);
+            UserProfileDTO profileInfo = await profileService.GetProfile(User.Identity.Name);
             if(profileInfo == null)
             {
                 return View("ErrorNotFound");
@@ -46,14 +47,14 @@ namespace Maganizer_Project.Controllers
         //GET
         [Route("Users")]
         [HttpGet("username")]
-        public IActionResult GetProfile(string username)
+        public async Task<IActionResult> GetProfile(string username)
         {
             if(User.Identity.Name == username)
             {
                 return RedirectToAction("GetMyProfile");
             }
 
-            UserProfileDTO profileInfo = profileService.GetProfile(username);
+            UserProfileDTO profileInfo = await profileService.GetProfile(username);
 
             if (profileInfo == null)
             {
@@ -80,9 +81,9 @@ namespace Maganizer_Project.Controllers
         //GET
         [Route("EditProfile")]
         [HttpGet]
-        public IActionResult EditProfile()
+        public async Task<IActionResult> EditProfile()
         {            
-            UserProfileDTO profileInfo = profileService.GetProfile(User.Identity.Name);
+            UserProfileDTO profileInfo = await profileService.GetProfile(User.Identity.Name);
             if(profileInfo == null)
             {
                 return View("ErrorNotFound");
@@ -107,7 +108,7 @@ namespace Maganizer_Project.Controllers
         //POST
         [Route("EditProfile")]
         [HttpPost]
-        public IActionResult EditProfile(EditUserProfileViewModel editProfileViewModel)
+        public async Task<IActionResult> EditProfile(EditUserProfileViewModel editProfileViewModel)
         {
             if (ModelState.IsValid)
             {
@@ -130,7 +131,9 @@ namespace Maganizer_Project.Controllers
                 return RedirectToAction("GetMyProfile");
             }
 
-            editProfileViewModel.OldAvatar = profileService.GetProfile(User.Identity.Name).Avatar;
+            var profile = await profileService.GetProfile(User.Identity.Name);
+
+            editProfileViewModel.OldAvatar = profile.Avatar;
 
             return View("EditUserProfile", editProfileViewModel);
             

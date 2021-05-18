@@ -7,6 +7,6 @@ namespace Maganizer_Project.BLL.Interfaces
     public interface IUserProfileService
     {
         void UpdateProfile(EditUserProfileDTO editProfileDTO);
-        UserProfileDTO GetProfile(string username);
+        Task<UserProfileDTO> GetProfile(string username);
     }
 }

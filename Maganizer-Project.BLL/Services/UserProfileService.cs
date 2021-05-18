@@ -5,6 +5,7 @@ using Maganizer_Project.DAL.Entities;
 using Maganizer_Project.DAL.Interfaces;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Maganizer_Project.BLL.Services
 {
@@ -17,18 +18,18 @@ namespace Maganizer_Project.BLL.Services
             DataBase = unitOfWork;
         }
 
-        public UserProfileDTO GetProfile(string username)
+        public async Task<UserProfileDTO> GetProfile(string username)
         {
-            var accountResult = DataBase.Accounts.GetByName(username);
+            var accountResult = await DataBase.Accounts.GetByName(username);
 
-            if(accountResult.Result == null)
+            if(accountResult == null)
             {
                 return null;
             }
 
             var userProfiles = DataBase.UserProfiles.GetAll();
 
-            var userProfile = userProfiles.FirstOrDefault(x => x.ApplicationUserId == accountResult.Result.Id);
+            var userProfile = userProfiles.FirstOrDefault(x => x.ApplicationUserId == accountResult.Id);
             
             if(userProfile == null)
             {
