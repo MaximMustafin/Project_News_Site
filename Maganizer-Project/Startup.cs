@@ -13,6 +13,7 @@ using Maganizer_Project.BLL.Services;
 using Maganizer_Project.DAL.Entities;
 using NETCore.MailKit.Extensions;
 using NETCore.MailKit.Infrastructure.Internal;
+using Maganizer_Project.Hubs;
 
 namespace Maganizer_Project
 {
@@ -31,9 +32,11 @@ namespace Maganizer_Project
             services.AddHttpContextAccessor();
             services.AddSession();
 
+            services.AddSignalR();
+
             services.AddDbContext<MaganizerContext>(options =>
             {
-                options.UseNpgsql(Configuration.GetConnectionString("localhost"),
+                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"),
                                     b => b.MigrationsAssembly("Maganizer-Project"));
 
             });
@@ -67,9 +70,10 @@ namespace Maganizer_Project
             services.AddScoped<IUnitOfWork, EFUnitOfWork>();
 
             services.AddScoped<IAccountService, UserAccountService>();
-            services.AddScoped<IUserProfileService, UserProfileService>();
+            services.AddTransient<IUserProfileService, UserProfileService>();
             services.AddScoped<IPostService, PostService>();
             services.AddScoped<ITagService, TagService>();
+            services.AddTransient<ICommentService, CommentService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -99,6 +103,8 @@ namespace Maganizer_Project
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapHub<CommentHub>("/Comment");
             });
         }
     }

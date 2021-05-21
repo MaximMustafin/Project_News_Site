@@ -27,6 +27,11 @@ namespace Maganizer_Project.DAL.Repositories
                 db.UserProfiles.Remove(userProfile);
         }
 
+        public IEnumerable<UserProfile> Find(Func<UserProfile, bool> predicate)
+        {
+            return db.UserProfiles.Where(predicate).ToList();
+        }
+
         public UserProfile Get(int? id)
         {
             return db.UserProfiles.Find(id);
@@ -39,7 +44,7 @@ namespace Maganizer_Project.DAL.Repositories
 
         public UserProfile GetByAccountId(string id)
         {
-            return db.UserProfiles.FirstOrDefault(x => x.ApplicationUserId == id);
+            return db.UserProfiles.Where(x => x.ApplicationUserId == id).FirstOrDefault();
         }
 
         public void Update(UserProfile item)

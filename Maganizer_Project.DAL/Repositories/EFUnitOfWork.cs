@@ -15,7 +15,7 @@ namespace Maganizer_Project.DAL.Repositories
         private UserProfileRepository profileRepository;
         private PostRepository postRepository;
         private TagRepository tagRepository;
-        //private CommentRepository commentRepository;
+        private CommentRepository commentRepository;
         //private CategoryRepository categoryRepository;
 
         public EFUnitOfWork(MaganizerContext db, UserManager<ApplicationUser> userManager,
@@ -79,17 +79,17 @@ namespace Maganizer_Project.DAL.Repositories
             }
         }
 
-        //public IRepository<Comment> Comments
-        //{
-        //    get
-        //    {
-        //        if (commentRepository == null)
-        //        {
-        //            commentRepository = new CommentRepository(db);
-        //        }
-        //        return commentRepository;
-        //    }
-        //}
+        public IRepository<Comment> Comments
+        {
+            get
+            {
+                if (commentRepository == null)
+                {
+                    commentRepository = new CommentRepository(db);
+                }
+                return commentRepository;
+            }
+        }
 
         //public IRepository<Category> Categories
         //{

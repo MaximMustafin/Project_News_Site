@@ -1,10 +1,16 @@
 ﻿@model Maganizer_Project.Models.PostViewModel
-@using System.Globalization 
+@using System.Globalization
+@using Maganizer_Project.DAL.Entities
+@inject Microsoft.AspNetCore.Identity.SignInManager<ApplicationUser> _signInManager
 
 @{
     Layout = "_Layout";
     ViewData["Title"] = $"{Model.Name} | Maganizer";
 }
+
+<head>
+    <link rel="stylesheet" href="~/css/post.css"/>
+</head>
 
 <div class="custom-post-content" id="post-2613">
     <div data-elementor-type="wp-post" data-elementor-id="2831" class="elementor elementor-2831" data-elementor-settings="[]">
@@ -44,14 +50,14 @@
                                                         </div>
                                                     </div>
                                                     <div class="header-title">
-                                                        <h1 class="entry-title" style="color: #060606;">@Model.Name</h1>
+                                                        <h1 id="posttitle" class="entry-title" style="color: #060606;">@Model.Name</h1>
                                                     </div>
                                                     <div class="featured-image">
-                                                        <img width="1200" src="data:image/jpeg; base64, @(Convert.ToBase64String(Model.FeaturedImage))" class="attachment-maganizer-extra-full-page-thumb size-maganizer-extra-full-page-thumb wp-post-image" alt="@Model.Name" loading="lazy" data-eio="j">
+                                                        <img height="600" src="data:image/jpeg; base64, @(Convert.ToBase64String(Model.FeaturedImage))" class="attachment-maganizer-extra-full-page-thumb size-maganizer-extra-full-page-thumb wp-post-image" alt="@Model.Name" loading="lazy" data-eio="j">
                                                     </div>
                                                     <div class="post-meta-data single-page">
                                                         @*<span class="posted-by black">By</span> <a href="https://preview.spraythemes.com/maganizer/author/admin/" class="meta-links author redlink">WPSmart</a>*@
-                                                        @if ((DateTime.Now.Month - Model.PostedOn.Month) + 12 *(DateTime.Now.Year - Model.PostedOn.Year) > 0)
+                                                        @if ((DateTime.Now.Month - Model.PostedOn.Month) + 12 * (DateTime.Now.Year - Model.PostedOn.Year) > 0)
                                                         {
                                                             <span class="meta-links post-date black placeright">@((DateTime.Now.Month - Model.PostedOn.Month) + 12 * (DateTime.Now.Year - Model.PostedOn.Year)) months ago</span>
 
@@ -61,109 +67,144 @@
                                                             <span class="meta-links post-date black placeright">This month</span>
                                                         }
                                                     </div>
-                                                        <div class="main-post-content">
-                                                            @Html.Raw(Model.Content)
+                                                    <div class="main-post-content">
+                                                        @Html.Raw(Model.Content)
+                                                    </div>
+
+                                                    @if (Model.NextPost != null && Model.PrevPost != null)
+                                                    {
+                                                        <div class="next-and-back">
+                                                            <div class="wrap no-padding-vertical">
+                                                                <div class="old-link dual-navigation">
+                                                                    <i class="fas fa-chevron-left"></i>
+                                                                    <i class="low-50 fas fa-chevron-left"></i>
+                                                                    <i class="low-80 fas fa-chevron-left"></i>
+                                                                    <span class="sub-titles"> PREVIOUS POST </span>
+                                                                    <a asp-controller="Post" asp-action="GetPost" asp-route-name="@Model.PrevPost" rel="prev">@Model.PrevPost</a>
+                                                                </div>
+                                                                <div class="next-link dual-navigation">
+                                                                    <i class="fas fa-chevron-right"></i>
+                                                                    <i class="low-50 fas fa-chevron-right"></i>
+                                                                    <i class="low-80 fas fa-chevron-right"></i>
+                                                                    <span class="sub-titles"> NEXT POST </span>
+                                                                    <a asp-controller="Post" asp-action="GetPost" asp-route-name="@Model.NextPost" rel="next">"@Model.NextPost</a>
+                                                                </div>
+                                                            </div>
                                                         </div>
+                                                    }
 
-                                                        @if (Model.NextPost != null && Model.PrevPost != null)
-                                                        {
-                                                            <div class="next-and-back">
-                                                                <div class="wrap no-padding-vertical">
-                                                                    <div class="old-link dual-navigation">
-                                                                        <i class="fas fa-chevron-left"></i>
-                                                                        <i class="low-50 fas fa-chevron-left"></i>
-                                                                        <i class="low-80 fas fa-chevron-left"></i>
-                                                                        <span class="sub-titles"> PREVIOUS POST </span>
-                                                                        <a asp-controller="Post" asp-action="GetPost" asp-route-name="@Model.PrevPost" rel="prev">@Model.PrevPost</a>
-                                                                    </div>
-                                                                    <div class="next-link dual-navigation">
-                                                                        <i class="fas fa-chevron-right"></i>
-                                                                        <i class="low-50 fas fa-chevron-right"></i>
-                                                                        <i class="low-80 fas fa-chevron-right"></i>
-                                                                        <span class="sub-titles"> NEXT POST </span>
-                                                                        <a asp-controller="Post" asp-action="GetPost" asp-route-name="@Model.NextPost" rel="next">"@Model.NextPost</a>
-                                                                    </div>
+                                                    @if (Model.NextPost != null && Model.PrevPost == null)
+                                                    {
+                                                        <div class="next-and-back">
+                                                            <div class="wrap no-padding-vertical">
+                                                                <div class="next-link dual-navigation">
+                                                                    <i class="fas fa-chevron-right"></i>
+                                                                    <i class="low-50 fas fa-chevron-right"></i>
+                                                                    <i class="low-80 fas fa-chevron-right"></i>
+                                                                    <span class="sub-titles"> NEXT POST </span>
+                                                                    <a asp-controller="Post" asp-action="GetPost" asp-route-name="@Model.NextPost" rel="next">"@Model.NextPost</a>
                                                                 </div>
                                                             </div>
-                                                        }
+                                                        </div>
+                                                    }
 
-                                                        @if (Model.NextPost != null && Model.PrevPost == null)
-                                                        {
-                                                            <div class="next-and-back">
-                                                                <div class="wrap no-padding-vertical">
-                                                                    <div class="next-link dual-navigation">
-                                                                        <i class="fas fa-chevron-right"></i>
-                                                                        <i class="low-50 fas fa-chevron-right"></i>
-                                                                        <i class="low-80 fas fa-chevron-right"></i>
-                                                                        <span class="sub-titles"> NEXT POST </span>
-                                                                        <a asp-controller="Post" asp-action="GetPost" asp-route-name="@Model.NextPost" rel="next">"@Model.NextPost</a>
-                                                                    </div>
+                                                    @if (Model.NextPost == null && Model.PrevPost != null)
+                                                    {
+                                                        <div class="next-and-back">
+                                                            <div class="wrap no-padding-vertical">
+                                                                <div class="old-link dual-navigation">
+                                                                    <i class="fas fa-chevron-left"></i>
+                                                                    <i class="low-50 fas fa-chevron-left"></i>
+                                                                    <i class="low-80 fas fa-chevron-left"></i>
+                                                                    <span class="sub-titles"> PREVIOUS POST </span>
+                                                                    <a asp-controller="Post" asp-action="GetPost" asp-route-name="@Model.PrevPost" rel="prev">@Model.PrevPost</a>
                                                                 </div>
                                                             </div>
-                                                        }
+                                                        </div>
+                                                    }
 
-                                                        @if (Model.NextPost == null && Model.PrevPost != null)
-                                                        {
-                                                            <div class="next-and-back">
-                                                                <div class="wrap no-padding-vertical">
-                                                                    <div class="old-link dual-navigation">
-                                                                        <i class="fas fa-chevron-left"></i>
-                                                                        <i class="low-50 fas fa-chevron-left"></i>
-                                                                        <i class="low-80 fas fa-chevron-left"></i>
-                                                                        <span class="sub-titles"> PREVIOUS POST </span>
-                                                                        <a asp-controller="Post" asp-action="GetPost" asp-route-name="@Model.PrevPost" rel="prev">@Model.PrevPost</a>
-                                                                    </div>
-                                                                </div>
+                                                    <div class="main-comment-panel">
+                                                        <div class="main-title">
+                                                            <div class="left-side-text">
+                                                                <h2 style="color:black"><span id="commentsSpan" class="first-class">User</span><span id="commentsSpan" class="highlight">Comment</span></h2>
+                                                                <span class="sub-text-new">Valuable Users idea's</span>
                                                             </div>
-                                                        }
-
-                                                        <div class="main-comment-panel">
-                                                            <div class="main-title">
-                                                                <div class="left-side-text">
-                                                                    <h2 style="color:black"><span id="commentsSpan" class="first-class">User</span><span id="commentsSpan" class="highlight">Comment</span></h2>
-                                                                    <span class="sub-text-new">Valuable Users idea's</span>
-                                                                </div>
+                                                            @if (Model.Comments != null)
+                                                            {
+                                                                <span class="post-counter">@Model.Comments.Count() Comments</span>
+                                                            }
+                                                            else
+                                                            {
                                                                 <span class="post-counter">0 Comments</span>
-                                                            </div>
-                                                            <div class="tab-content">
-                                                                <div id="wordpress" class="tab-pane fade in active">
-                                                                    <div class="comment-template">
-                                                                        <div id="comments" class="comments-area">
-                                                                            <ol class="comment-list">
-                                                                                <li id="comment-2" class="comment even thread-even depth-1">
-                                                                                    <article id="div-comment-2" class="comment-body">
-                                                                                        <footer class="comment-meta">
-                                                                                            <div class="comment-author vcard">
-                                                                                                <img alt='' src='https://secure.gravatar.com/avatar/f2152288d7d09d2954ab3e86ec48c309?s=32&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/f2152288d7d09d2954ab3e86ec48c309?s=64&#038;d=mm&#038;r=g 2x' class='avatar avatar-32 photo' height='32' width='32' loading='lazy' />						<b class="fn">Maksim</b> <span class="says">says:</span>
-                                                                                            </div><!-- .comment-author -->
+                                                            }
 
-                                                                                            <div class="comment-metadata">
-                                                                                                <a><time datetime="2021-05-15T06:48:33+00:00">May 15, 2021 at 6:48 am</time></a>
-                                                                                            </div><!-- .comment-metadata -->
+                                                        </div>
+                                                        <div class="tab-content">
+                                                            <div id="wordpress" class="tab-pane fade in active">
+                                                                <div class="comment-template">
+                                                                    <div class="comments-area">
+                                                                        <ol id="@Model.PostId" class="comment-list">
+                                                                            @if (Model.Comments != null)
+                                                                            {
+                                                                                @foreach (var x in Model.Comments)
+                                                                                {
+                                                                                    <li class="comment even thread-even depth-1">
+                                                                                        <article id="div-comment-2" class="comment-body">
+                                                                                            <footer class="comment-meta">
+                                                                                                <div class="comment-author vcard">
+                                                                                                    <a asp-controller="UserProfile" asp-action="GetProfile" asp-route-username="@x.AuthorName">
+                                                                                                        @if (x.AuthorAvatar != null)
+                                                                                                        {
+                                                                                                            <img src="data:image/jpeg; base64, @(Convert.ToBase64String(x.AuthorAvatar))" class="avatar avatar-32 photo" height="32" width="32" loading="lazy" />
+                                                                                                        }
+                                                                                                        else
+                                                                                                        {
+                                                                                                            <img src="/images/avatar7.png">
+                                                                                                        }
 
-                                                                           
-                                                                                        </footer><!-- .comment-meta -->
+                                                                                                    </a>
+                                                                                                    <a asp-controller="UserProfile" asp-action="GetProfile" asp-route-username="@x.AuthorName">
+                                                                                                        <b class="fn">@x.AuthorName</b>
+                                                                                                    </a>
+                                                                                                    <span class="says">says:</span>
+                                                                                                </div>
+                                                                                                <div class="comment-metadata">
+                                                                                                    <a><time>@x.PostDate</time></a>
+                                                                                                </div>
+                                                                                            </footer>
+                                                                                            <div class="comment-content">
+                                                                                                @x.Content
+                                                                                            </div>
+                                                                                        </article>
+                                                                                    </li>
+                                                                                }
+                                                                            }
 
-                                                                                        <div class="comment-content">
-                                                                                            Test
-                                                                                        </div><!-- .comment-content -->
 
-                                                                                    </article><!-- .comment-body -->
-                                                                                </li><!-- #comment-## -->
-                                                                            </ol><!-- .comment-list -->
-                                                                            <div id="respond" class="comment-respond">
-                                                                                <h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/maganizer/2020/06/05/beard-man-holding-cassette-lying-on-blue-and-violet-linen-2/#respond" style="display:none;">Cancel reply</a></small></h3>
-                                                                                <form method="post" id="commentform" class="comment-form" novalidate>
+                                                                        </ol>
+                                                                        <div id="respond" class="comment-respond">
+                                                                            @if (_signInManager.IsSignedIn(User))
+                                                                            {
+                                                                                <h3 id="reply-title" class="comment-reply-title">Leave a Reply</h3>
+                                                                                <form class="comment-form" novalidate>
                                                                                     <p class="comment-form-comment"><label for="comment">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p>
-                                                                                    <p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="2613" id="comment_post_ID"> <input type="hidden" name="comment_parent" id="comment_parent" value="0"></p>
+                                                                                    <p class="form-submit"><input type="button" id="sendComment" value="Post Comment"> @*<input type="hidden" name="comment_post_ID" value="2613" id="comment_post_ID"> <input type="hidden" name="comment_parent" id="comment_parent" value="0">*@</p>
+                                                                                    <input id="hiddenuser" hidden value="@User.Identity.Name" />
+                                                                                    <input id="hiddenid" hidden value="@Model.PostId" />
+                                                                                    <input id="hiddenpostid" hidden value="@Model.Id" />
                                                                                 </form>
-                                                                            </div>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <h3 id="reply-title" class="comment-reply-title">You have to login if you want to leave a comment <small><a rel="nofollow" id="cancel-comment-reply-link" style="display:none;">Cancel reply</a></small></h3>
+                                                                            }
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -176,3 +217,6 @@
         </div>
     </div>
 </div>
+
+<script type="module" src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
+<script type="module" src="~/js/scripts.js"></script>

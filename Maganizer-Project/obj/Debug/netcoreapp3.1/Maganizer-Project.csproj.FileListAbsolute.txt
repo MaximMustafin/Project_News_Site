@@ -86,3 +86,5 @@ D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_
 D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Maganizer-Project.MvcApplicationPartsAssemblyInfo.cache
 D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.json
 D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.local.json
+D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\bin\Debug\netcoreapp3.1\libman.json
+D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Razor\Views\Test\Test.cshtml.g.cs

@@ -6,6 +6,7 @@ namespace Maganizer_Project.BLL.DTO
 {
     public class GetPostDTO
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Content { get; set; }
         public List<TagDTO> Tags { get; set; }

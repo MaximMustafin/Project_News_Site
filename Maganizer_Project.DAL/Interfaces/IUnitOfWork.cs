@@ -10,7 +10,7 @@ namespace Maganizer_Project.DAL.Interfaces
         IProfileRepository UserProfiles { get; }
         IRepository<Post> Posts { get; }
         IRepository<Tag> Tags { get; }
-        //IRepository<Comment> Comments { get; }
+        IRepository<Comment> Comments { get; }
         //IRepository<Category> Categories { get; }
         void Save();
     }

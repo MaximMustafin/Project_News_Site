@@ -72,6 +72,7 @@ namespace Maganizer_Project.BLL.Services
 
             GetPostDTO postDTO = new GetPostDTO()
             {
+                Id = post.Id,
                 Name = post.Name.Replace("-", " "),
                 Content = post.Content,
                 DateOfCreation = post.DateOfCreation,

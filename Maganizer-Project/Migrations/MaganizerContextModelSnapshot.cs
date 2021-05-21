@@ -83,6 +83,33 @@ namespace Maganizer_Project.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("Maganizer_Project.DAL.Entities.Comment", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("DateOfCreation")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("PostId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("PostId");
+
+                    b.ToTable("Comments");
+                });
+
             modelBuilder.Entity("Maganizer_Project.DAL.Entities.Post", b =>
                 {
                     b.Property<int>("Id")
@@ -309,6 +336,23 @@ namespace Maganizer_Project.Migrations
                     b.HasIndex("TagsId");
 
                     b.ToTable("PostTag");
+                });
+
+            modelBuilder.Entity("Maganizer_Project.DAL.Entities.Comment", b =>
+                {
+                    b.HasOne("Maganizer_Project.DAL.Entities.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("Maganizer_Project.DAL.Entities.Post", "Post")
+                        .WithMany()
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationUser");
+
+                    b.Navigation("Post");
                 });
 
             modelBuilder.Entity("Maganizer_Project.DAL.Entities.UserProfile", b =>

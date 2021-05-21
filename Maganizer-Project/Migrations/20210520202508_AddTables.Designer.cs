@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Maganizer_Project.Migrations
 {
     [DbContext(typeof(MaganizerContext))]
-    [Migration("20210515101834_AddTables")]
+    [Migration("20210520202508_AddTables")]
     partial class AddTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -83,6 +83,33 @@ namespace Maganizer_Project.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("Maganizer_Project.DAL.Entities.Comment", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("DateOfCreation")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("PostId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("PostId");
+
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("Maganizer_Project.DAL.Entities.Post", b =>
@@ -311,6 +338,23 @@ namespace Maganizer_Project.Migrations
                     b.HasIndex("TagsId");
 
                     b.ToTable("PostTag");
+                });
+
+            modelBuilder.Entity("Maganizer_Project.DAL.Entities.Comment", b =>
+                {
+                    b.HasOne("Maganizer_Project.DAL.Entities.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("Maganizer_Project.DAL.Entities.Post", "Post")
+                        .WithMany()
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationUser");
+
+                    b.Navigation("Post");
                 });
 
             modelBuilder.Entity("Maganizer_Project.DAL.Entities.UserProfile", b =>

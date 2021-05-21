@@ -9,6 +9,8 @@ namespace Maganizer_Project.Models
 {
     public class PostViewModel
     {
+        public int Id { get; set; }
+        public string PostId { get; set; }
         public string Name { get; set; }
         public string Content { get; set; }
         public List<string> Tags { get; set; }
@@ -16,5 +18,6 @@ namespace Maganizer_Project.Models
         public byte[] FeaturedImage { get; set; }
         public string NextPost { get; set; }
         public string PrevPost { get; set; }
+        public List<CommentViewModel> Comments { get; set; }
     }
 }
