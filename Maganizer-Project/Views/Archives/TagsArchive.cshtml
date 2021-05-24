@@ -1910,9 +1910,20 @@
                                                         <i class="fa fa-tags round-icon-left" aria-hidden="true"></i>
                                                         <div class="content-info-arch">
                                                             <h2>Tag: <span>@Model.TagName</span></h2>
-                                                            <div class="count-optione">
-                                                                <p class="post-count-user"> @Model.Posts.Count() Published Post</p>
-                                                            </div>
+
+                                                            @if (Model.Posts != null)
+                                                            {
+                                                                <div class="count-optione">
+                                                                    <p class="post-count-user"> @Model.Posts.Count() Published Post</p>
+                                                                </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="count-optione">
+                                                                    <p class="post-count-user"> 0 Published Post</p>
+                                                                </div>
+                                                            }
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1942,42 +1953,42 @@
 
                                                             @foreach (var x in Model.Posts)
                                                             {
-                                                                <article class="post-2538 post type-post status-publish format-standard has-post-thumbnail hentry category-mix-trending tag-abstract tag-bar tag-color tag-designer"
-                                                                         id="post-2538">
+                                                            <article class="post-2538 post type-post status-publish format-standard has-post-thumbnail hentry category-mix-trending tag-abstract tag-bar tag-color tag-designer"
+                                                                     id="post-2538">
+
                                                                     <div class="image-left-side">
                                                                         <span class="random-tag"> @x.FirstTagName </span>
                                                                         <div class="flip-book">
                                                                             <div class="top-box"></div>
                                                                         </div>
                                                                         <div class="height-sizer"></div>
-                                                                        <noscript data-img="https://preview.spraythemes.com/maganizer/wp-content/uploads/2020/06/color-text-1279813-scaled.jpg"
-                                                                                  data-webp="https://preview.spraythemes.com/maganizer/wp-content/uploads/2020/06/color-text-1279813-scaled.jpg.webp"
-                                                                                  data-srcset-webp="https://preview.spraythemes.com/maganizer/wp-content/uploads/2020/06/color-text-1279813-scaled.jpg.webp 2560w, https://preview.spraythemes.com/maganizer/wp-content/uploads/2020/06/color-text-1279813-scaled-600x401.jpg.webp 600w, https://preview.spraythemes.com/maganizer/wp-content/uploads/2020/06/color-text-1279813-scaled-300x200.jpg.webp 300w, https://preview.spraythemes.com/maganizer/wp-content/uploads/2020/06/color-text-1279813-scaled-1024x684.jpg.webp 1024w, https://preview.spraythemes.com/maganizer/wp-content/uploads/2020/06/color-text-1279813-scaled-768x513.jpg.webp 768w, https://preview.spraythemes.com/maganizer/wp-content/uploads/2020/06/color-text-1279813-scaled-1536x1026.jpg.webp 1536w, https://preview.spraythemes.com/maganizer/wp-content/uploads/2020/06/color-text-1279813-scaled-2048x1368.jpg.webp 2048w"
-                                                                                  data-srcset-img="https://preview.spraythemes.com/maganizer/wp-content/uploads/2020/06/color-text-1279813-scaled.jpg 2560w, https://preview.spraythemes.com/maganizer/wp-content/uploads/2020/06/color-text-1279813-scaled-600x401.jpg 600w, https://preview.spraythemes.com/maganizer/wp-content/uploads/2020/06/color-text-1279813-scaled-300x200.jpg 300w, https://preview.spraythemes.com/maganizer/wp-content/uploads/2020/06/color-text-1279813-scaled-1024x684.jpg 1024w, https://preview.spraythemes.com/maganizer/wp-content/uploads/2020/06/color-text-1279813-scaled-768x513.jpg 768w, https://preview.spraythemes.com/maganizer/wp-content/uploads/2020/06/color-text-1279813-scaled-1536x1026.jpg 1536w, https://preview.spraythemes.com/maganizer/wp-content/uploads/2020/06/color-text-1279813-scaled-2048x1368.jpg 2048w"
-                                                                                  data-class="attachment-post-thumbnail size-post-thumbnail wp-post-image"
-                                                                                  data-height="1710" data-sizes="(max-width: 2560px) 100vw, 2560px"
-                                                                                  data-width="2560" class="ewww_webp">
-                                                                            <img width="2560"
-                                                                                 height="1710"
-                                                                                 src="https://preview.spraythemes.com/maganizer/wp-content/uploads/2020/06/color-text-1279813-scaled.jpg"
-                                                                                 class="attachment-post-thumbnail size-post-thumbnail wp-post-image"
-                                                                                 alt="" loading="lazy"
-                                                                                 srcset="https://preview.spraythemes.com/maganizer/wp-content/uploads/2020/06/color-text-1279813-scaled.jpg 2560w, https://preview.spraythemes.com/maganizer/wp-content/uploads/2020/06/color-text-1279813-scaled-600x401.jpg 600w, https://preview.spraythemes.com/maganizer/wp-content/uploads/2020/06/color-text-1279813-scaled-300x200.jpg 300w, https://preview.spraythemes.com/maganizer/wp-content/uploads/2020/06/color-text-1279813-scaled-1024x684.jpg 1024w, https://preview.spraythemes.com/maganizer/wp-content/uploads/2020/06/color-text-1279813-scaled-768x513.jpg 768w, https://preview.spraythemes.com/maganizer/wp-content/uploads/2020/06/color-text-1279813-scaled-1536x1026.jpg 1536w, https://preview.spraythemes.com/maganizer/wp-content/uploads/2020/06/color-text-1279813-scaled-2048x1368.jpg 2048w"
-                                                                                 sizes="(max-width: 2560px) 100vw, 2560px"
-                                                                                 data-eio="j" />
-                                                                        </noscript>
+
+                                                                        <img width="2560"
+                                                                             height="1710"
+                                                                             src="data:image/jpeg; base64, @(Convert.ToBase64String(x.FeaturedPostImage))"
+                                                                             class="attachment-post-thumbnail size-post-thumbnail wp-post-image"
+                                                                             loading="lazy" />
+
+
                                                                     </div>
+                                                               
                                                                     <div class="archive-content ">
-                                                                        <a href="https://preview.spraythemes.com/maganizer/2020/06/04/eye-cache-abstract-color-bars-for-designers/">
+                                                                        <a asp-controller="Post" asp-action="GetPost" asp-route-name="@x.PostName">
                                                                             <h2>@x.PostName</h2>
                                                                         </a>
                                                                         <div class="post-meta-data">
                                                                             <span class="posted-by black">By</span>
                                                                             <a href="https://preview.spraythemes.com/maganizer/author/admin/"
-                                                                               class="meta-links author redlink">WPSmart</a> <span class="meta-links post-date black placeright">
-                                                                                11 months
-                                                                                ago
-                                                                            </span>
+                                                                               class="meta-links author redlink">WPSmart</a>
+                                                                            @if ((DateTime.Now.Month - x.PostedOn.Month) + 12 * (DateTime.Now.Year - x.PostedOn.Year) > 0)
+                                                                            {
+                                                                                <span class="meta-links post-date black placeright">@((DateTime.Now.Month - x.PostedOn.Month) + 12 * (DateTime.Now.Year -x.PostedOn.Year)) months ago</span>
+
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <span class="meta-links post-date black placeright">This month</span>
+                                                                            }
                                                                         </div>
 
                                                                     </div>

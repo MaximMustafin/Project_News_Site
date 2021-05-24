@@ -24,5 +24,36 @@ namespace Maganizer_Project.BLL.Services
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Tag, TagDTO>()).CreateMapper();
             return mapper.Map<IEnumerable<Tag>, List<TagDTO>>(DataBase.Tags.GetAll());
         }
+
+        public TagArchiveDTO GetTag(string name)
+        {
+            var tags = DataBase.Tags.Find(x => x.Name == name);
+
+            if(tags != null) 
+            {
+                var tag = tags.FirstOrDefault();
+
+                TagArchiveDTO tagArchiveDTO = new TagArchiveDTO()
+                {
+                    Name = tag.Name,
+                    Posts = new List<PostOfTagDTO>()
+                };
+
+                foreach(var x in tag.Posts) 
+                {
+                    tagArchiveDTO.Posts.Add(new PostOfTagDTO()
+                    {
+                        PostName = x.Name,
+                        FirstTagName = x.Tags.FirstOrDefault().Name,
+                        PostedOn = x.DateOfCreation,
+                        FeaturedPostImage = x.FeaturedImage
+                    });
+                }
+
+                return tagArchiveDTO;
+            }
+
+            return null;
+        }
     }
 }

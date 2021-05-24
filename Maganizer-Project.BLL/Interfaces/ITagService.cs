@@ -6,6 +6,7 @@ namespace Maganizer_Project.BLL.Interfaces
     public interface ITagService
     {
         IEnumerable<TagDTO> GetTags();
+        TagArchiveDTO GetTag(string name);
     }
 
 }
