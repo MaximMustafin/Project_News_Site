@@ -27,10 +27,17 @@ namespace Maganizer_Project.Controllers
 
         [Route("Admin/PostEditor")]
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult PostEditor()
         {
             return View("PostEditor");
         }
+
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return View("Index");
+        }
+
 
         [Route("Admin/PostEditor")]
         [HttpPost]
