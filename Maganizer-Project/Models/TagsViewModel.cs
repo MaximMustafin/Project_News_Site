@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Maganizer_Project.WEB.Models
+namespace Maganizer_Project.Models
 {
     public class TagsViewModel
     {

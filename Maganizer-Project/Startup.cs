@@ -36,7 +36,7 @@ namespace Maganizer_Project
 
             services.AddDbContext<MaganizerContext>(options =>
             {
-                options.UseNpgsql(Configuration.GetConnectionString("localhost"),
+                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"),
                                     b => b.MigrationsAssembly("Maganizer-Project"));
 
             });
@@ -102,7 +102,7 @@ namespace Maganizer_Project
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Home}");
 
                 endpoints.MapHub<CommentHub>("/Comment");
             });

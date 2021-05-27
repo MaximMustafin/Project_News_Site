@@ -119,7 +119,7 @@ namespace Maganizer_Project.Controllers
 
                 if (result.SignInResult.Succeeded)
                 {
-                    return View("SignIn");
+                    return RedirectToAction("Home", "Home");
                 }
                 else
                 {

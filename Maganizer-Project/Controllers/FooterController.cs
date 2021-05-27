@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Maganizer_Project.BLL.DTO;
 using Maganizer_Project.BLL.Interfaces;
 using Maganizer_Project.Extensions;
-using Maganizer_Project.WEB.Models;
+using Maganizer_Project.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Maganizer_Project.WEB.Controllers

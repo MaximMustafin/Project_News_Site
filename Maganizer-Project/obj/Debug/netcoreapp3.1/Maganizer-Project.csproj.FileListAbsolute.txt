@@ -89,3 +89,4 @@ D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_
 D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\bin\Debug\netcoreapp3.1\libman.json
 D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Razor\Views\Test\Test.cshtml.g.cs
 D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Razor\Views\Archives\TagsArchive.cshtml.g.cs
+D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LatestTagsInfo.cshtml.g.cs
