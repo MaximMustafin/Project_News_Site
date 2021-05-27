@@ -35,7 +35,8 @@ namespace Maganizer_Project.BLL.Services
             {
                 Tag tag = new Tag()
                 {
-                    Name = x
+                    Name = x,
+                    DateOfCreation = DateTime.Now
                 };
 
                 post.Tags.Add(tag);
@@ -85,6 +86,31 @@ namespace Maganizer_Project.BLL.Services
             postDTO.Tags = mapper.Map<List<Tag>, List<TagDTO>>(post.Tags);
 
             return postDTO;
+        }
+
+        public IEnumerable<GetPostDTO> GetPosts()
+        {
+            var posts = DataBase.Posts.GetAll();
+
+            if(posts != null) 
+            {
+                var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Tag, TagDTO>()).CreateMapper();
+                List<GetPostDTO> postDTOs = new List<GetPostDTO>();
+                foreach(var x in posts) 
+                {
+                    postDTOs.Add(new GetPostDTO()
+                    {
+                        Name = x.Name,
+                        Tags = mapper.Map<IEnumerable<Tag>, List<TagDTO>>(x.Tags),
+                        DateOfCreation = x.DateOfCreation,
+                        FeaturedImage = x.FeaturedImage,
+                    });
+                }
+
+                return postDTOs;
+            }
+
+            return null;
         }
     }
 }

@@ -57,7 +57,7 @@ namespace Maganizer_Project.DAL.Repositories
 
         public IEnumerable<Post> GetAll()
         {
-            return db.Posts;
+            return db.Posts.Include(x => x.Tags);
         }
 
         public void Update(Post item)
