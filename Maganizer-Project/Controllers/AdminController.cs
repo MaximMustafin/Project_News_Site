@@ -38,10 +38,12 @@ namespace Maganizer_Project.Controllers
 
             if(users.Count() != 0 && tags.Count() != 0)
             {
-                AdminIndexViewModel adminIndexViewModel = new AdminIndexViewModel();
-                adminIndexViewModel.Users = new List<UserInfoDTO>();
-                adminIndexViewModel.Tags = tags.ToList();
-                foreach (var x in users)
+        AdminIndexViewModel adminIndexViewModel = new AdminIndexViewModel
+        {
+          Users = new List<UserInfoDTO>(),
+          Tags = tags.ToList()
+        };
+        foreach (var x in users)
                 {
                     adminIndexViewModel.Users.Add(x);
                 }
