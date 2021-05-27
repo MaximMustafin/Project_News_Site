@@ -1,0 +1,75 @@
+﻿@model Maganizer_Project.Models.AdminIndexViewModel 
+@{
+  Layout = "_AdminLayout";
+  ViewData["Active"] = "Index";
+}
+
+<body>
+  <!--Основные таблицы-->
+  <div class="lime-container">
+    <div class="lime-body">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Users</h5>
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Username</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      @foreach (var item in Model.Users)
+                      {
+                       <tr>
+                        <td>@item.UserId</td>
+                        <td>@item.Email</td>
+                        <td>@item.Username</td>
+                       </tr>
+                      }
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Tags</h5>
+                <div class="social-media-list">
+                  @foreach (var item in Model.Tags)
+                  {
+                    <div class="social-media-item">
+                    <div class="social-text">
+                      <p>@item.Name</p>
+                    </div>
+                  </div>
+                  }
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="lime-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <span class="footer-text">2021 © develop</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>

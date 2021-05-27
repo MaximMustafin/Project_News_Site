@@ -7,28 +7,44 @@
         <div class="row">
             <div class="menu-left-side col-md-8">
                 <div class="menu-top-menu-container">
-                    <ul id="top-menu" class="menu">
-                        <li id="menu-item-2687"
-                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-2687">
-                            <a>Home</a>
-                        </li>
-                        <li id="menu-item-3396"
-                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3396">
-                            <a asp-controller="UserProfile" asp-action="GetMyProfile">My Profile</a>
-                        </li>
-                        <li id="menu-item-3396"
-                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3396">
-                            <ul class="sub-menu">
-                                
-                                
-                                
-                            </ul>
-                        </li>
-                        <li id="menu-item-3396"
-                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3396">
-                            <a>Contact Us</a>
-                        </li>
-                    </ul>
+                  <ul id="top-menu" class="menu">
+                    <li id="menu-item-2687"
+                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-2687">
+                      <a>Home</a>
+                    </li>
+                    <li id="menu-item-3396"
+                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3396">
+                      <a asp-controller="UserProfile" asp-action="GetMyProfile">My Profile</a>
+                    </li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                      <li id="menu-item-3396"
+                          class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3396">
+                        <a asp-controller="Admin" asp-action="Index">Admin Panel</a>
+                      </li>
+                      <li id="menu-item-3396"
+                          class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3396">
+                        <a asp-controller="Admin" asp-action="PostEditor">Make Post</a>
+                      </li>
+                    }
+                    @if (User.IsInRole("Manager"))
+                    {
+                      <li id="menu-item-3396"
+                          class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3396">
+                        <a asp-controller="Admin" asp-action="PostEditor">Make Post</a>
+                      </li>
+                    }
+
+                    <li id="menu-item-3396"
+                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3396">
+                      <ul class="sub-menu">
+                      </ul>
+                    </li>
+                    <li id="menu-item-3396"
+                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3396">
+                      <a>Contact Us</a>
+                    </li>
+                  </ul>
                 </div>
             </div>
 

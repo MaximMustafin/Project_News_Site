@@ -15,6 +15,7 @@ namespace Maganizer_Project.DAL.Interfaces
         Task<ApplicationUser> GetById(string id);
         Task<string> GetEmailConfirmationToken(ApplicationUser user);
         Task<IdentityResult> ConfirmEmailAsync(ApplicationUser user, string code);
+        IEnumerable<ApplicationUser> GetAll();
 
-    }
+  }
 }

@@ -10,3 +10,15 @@ D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_
 D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project.BLL\obj\Debug\netcoreapp3.1\Maganizer-Project.BLL.csproj.CopyComplete
 D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project.BLL\obj\Debug\netcoreapp3.1\Maganizer-Project.BLL.dll
 D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project.BLL\obj\Debug\netcoreapp3.1\Maganizer-Project.BLL.pdb
+C:\NewProgram\GithubRepository\Project_News_Site\Maganizer-Project.BLL\bin\Debug\netcoreapp3.1\Maganizer-Project.BLL.deps.json
+C:\NewProgram\GithubRepository\Project_News_Site\Maganizer-Project.BLL\bin\Debug\netcoreapp3.1\Maganizer-Project.BLL.dll
+C:\NewProgram\GithubRepository\Project_News_Site\Maganizer-Project.BLL\bin\Debug\netcoreapp3.1\Maganizer-Project.BLL.pdb
+C:\NewProgram\GithubRepository\Project_News_Site\Maganizer-Project.BLL\bin\Debug\netcoreapp3.1\Maganizer-Project.DAL.dll
+C:\NewProgram\GithubRepository\Project_News_Site\Maganizer-Project.BLL\bin\Debug\netcoreapp3.1\Maganizer-Project.DAL.pdb
+C:\NewProgram\GithubRepository\Project_News_Site\Maganizer-Project.BLL\obj\Debug\netcoreapp3.1\Maganizer-Project.BLL.csprojAssemblyReference.cache
+C:\NewProgram\GithubRepository\Project_News_Site\Maganizer-Project.BLL\obj\Debug\netcoreapp3.1\Maganizer-Project.BLL.AssemblyInfoInputs.cache
+C:\NewProgram\GithubRepository\Project_News_Site\Maganizer-Project.BLL\obj\Debug\netcoreapp3.1\Maganizer-Project.BLL.AssemblyInfo.cs
+C:\NewProgram\GithubRepository\Project_News_Site\Maganizer-Project.BLL\obj\Debug\netcoreapp3.1\Maganizer-Project.BLL.csproj.CoreCompileInputs.cache
+C:\NewProgram\GithubRepository\Project_News_Site\Maganizer-Project.BLL\obj\Debug\netcoreapp3.1\Maganizer-Project.BLL.csproj.CopyComplete
+C:\NewProgram\GithubRepository\Project_News_Site\Maganizer-Project.BLL\obj\Debug\netcoreapp3.1\Maganizer-Project.BLL.dll
+C:\NewProgram\GithubRepository\Project_News_Site\Maganizer-Project.BLL\obj\Debug\netcoreapp3.1\Maganizer-Project.BLL.pdb

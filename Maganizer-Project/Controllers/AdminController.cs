@@ -2,10 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Maganizer_Project.BLL.DTO;
 using Maganizer_Project.BLL.Interfaces;
 using Maganizer_Project.Models;
+using Maganizer_Project.WEB.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -13,25 +15,53 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Maganizer_Project.Controllers
 {
-    [Authorize]
     public class AdminController : Controller
     {
         private readonly IWebHostEnvironment _hostingEnvironment;
         private readonly IPostService postService;
+        private readonly IAccountService accountService;
+        private readonly ITagService tagService;
 
-        public AdminController(IWebHostEnvironment hostingEnvironment, IPostService postService)
+        public AdminController(IWebHostEnvironment hostingEnvironment, IPostService postService, IAccountService accountService, ITagService tagService)
         {
             _hostingEnvironment = hostingEnvironment;
             this.postService = postService;
+            this.accountService = accountService;
+            this.tagService = tagService;
         }
-
-        [Route("Admin/PostEditor")]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult Index()
         {
+          var users = accountService.GetInfoUsers();
+          IEnumerable<TagDTO> tags = tagService.GetTags();
+
+            if(users.Count() != 0 && tags.Count() != 0)
+            {
+        AdminIndexViewModel adminIndexViewModel = new AdminIndexViewModel
+        {
+          Users = new List<UserInfoDTO>(),
+          Tags = tags.ToList()
+        };
+        foreach (var x in users)
+                {
+                    adminIndexViewModel.Users.Add(x);
+                }
+                return View("Index", adminIndexViewModel);
+            }
+
+           return View("Index");
+          
+          
+        }
+        [Authorize(Roles = "Admin, Manager")]
+        [Route("Admin/PostEditor")]
+        [HttpGet]
+        public IActionResult PostEditor()
+        {
             return View("PostEditor");
         }
-
+        [Authorize(Roles = "Admin, Manager")]
         [Route("Admin/PostEditor")]
         [HttpPost]
         public IActionResult MakePost(AdminPostEditorViewModel editorViewModel)
@@ -53,7 +83,7 @@ namespace Maganizer_Project.Controllers
             }
             return View("PostEditor", editorViewModel);
         }
-
+        [Authorize(Roles = "Admin, Manager")]
         [HttpPost("UploadFiles")]
         [Produces("application/json")]
         public async Task<IActionResult> SaveNewImage(List<IFormFile> file)

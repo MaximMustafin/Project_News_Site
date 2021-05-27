@@ -1,18 +1,22 @@
-﻿using Maganizer_Project.DAL.Entities;
+﻿using Maganizer_Project.DAL.EF;
+using Maganizer_Project.DAL.Entities;
 using Maganizer_Project.DAL.Interfaces;
 using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Maganizer_Project.DAL.Repositories
 {
     public class AccountRepository: IAccountRepository
     {
-        private UserManager<ApplicationUser> userManager;
-        private SignInManager<ApplicationUser> signInManager;
-        public AccountRepository(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        private readonly UserManager<ApplicationUser> userManager;
+        private readonly SignInManager<ApplicationUser> signInManager;
+        private readonly MaganizerContext db;
+        public AccountRepository(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, MaganizerContext db)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
+            this.db = db;
         }
 
         public async Task<IdentityResult> CreateAsync(UserAccount item)
@@ -52,33 +56,38 @@ namespace Maganizer_Project.DAL.Repositories
             return await userManager.ConfirmEmailAsync(user, code);
         }
 
-        //public void Delete(Guid id)
-        //{
-        //    UserAccount item = db.Accounts.Find(id);
-        //    if(item != null)
-        //    {
-        //        db.Accounts.Remove(item);
-        //    }
-        //}
+        public IEnumerable<ApplicationUser> GetAll()
+        {
+            return db.Users;
+        }
 
-        //public IEnumerable<UserAccount> Find(Func<UserAccount, bool> predicate)
-        //{
-        //    return db.Accounts.Where(predicate).ToList();
-        //}
+    //public void Delete(Guid id)
+    //{
+    //    UserAccount item = db.Accounts.Find(id);
+    //    if(item != null)
+    //    {
+    //        db.Accounts.Remove(item);
+    //    }
+    //}
 
-        //public UserAccount Get(Guid id)
-        //{
-        //    return db.Accounts.Find(id);
-        //}
+    //public IEnumerable<UserAccount> Find(Func<UserAccount, bool> predicate)
+    //{
+    //    return db.Accounts.Where(predicate).ToList();
+    //}
 
-        //public IEnumerable<UserAccount> GetAll()
-        //{
-        //    return db.Accounts;
-        //}
+    //public UserAccount Get(Guid id)
+    //{
+    //    return db.Accounts.Find(id);
+    //}
 
-        //public void Update(UserAccount item)
-        //{
-        //    db.Entry(item).State = EntityState.Modified;
-        //}
-    }
+    //public IEnumerable<UserAccount> GetAll()
+    //{
+    //    return db.Accounts;
+    //}
+
+    //public void Update(UserAccount item)
+    //{
+    //    db.Entry(item).State = EntityState.Modified;
+    //}
+  }
 }

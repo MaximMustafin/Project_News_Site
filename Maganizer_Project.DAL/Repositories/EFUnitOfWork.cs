@@ -37,7 +37,7 @@ namespace Maganizer_Project.DAL.Repositories
             {
                 if (accountRepository == null)
                 {
-                    accountRepository = new AccountRepository(userManager, signInManager);
+                    accountRepository = new AccountRepository(userManager, signInManager, db);
                 }
                 return accountRepository;
             }

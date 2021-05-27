@@ -1,6 +1,7 @@
 ﻿using Maganizer_Project.BLL.DTO;
 using Maganizer_Project.DAL.Entities;
 using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Maganizer_Project.BLL.Interfaces
@@ -12,5 +13,7 @@ namespace Maganizer_Project.BLL.Interfaces
         Task SignOutAsync();
         Task<IdentityResult> ConfirmEmail(string userId, string code);
         Task<EmailVerificationInfoDTO> GetEmailVerificationInfo(string username);
+        List<UserInfoDTO> GetInfoUsers();
+
     }
 }
