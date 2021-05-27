@@ -15,7 +15,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Maganizer_Project.Controllers
 {
-    [Authorize]
     public class AdminController : Controller
     {
         private readonly IWebHostEnvironment _hostingEnvironment;
@@ -29,12 +28,11 @@ namespace Maganizer_Project.Controllers
             this.postService = postService;
             this.accountService = accountService;
             this.tagService = tagService;
-    }
+        }
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult Index()
         {
-          if (User.IsInRole("Admin"))
-          {
           var users = accountService.GetInfoUsers();
           IEnumerable<TagDTO> tags = tagService.GetTags();
 
@@ -51,20 +49,17 @@ namespace Maganizer_Project.Controllers
             }
 
            return View("Index");
-          }
-           else {
-            return View("ErrorNotFound");
-           }
+          
           
         }
-
+        [Authorize(Roles = "Admin, Manager")]
         [Route("Admin/PostEditor")]
         [HttpGet]
         public IActionResult PostEditor()
         {
             return View("PostEditor");
         }
-
+        [Authorize(Roles = "Admin, Manager")]
         [Route("Admin/PostEditor")]
         [HttpPost]
         public IActionResult MakePost(AdminPostEditorViewModel editorViewModel)
@@ -86,7 +81,7 @@ namespace Maganizer_Project.Controllers
             }
             return View("PostEditor", editorViewModel);
         }
-
+        [Authorize(Roles = "Admin, Manager")]
         [HttpPost("UploadFiles")]
         [Produces("application/json")]
         public async Task<IActionResult> SaveNewImage(List<IFormFile> file)
