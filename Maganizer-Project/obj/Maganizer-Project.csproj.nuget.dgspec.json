@@ -48,10 +48,6 @@
               "target": "Package",
               "version": "[10.1.1, )"
             },
-            "BundlerMinifier.Core": {
-              "target": "Package",
-              "version": "[3.2.449, )"
-            },
             "Microsoft.AspNetCore.Http.Features": {
               "target": "Package",
               "version": "[5.0.5, )"
@@ -116,10 +112,6 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
-            "BundlerMinifier.Core": {
-              "target": "Package",
-              "version": "[3.2.449, )"
-            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.0, )"
@@ -201,10 +193,6 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
-            "BundlerMinifier.Core": {
-              "target": "Package",
-              "version": "[3.2.449, )"
-            },
             "Microsoft.AspNetCore.Identity": {
               "target": "Package",
               "version": "[2.2.0, )"

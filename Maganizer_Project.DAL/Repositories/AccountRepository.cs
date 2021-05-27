@@ -9,9 +9,9 @@ namespace Maganizer_Project.DAL.Repositories
 {
     public class AccountRepository: IAccountRepository
     {
-        private readonly UserManager<ApplicationUser> userManager;
-        private readonly SignInManager<ApplicationUser> signInManager;
-        private readonly MaganizerContext db;
+        private UserManager<ApplicationUser> userManager;
+        private SignInManager<ApplicationUser> signInManager;
+        private MaganizerContext db;
         public AccountRepository(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, MaganizerContext db)
         {
             this.userManager = userManager;

@@ -10,7 +10,7 @@ namespace Maganizer_Project.DAL.Repositories
 {
     public class UserProfileRepository : IProfileRepository
     {
-        private readonly MaganizerContext db;
+        private MaganizerContext db;
         public UserProfileRepository(MaganizerContext context)
         {
             this.db = context;
