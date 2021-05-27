@@ -179,3 +179,6 @@ C:\NewProgram\GithubRepository\Project_News_Site\Maganizer-Project\obj\Debug\net
 C:\NewProgram\GithubRepository\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Maganizer-Project.pdb
 C:\NewProgram\GithubRepository\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Maganizer-Project.genruntimeconfig.cache
 C:\NewProgram\GithubRepository\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
+C:\NewProgram\GithubRepository\Project_News_Site\Maganizer-Project\bin\Debug\netcoreapp3.1\dotnet-bundle.dll
+C:\NewProgram\GithubRepository\Project_News_Site\Maganizer-Project\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\NewProgram\GithubRepository\Project_News_Site\Maganizer-Project\bin\Debug\netcoreapp3.1\NUglify.dll

@@ -76,7 +76,7 @@ namespace Maganizer_Project
             services.AddTransient<ICommentService, CommentService>();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {        
             app.Use(async (context, next) =>
             {

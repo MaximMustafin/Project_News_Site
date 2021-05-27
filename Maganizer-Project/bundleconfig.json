@@ -1,0 +1,29 @@
+[
+  {
+    "outputFileName": "wwwroot/content/bundleAdminCss1.css",
+    "inputFiles": [
+      "wwwroot/css/animate.css",
+      "wwwroot/css/icon.css",
+      "wwwroot/css/custom.css"
+    ]
+  },
+  
+  {
+    "outputFileName": "wwwroot/js/popper.min.min.js",
+    "inputFiles": [
+      "wwwroot/js/popper.min.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/content/bundleAdminJs.js",
+    "inputFiles": [
+      "wwwroot/js/popper.min.min.js",
+      "wwwroot/js/toastr.min.js",
+      "wwwroot/js/bootstrap.min.js",
+      "wwwroot/js/lime.min.js",
+      "wwwroot/js/dashboard.js",
+      "wwwroot/js/apexcharts.min.js",
+      "wwwroot/js/chart.min.js"
+    ]
+  }
+]
