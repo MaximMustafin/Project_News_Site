@@ -1,6 +1,7 @@
-﻿
+﻿@model Maganizer_Project.Models.AdminIndexViewModel 
 @{
   Layout = "_AdminLayout";
+  ViewData["Active"] = "Index";
 }
 
 <body>
@@ -18,42 +19,20 @@
                     <thead>
                       <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Mail</th>
-                        <th scope="col">Login</th>
-                        <th scope="col">Password</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Username</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>user1@mail.com</td>
-                        <td>usr1</td>
-                        <td>1234</td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>user2@mail.com</td>
-                        <td>usr2</td>
-                        <td>1234</td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>user3@mail.com</td>
-                        <td>usr3</td>
-                        <td>1234</td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td>user4@mail.com</td>
-                        <td>usr4</td>
-                        <td>1234</td>
-                      </tr>
-                      <tr>
-                        <td>5</td>
-                        <td>user5@mail.com</td>
-                        <td>usr5</td>
-                        <td>1234</td>
-                      </tr>
+
+                      @foreach (var item in Model.Users)
+                      {
+                       <tr>
+                        <td>@item.UserId</td>
+                        <td>@item.Email</td>
+                        <td>@item.Username</td>
+                       </tr>
+                      }
                     </tbody>
                   </table>
                 </div>
@@ -65,26 +44,15 @@
               <div class="card-body">
                 <h5 class="card-title">Tags</h5>
                 <div class="social-media-list">
-                  <div class="social-media-item">
+                  @foreach (var item in Model.Tags)
+                  {
+                    <div class="social-media-item">
                     <div class="social-text">
-                      <p>#tag1</p>
+                      <p>@item.Name</p>
                     </div>
                   </div>
-                  <div class="social-media-item">
-                    <div class="social-text">
-                      <p>#tag2</p>
-                    </div>
-                  </div>
-                  <div class="social-media-item">
-                    <div class="social-text">
-                      <p>#tag3</p>
-                    </div>
-                  </div>
-                  <div class="social-media-item">
-                    <div class="social-text">
-                      <p>#tag4</p>
-                    </div>
-                  </div>
+                  }
+                  
                 </div>
               </div>
             </div>

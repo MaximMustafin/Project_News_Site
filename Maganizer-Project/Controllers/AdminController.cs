@@ -2,10 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Maganizer_Project.BLL.DTO;
 using Maganizer_Project.BLL.Interfaces;
 using Maganizer_Project.Models;
+using Maganizer_Project.WEB.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -18,11 +20,42 @@ namespace Maganizer_Project.Controllers
     {
         private readonly IWebHostEnvironment _hostingEnvironment;
         private readonly IPostService postService;
+        private readonly IAccountService accountService;
+        private readonly ITagService tagService;
 
-        public AdminController(IWebHostEnvironment hostingEnvironment, IPostService postService)
+        public AdminController(IWebHostEnvironment hostingEnvironment, IPostService postService, IAccountService accountService, ITagService tagService)
         {
             _hostingEnvironment = hostingEnvironment;
             this.postService = postService;
+            this.accountService = accountService;
+            this.tagService = tagService;
+    }
+        [HttpGet]
+        public IActionResult Index()
+        {
+          if (User.IsInRole("Admin"))
+          {
+          var users = accountService.GetInfoUsers();
+          IEnumerable<TagDTO> tags = tagService.GetTags();
+
+            if(users.Count() != 0 && tags.Count() != 0)
+            {
+                AdminIndexViewModel adminIndexViewModel = new AdminIndexViewModel();
+                adminIndexViewModel.Users = new List<UserInfoDTO>();
+                adminIndexViewModel.Tags = tags.ToList();
+                foreach (var x in users)
+                {
+                    adminIndexViewModel.Users.Add(x);
+                }
+                return View("Index", adminIndexViewModel);
+            }
+
+           return View("Index");
+          }
+           else {
+            return View("ErrorNotFound");
+           }
+          
         }
 
         [Route("Admin/PostEditor")]
@@ -31,13 +64,6 @@ namespace Maganizer_Project.Controllers
         {
             return View("PostEditor");
         }
-
-        [HttpGet]
-        public IActionResult Index()
-        {
-            return View("Index");
-        }
-
 
         [Route("Admin/PostEditor")]
         [HttpPost]

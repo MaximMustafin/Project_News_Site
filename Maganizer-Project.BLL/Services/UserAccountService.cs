@@ -3,6 +3,7 @@ using Maganizer_Project.BLL.Interfaces;
 using Maganizer_Project.DAL.Entities;
 using Maganizer_Project.DAL.Interfaces;
 using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
 using System.Security.Policy;
 using System.Threading.Tasks;
 
@@ -55,6 +56,20 @@ namespace Maganizer_Project.BLL.Services
             }
             
             return resultDTO;         
+        }
+    //create now
+        public List<UserInfoDTO> GetInfoUsers()
+        {
+           var users = DataBase.Accounts.GetAll();
+          List<UserInfoDTO> userInfoDTOs = new List<UserInfoDTO>();
+          foreach (var x in users)
+          {
+           userInfoDTOs.Add(new UserInfoDTO() {  
+             UserId = x.Id,
+             Email = x.Email,
+             Username = x.UserName}); 
+           }
+          return userInfoDTOs;
         }
 
         public async Task<IdentityResult> ConfirmEmail(string userId, string code)
