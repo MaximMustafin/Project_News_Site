@@ -57,19 +57,21 @@ namespace Maganizer_Project.BLL.Services
             
             return resultDTO;         
         }
-    //create now
+        //create now
         public List<UserInfoDTO> GetInfoUsers()
         {
-           var users = DataBase.Accounts.GetAll();
-          List<UserInfoDTO> userInfoDTOs = new List<UserInfoDTO>();
-          foreach (var x in users)
-          {
-           userInfoDTOs.Add(new UserInfoDTO() {  
-             UserId = x.Id,
-             Email = x.Email,
-             Username = x.UserName}); 
-           }
-          return userInfoDTOs;
+            var users = DataBase.Accounts.GetAll();
+            List<UserInfoDTO> userInfoDTOs = new List<UserInfoDTO>();
+            foreach (var x in users)
+            {
+                userInfoDTOs.Add(new UserInfoDTO()
+                {
+                    UserId = x.Id,
+                    Email = x.Email,
+                    Username = x.UserName
+                });
+            }
+            return userInfoDTOs;
         }
 
         public async Task<IdentityResult> ConfirmEmail(string userId, string code)
@@ -124,5 +126,19 @@ namespace Maganizer_Project.BLL.Services
             };
         }
 
+        public void CreateMessageToAdmin(MessageToAdminDTO message)
+        {
+            MessageToAdmin messageToAdmin = new MessageToAdmin()
+            {
+                Content = message.Content,
+                Subject = message.Subject,
+                SentOn = message.SentOn
+            };
+
+            messageToAdmin.ApplicationUserId = DataBase.Accounts.GetByName(message.Username).Result.Id;
+
+            DataBase.Accounts.CreateMessageToAdmin(messageToAdmin);
+            DataBase.Save();
+        }
     }
 }

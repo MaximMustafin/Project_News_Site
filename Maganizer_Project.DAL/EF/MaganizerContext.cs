@@ -11,6 +11,7 @@ namespace Maganizer_Project.DAL.EF
         public DbSet<Comment> Comments { get; set; }
         //public DbSet<Category> Categories { get; set; }
         public DbSet<Tag> Tags { get; set; }
+        public DbSet<MessageToAdmin> MessagesToAdmin { get; set; }
 
         public MaganizerContext(DbContextOptions<MaganizerContext> options)
             : base(options)

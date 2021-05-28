@@ -61,33 +61,43 @@ namespace Maganizer_Project.DAL.Repositories
             return db.Users;
         }
 
-    //public void Delete(Guid id)
-    //{
-    //    UserAccount item = db.Accounts.Find(id);
-    //    if(item != null)
-    //    {
-    //        db.Accounts.Remove(item);
-    //    }
-    //}
+        public void CreateMessageToAdmin(MessageToAdmin messageToAdmin)
+        {
+            db.MessagesToAdmin.Add(messageToAdmin);
+        }
 
-    //public IEnumerable<UserAccount> Find(Func<UserAccount, bool> predicate)
-    //{
-    //    return db.Accounts.Where(predicate).ToList();
-    //}
+        public void DeleteMessageToAdmin(MessageToAdmin messageToAdmin)
+        {
+            throw new System.NotImplementedException();
+        }
 
-    //public UserAccount Get(Guid id)
-    //{
-    //    return db.Accounts.Find(id);
-    //}
+        //public void Delete(Guid id)
+        //{
+        //    UserAccount item = db.Accounts.Find(id);
+        //    if(item != null)
+        //    {
+        //        db.Accounts.Remove(item);
+        //    }
+        //}
 
-    //public IEnumerable<UserAccount> GetAll()
-    //{
-    //    return db.Accounts;
-    //}
+        //public IEnumerable<UserAccount> Find(Func<UserAccount, bool> predicate)
+        //{
+        //    return db.Accounts.Where(predicate).ToList();
+        //}
 
-    //public void Update(UserAccount item)
-    //{
-    //    db.Entry(item).State = EntityState.Modified;
-    //}
-  }
+        //public UserAccount Get(Guid id)
+        //{
+        //    return db.Accounts.Find(id);
+        //}
+
+        //public IEnumerable<UserAccount> GetAll()
+        //{
+        //    return db.Accounts;
+        //}
+
+        //public void Update(UserAccount item)
+        //{
+        //    db.Entry(item).State = EntityState.Modified;
+        //}
+    }
 }

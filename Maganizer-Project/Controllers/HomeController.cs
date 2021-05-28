@@ -8,6 +8,7 @@ using Maganizer_Project.BLL.DTO;
 using Maganizer_Project.BLL.Interfaces;
 using Maganizer_Project.Extensions;
 using Maganizer_Project.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -18,10 +19,12 @@ namespace Maganizer_Project.Controllers
     {
         private readonly IPostService postService;
         private readonly ITagService tagService;
-        public HomeController(IPostService postService, ITagService tagService)
+        private readonly IAccountService accountService;
+        public HomeController(IPostService postService, ITagService tagService, IAccountService accountService)
         {
             this.postService = postService;
             this.tagService = tagService;
+            this.accountService = accountService;
         }
 
         [HttpGet]
@@ -106,6 +109,35 @@ namespace Maganizer_Project.Controllers
 
             return View("ErrorNotFound");
 
+        }
+
+        [Authorize]
+        [HttpGet("ContactUs")]
+        public IActionResult ContactUs()
+        {
+            return View("ContactUs");
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult SendContactMessage(ContactUsViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                MessageToAdminDTO contactUsMessage = new MessageToAdminDTO()
+                {
+                    Content = model.Message,
+                    Subject = model.Subject,
+                    Username = User.Identity.Name,
+                    SentOn = DateTime.Now
+                };
+
+                accountService.CreateMessageToAdmin(contactUsMessage);
+
+                return View("ContactUs");
+            }
+
+            return View("ContactUs", model);
         }
     }
 }

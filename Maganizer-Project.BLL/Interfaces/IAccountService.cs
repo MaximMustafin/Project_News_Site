@@ -14,6 +14,7 @@ namespace Maganizer_Project.BLL.Interfaces
         Task<IdentityResult> ConfirmEmail(string userId, string code);
         Task<EmailVerificationInfoDTO> GetEmailVerificationInfo(string username);
         List<UserInfoDTO> GetInfoUsers();
+        void CreateMessageToAdmin(MessageToAdminDTO message);
 
     }
 }
