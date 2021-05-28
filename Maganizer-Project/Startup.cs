@@ -102,7 +102,7 @@ namespace Maganizer_Project
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Home}");
+                    pattern: "{controller=Home}/{action=Index}");
 
                 endpoints.MapHub<CommentHub>("/Comment");
             });

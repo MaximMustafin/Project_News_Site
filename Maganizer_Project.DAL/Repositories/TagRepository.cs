@@ -10,7 +10,7 @@ namespace Maganizer_Project.DAL.Repositories
 {
     public class TagRepository : IRepository<Tag>
     {
-        private MaganizerContext db;
+        private readonly MaganizerContext db;
         public TagRepository(MaganizerContext context)
         {
             this.db = context;

@@ -185,3 +185,5 @@ C:\NewProgram\GithubRepository\Project_News_Site\Maganizer-Project\obj\Debug\net
 >>>>>>> 4551976f3d2119ee049224b5575e3fcc6067e063
 D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
 D:\Study\Course 2\IT\Семестровая работа 2\Backend\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_PostEditorPickInfo.cshtml.g.cs
+C:\NewProgram\GithubRepository\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LatestTagsInfo.cshtml.g.cs
+C:\NewProgram\GithubRepository\Project_News_Site\Maganizer-Project\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_PostEditorPickInfo.cshtml.g.cs
