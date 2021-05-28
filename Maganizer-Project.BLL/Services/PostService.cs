@@ -18,7 +18,7 @@ namespace Maganizer_Project.BLL.Services
         {
             DataBase = unitOfWork;
         }
-        public void AddPost(EditPostDTO postDTO)
+        public async void AddPost(EditPostDTO postDTO)
         {
             var tags = postDTO.Tags.Split().Distinct();
 
@@ -28,7 +28,7 @@ namespace Maganizer_Project.BLL.Services
                 Content = postDTO.Content,
                 DateOfCreation = DateTime.Now,
                 Tags = new List<Tag>(tags.Count()),
-                FeaturedImage = ImageConvertion.ConvertToByteArray(postDTO.FeaturedImage)
+                FeaturedImage = ImageConvertion.ConvertToByteArray(postDTO.FeaturedImage)                
             };
 
             foreach(var x in tags)
@@ -42,6 +42,7 @@ namespace Maganizer_Project.BLL.Services
                 post.Tags.Add(tag);
             }
 
+            post.ApplicationUser = DataBase.Accounts.GetByName(postDTO.AuthorUsername).Result;
             DataBase.Posts.Create(post);
             DataBase.Save();
         }
@@ -79,7 +80,8 @@ namespace Maganizer_Project.BLL.Services
                 DateOfCreation = post.DateOfCreation,
                 FeaturedImage = post.FeaturedImage,
                 NextPostName = nextPostName,
-                PreviousPostName = previousPostName
+                PreviousPostName = previousPostName,
+                AuthorName = post.ApplicationUser.UserName
             };
 
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Tag, TagDTO>()).CreateMapper();
@@ -104,6 +106,7 @@ namespace Maganizer_Project.BLL.Services
                         Tags = mapper.Map<IEnumerable<Tag>, List<TagDTO>>(x.Tags),
                         DateOfCreation = x.DateOfCreation,
                         FeaturedImage = x.FeaturedImage,
+                        AuthorName = x.ApplicationUser.UserName
                     });
                 }
 

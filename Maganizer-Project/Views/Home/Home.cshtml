@@ -1945,7 +1945,7 @@
                                                                                                     <h2>@x.Name</h2>
                                                                                                 </a>
                                                                                                 <div class="post-meta-data">
-                                                                                                    <span class="posted-by">By</span> <a href="https://preview.spraythemes.com/maganizer/author/admin/" class="meta-links author">WPSmart</a>
+                                                                                                    <span class="posted-by">By</span> <a href="https://preview.spraythemes.com/maganizer/author/admin/" class="meta-links author">@x.AuthorName</a>
 
                                                                                                     @if ((DateTime.Now.Month - x.PostedOn.Month) + 12 * (DateTime.Now.Year - x.PostedOn.Year) > 0)
                                                                                                     {
@@ -1993,7 +1993,7 @@
                                                     <div class="elementor-widget-container">
                                                         <div class="main-title style-three">
                                                             <div class="left-side-text">
-                                                                <h2><span class="first-class">Latest News</span></h2>
+                                                                <h2><span id="blacktext" class="first-class">Latest News</span></h2>
                                                             </div>
                                                             <span class="post-counter style-three"> <a href="https://preview.spraythemes.com/maganizer/category/mix-of-art/">See All</a> </span>
                                                         </div>
@@ -2003,38 +2003,41 @@
                                                     <div class="elementor-widget-container">
                                                         <div class="ajax-post-archive">
                                                             <div class="wps-loader-posts32">
-
-                                                                @foreach (var x in Model.LatestPosts)
+                                                                @if (Model != null)
                                                                 {
-                                                                    <div class="archive-post-section-list">
-                                                                        <div class="post-image-thumb">
-                                                                            <div class="height-sizer"></div>
-                                                                            <i class="post-type-top-icon fas fa-images"></i>
-                                                                            <img width="1600" height="1083" src="data:image/jpeg; base64, @(Convert.ToBase64String(x.FeaturedImage))" class="attachment- size- wp-post-image" alt="@x.Name" loading="lazy" data-eio="j">
-                                                                            
-                                                                        </div>
-                                                                        <div class="content-section">
-                                                                            <div class="mets-and-ttl">
-                                                                                <div class="post-meta-data">
-                                                                                    <span class="posted-by black">By</span> <a href="https://preview.spraythemes.com/maganizer/author/admin/" class="meta-links author redlink">WPSmart</a>                         
-                                                                                    @if ((int)(DateTime.Now - x.PostedOn).Days/7 > 0)
-                                                                                    {
-                                                                                        <span class="meta-links post-date black placeright">@((int)(DateTime.Now - x.PostedOn).Days / 7) weeks ago</span>
+                                                                    @foreach (var x in Model.LatestPosts)
+                                                                    {
+                                                                        <div class="archive-post-section-list">
+                                                                            <div class="post-image-thumb">
+                                                                                <div class="height-sizer"></div>
+                                                                                <i class="post-type-top-icon fas fa-images"></i>
+                                                                                <img width="1600" height="1083" src="data:image/jpeg; base64, @(Convert.ToBase64String(x.FeaturedImage))" class="attachment- size- wp-post-image" alt="@x.Name" loading="lazy" data-eio="j">
 
-                                                                                    }
-                                                                                    else
-                                                                                    {
-                                                                                        <span class="meta-links post-date black placeright">This week</span>
-                                                                                    }
-                                                                                </div>
-                                                                                <a asp-controller="Post" asp-action="GetPost" asp-route-name="@x.Name">
-                                                                                    <h2>@x.Name</h2>
-                                                                                </a>
                                                                             </div>
-                                                                            
+                                                                            <div class="content-section">
+                                                                                <div class="mets-and-ttl">
+                                                                                    <div class="post-meta-data">
+                                                                                        <span class="posted-by black">By</span> <a href="https://preview.spraythemes.com/maganizer/author/admin/" class="meta-links author redlink">@x.AuthorName</a>
+                                                                                        @if ((int)(DateTime.Now - x.PostedOn).Days / 7 > 0)
+                                                                                        {
+                                                                                            <span class="meta-links post-date black placeright">@((int)(DateTime.Now - x.PostedOn).Days / 7) weeks ago</span>
+
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            <span class="meta-links post-date black placeright">This week</span>
+                                                                                        }
+                                                                                    </div>
+                                                                                    <a asp-controller="Post" asp-action="GetPost" asp-route-name="@x.Name">
+                                                                                        <h2>@x.Name</h2>
+                                                                                    </a>
+                                                                                </div>
+
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
+                                                                    }
                                                                 }
+
 
 
 
@@ -2054,7 +2057,7 @@
                                                     <div class="elementor-widget-container">
                                                         <div class="main-title style-three">
                                                             <div class="left-side-text">
-                                                                <h2><span class="first-class">Latest Tags</span></h2>
+                                                                <h2><span id="blacktext" class="first-class">Latest Tags</span></h2>
                                                             </div>
                                                             <span class="post-counter style-three"> <a href=""> </a> </span>
                                                         </div>

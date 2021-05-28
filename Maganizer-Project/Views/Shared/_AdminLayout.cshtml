@@ -49,29 +49,32 @@
 
     <div class="lime-sidebar">
         <div class="lime-sidebar-inner slimscroll">
-          <ul class="accordion-menu">
-            <li class="sidebar-title">
-              Apps
-            </li>
-            @if (ViewData["Active"].ToString() == "Index")
-            {
-              <li>
-                <a asp-controller="Admin" asp-action="Index" class="active"><i class="material-icons">dashboard</i>Main page</a>
-              </li>
-              <li>
-                <a asp-controller="Admin" asp-action="PostEditor"><i class="material-icons">inbox</i>Edition</a>
-              </li>
-            }
-            @if (ViewData["Active"].ToString() == "PostEditor")
-            {
-              <li>
-                <a asp-controller="Admin" asp-action="Index"><i class="material-icons">dashboard</i>Main page</a>
-              </li>
-              <li>
-                <a asp-controller="Admin" asp-action="PostEditor" class="active"><i class="material-icons">inbox</i>Edition</a>
-              </li>
-            }
-          </ul>
+            <ul class="accordion-menu">
+                <li class="sidebar-title">
+                    Apps
+                </li>
+                @if (ViewData["Active"].ToString() == "Index")
+                {
+                    <li>
+                        <a asp-controller="Admin" asp-action="Index" class="active"><i class="material-icons">dashboard</i>Main page</a>
+                    </li>
+                    <li>
+                        <a asp-controller="Admin" asp-action="PostEditor"><i class="material-icons">edit</i>Edition</a>
+                    </li>
+                }
+                @if (ViewData["Active"].ToString() == "PostEditor")
+                {
+                    <li>
+                        <a asp-controller="Admin" asp-action="Index"><i class="material-icons">dashboard</i>Main page</a>
+                    </li>
+                    <li>
+                        <a asp-controller="Admin" asp-action="PostEditor" class="active"><i class="material-icons">edit</i>Edition</a>
+                    </li>
+                }
+                <li>
+                    <a asp-controller="Home" asp-action="Home"><i class="material-icons">home</i>Return To Site</a>
+                </li>
+            </ul>
         </div>
     </div>
 

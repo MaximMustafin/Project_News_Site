@@ -14,5 +14,6 @@ namespace Maganizer_Project.BLL.DTO
         public byte[] FeaturedImage { get; set; }
         public string NextPostName { get; set; }
         public string PreviousPostName { get; set; }
+        public string AuthorName { get; set; }
     }
 }

@@ -19,5 +19,6 @@ namespace Maganizer_Project.Models
         public string NextPost { get; set; }
         public string PrevPost { get; set; }
         public List<CommentViewModel> Comments { get; set; }
+        public string AuthorName { get; set; }
     }
 }

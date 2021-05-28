@@ -17,6 +17,7 @@ namespace Maganizer_Project.Models
         public byte[] FeaturedImage { get; set; }
         public string Tag { get; set; }
         public DateTime PostedOn { get; set; }
+        public string AuthorName { get; set; }
     }
 
     public class LatestPostModel
@@ -24,5 +25,6 @@ namespace Maganizer_Project.Models
         public string Name { get; set; }
         public byte[] FeaturedImage { get; set; }
         public DateTime PostedOn { get; set; }
+        public string AuthorName { get; set; }
     }
 }

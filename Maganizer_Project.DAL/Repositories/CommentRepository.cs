@@ -20,7 +20,7 @@ namespace Maganizer_Project.DAL.Repositories
             db.Comments.Add(item);
         }
 
-        public void Delete(Guid id)
+        public void Delete(int id)
         {
             Comment item = db.Comments.Find(id);
             if (item != null)

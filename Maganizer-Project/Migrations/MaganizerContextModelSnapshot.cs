@@ -117,6 +117,9 @@ namespace Maganizer_Project.Migrations
                         .HasColumnType("integer")
                         .UseIdentityByDefaultColumn();
 
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("text");
+
                     b.Property<string>("Content")
                         .HasColumnType("text");
 
@@ -130,6 +133,8 @@ namespace Maganizer_Project.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
 
                     b.ToTable("Posts");
                 });
@@ -356,6 +361,15 @@ namespace Maganizer_Project.Migrations
                     b.Navigation("ApplicationUser");
 
                     b.Navigation("Post");
+                });
+
+            modelBuilder.Entity("Maganizer_Project.DAL.Entities.Post", b =>
+                {
+                    b.HasOne("Maganizer_Project.DAL.Entities.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.Navigation("ApplicationUser");
                 });
 
             modelBuilder.Entity("Maganizer_Project.DAL.Entities.UserProfile", b =>

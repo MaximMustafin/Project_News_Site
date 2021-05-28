@@ -47,9 +47,14 @@
                   @foreach (var item in Model.Tags)
                   {
                     <div class="social-media-item">
-                    <div class="social-text">
-                      <p>@item.Name</p>
-                    </div>
+                        <div class="social-text">
+                            <p>@item.Name
+                                <form asp-controller="Admin" asp-action="DeleteTag" method="post">
+                                    <input hidden name="tag" value="@item.Name" />
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form></p>
+                            
+                        </div>
                   </div>
                   }
                   

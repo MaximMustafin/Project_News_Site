@@ -7,6 +7,7 @@ namespace Maganizer_Project.BLL.Interfaces
     {
         IEnumerable<TagDTO> GetTags();
         TagArchiveDTO GetTag(string name);
+        void DeleteTag(string name);
     }
 
 }

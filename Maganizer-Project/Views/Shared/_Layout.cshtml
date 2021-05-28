@@ -269,38 +269,8 @@
                                         <div class="elementor-widget-wrap">
                                             <div class="elementor-element elementor-element-8d7c5ef elementor-widget elementor-widget-simple-post-list" data-id="8d7c5ef" data-element_type="widget" data-widget_type="simple-post-list.default">
                                                 <div class="elementor-widget-container">
-                                                    <div class="simple-post-list">
-                                                        <div class="main-title">
-                                                            <div class="left-side-text">
-                                                                <h2><span class="first-class">Editor</span><span class="highlight">Pic</span></h2>
-                                                                <span id="sub-text-new" class="sub-text-new">Most Read post</span>
-                                                            </div>
-                                                            <span class="post-counter">
-                                                                <a href="https://preview.spraythemes.com/maganizer/category/mix-of-art/">See All</a>
-                                                            </span>
-                                                        </div>
-                                                        <div class="post-content">
-                                                            <div class="left-post-list-package vertic-post-ss">
-                                                                <div class="list-post">
-                                                                    <div class="post-image-left">
-                                                                        <div class="height-sizer"></div>
-                                                                        <noscript data-img="https://preview.spraythemes.com/maganizer/wp-content/uploads/2020/05/ma-in-black-aviator-sunglasses-with-purple-smoke-917594-scaled-140x100.jpg" data-webp="https://preview.spraythemes.com/maganizer/wp-content/uploads/2020/05/ma-in-black-aviator-sunglasses-with-purple-smoke-917594-scaled-140x100.jpg.webp" data-alt="Stylish man in black aviator sunglasses with purple smoke" data-class="attachment-maganizer-small-post-thumb size-maganizer-small-post-thumb wp-post-image" data-height="100" data-width="140" class="ewww_webp"><img width="140" height="100" src="https://preview.spraythemes.com/maganizer/wp-content/uploads/2020/05/ma-in-black-aviator-sunglasses-with-purple-smoke-917594-scaled-140x100.jpg" class="attachment-maganizer-small-post-thumb size-maganizer-small-post-thumb wp-post-image" alt="Stylish man in black aviator sunglasses with purple smoke" loading="lazy" data-eio="j" /></noscript>
-                                                                    </div>
-                                                                    <div class="content-section-right">
-                                                                        <div class="post-meta-data">
-                                                                            <span class="posted-by black">By</span>
-                                                                            <a href="https://preview.spraythemes.com/maganizer/author/admin/" class="meta-links author redlink">WPSmart</a>
-                                                                            <span class="meta-links post-date black placeright">11 months ago</span>
-                                                                        </div>
-                                                                        <a href="https://preview.spraythemes.com/maganizer/2020/05/30/stylish-man-in-black-aviator-sunglasses-with-purple-smoke/">
-                                                                            <h2 class="simple-title-color">
-                                                                                Stylish man in black aviator sunglasses with purple smoke
-                                                                            </h2>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                    <div id="postspicks" class="simple-post-list">
+                                                        <!--Post editor pick-->
                                                     </div>
                                                 </div>
                                             </div>
@@ -313,9 +283,7 @@
                                             <div class="elementor-element elementor-element-00ae696 elementor-widget elementor-widget-all_tag_list" data-id="00ae696" data-element_type="widget" data-widget_type="all_tag_list.default">
                                                 <div class="elementor-widget-container">
                                                     <div id="tags" class="tags-cloud">
-
-
-
+                                                        <!--Tags-->
                                                     </div>
                                                 </div>
                                             </div>
@@ -400,6 +368,15 @@
                     dataType: 'html',
                     success: function (data) {
                         $('#latestTags').html(data);
+                    }
+                });
+
+                $.ajax({
+                    url: '@Url.Action("GetPostEditorPicks", "Footer")',
+                    type: "GET",
+                    dataType: 'html',
+                    success: function (data) {
+                        $('#postspicks').html(data);
                     }
                 });
 

@@ -20,7 +20,7 @@ namespace Maganizer_Project.DAL.Repositories
             db.Tags.Add(item);
         }
 
-        public void Delete(Guid id)
+        public void Delete(int id)
         {
             Tag item = db.Tags.Find(id);
             if (item != null)

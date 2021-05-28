@@ -40,7 +40,8 @@ namespace Maganizer_Project.Controllers
                 PostedOn = post.DateOfCreation,
                 FeaturedImage = post.FeaturedImage,
                 NextPost = post.NextPostName,
-                PrevPost = post.PreviousPostName
+                PrevPost = post.PreviousPostName,
+                AuthorName = post.AuthorName
             };
 
             if(comments.Count() != 0)

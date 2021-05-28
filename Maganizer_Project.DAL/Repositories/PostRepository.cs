@@ -36,7 +36,7 @@ namespace Maganizer_Project.DAL.Repositories
             db.Posts.Add(item);
         }
 
-        public void Delete(Guid id)
+        public void Delete(int id)
         {
             Post item = db.Posts.Find(id);
             if (item != null)
@@ -47,7 +47,7 @@ namespace Maganizer_Project.DAL.Repositories
 
         public IEnumerable<Post> Find(Func<Post, bool> predicate)
         {
-            return db.Posts.Include(o => o.Tags).Where(predicate).ToList();
+            return db.Posts.Include(o => o.Tags).Include(o => o.ApplicationUser).Where(predicate).ToList();
         }
 
         public Post Get(Guid id)
@@ -57,7 +57,7 @@ namespace Maganizer_Project.DAL.Repositories
 
         public IEnumerable<Post> GetAll()
         {
-            return db.Posts.Include(x => x.Tags);
+            return db.Posts.Include(x => x.Tags).Include(o => o.ApplicationUser);
         }
 
         public void Update(Post item)

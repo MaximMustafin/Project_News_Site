@@ -33,26 +33,32 @@ namespace Maganizer_Project.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-          var users = accountService.GetInfoUsers();
-          IEnumerable<TagDTO> tags = tagService.GetTags();
+            var users = accountService.GetInfoUsers();
+            IEnumerable<TagDTO> tags = tagService.GetTags();
 
-            if(users.Count() != 0 && tags.Count() != 0)
+            if (users.Count() != 0)
             {
-        AdminIndexViewModel adminIndexViewModel = new AdminIndexViewModel
-        {
-          Users = new List<UserInfoDTO>(),
-          Tags = tags.ToList()
-        };
-        foreach (var x in users)
+                AdminIndexViewModel adminIndexViewModel = new AdminIndexViewModel
+                {
+                    Users = new List<UserInfoDTO>(),
+                    Tags = new List<TagDTO>()
+                };
+
+                foreach (var x in users)
                 {
                     adminIndexViewModel.Users.Add(x);
                 }
+
+                if(tags.Count() != 0)
+                {
+                    adminIndexViewModel.Tags = tags.ToList();
+                }
+
                 return View("Index", adminIndexViewModel);
             }
 
-           return View("Index");
-          
-          
+            return View("Index");
+
         }
         [Authorize(Roles = "Admin, Manager")]
         [Route("Admin/PostEditor")]
@@ -61,6 +67,7 @@ namespace Maganizer_Project.Controllers
         {
             return View("PostEditor");
         }
+
         [Authorize(Roles = "Admin, Manager")]
         [Route("Admin/PostEditor")]
         [HttpPost]
@@ -74,7 +81,8 @@ namespace Maganizer_Project.Controllers
                     Name = editorViewModel.PostName,
                     Content = editorViewModel.PostContent,
                     Tags = editorViewModel.Tags,
-                    FeaturedImage = editorViewModel.FeaturedImage
+                    FeaturedImage = editorViewModel.FeaturedImage,
+                    AuthorUsername = User.Identity.Name
                 };             
 
                 postService.AddPost(postDTO);
@@ -148,6 +156,14 @@ namespace Maganizer_Project.Controllers
                 return Json(ex.Message);
             }
         }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public void DeleteTag(string tag)
+        {
+            tagService.DeleteTag(tag);
+        }
+
 
 
     }

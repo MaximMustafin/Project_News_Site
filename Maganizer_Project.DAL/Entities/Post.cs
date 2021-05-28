@@ -14,5 +14,8 @@ namespace Maganizer_Project.DAL.Entities
         public DateTime DateOfCreation { get; set; }
         public byte[] FeaturedImage { get; set; }
         public List<Tag> Tags { get; set; }
+        public string ApplicationUserId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
+
     }
 }

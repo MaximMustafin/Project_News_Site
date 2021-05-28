@@ -55,5 +55,12 @@ namespace Maganizer_Project.BLL.Services
 
             return null;
         }
+
+        public void DeleteTag(string name)
+        {
+            var tag = DataBase.Tags.Find(x => x.Name == name).FirstOrDefault();
+            DataBase.Tags.Delete(tag.Id);
+            DataBase.Save();
+        }
     }
 }

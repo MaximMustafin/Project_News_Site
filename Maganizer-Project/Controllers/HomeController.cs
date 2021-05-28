@@ -58,7 +58,8 @@ namespace Maganizer_Project.Controllers
                         Name = posts.ElementAt(number).Name,
                         Tag = posts.ElementAt(number).Tags.FirstOrDefault().Name,
                         FeaturedImage = posts.ElementAt(number).FeaturedImage,
-                        PostedOn = posts.ElementAt(number).DateOfCreation
+                        PostedOn = posts.ElementAt(number).DateOfCreation,
+                        AuthorName = posts.ElementAt(number).AuthorName
                     });
 
                     i++;
@@ -77,7 +78,8 @@ namespace Maganizer_Project.Controllers
                     {
                         Name = posts.ElementAt(i).Name,
                         PostedOn = posts.ElementAt(i).DateOfCreation,
-                        FeaturedImage = posts.ElementAt(i).FeaturedImage
+                        FeaturedImage = posts.ElementAt(i).FeaturedImage,
+                        AuthorName = posts.ElementAt(i).AuthorName
                     });
                 }
 
