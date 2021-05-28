@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "lWt3r5eJltlf1cj6bQNjdDzDogrcsyFNsb3pwSDbYvcjq1l6VYFgwCTlIWRMiRvKdrveaR4NBKI2WBXU8NUhHA==",
+  "dgSpecHash": "lfX1MRUnoc4MHUONYjdbuXX2qX2e4nphXuJvdwofTtHH0qZvBWURPJpVQfuaZPaOrynt0bjcOXG+LkOwXp9V0Q==",
   "success": true,
   "projectFilePath": "C:\\NewProgram\\GithubRepository\\Project_News_Site\\Maganizer-Project\\Maganizer-Project.csproj",
   "expectedPackageFiles": [
@@ -55,6 +55,8 @@
     "C:\\Users\\Fies\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
     "C:\\Users\\Fies\\.nuget\\packages\\npgsql\\5.0.0\\npgsql.5.0.0.nupkg.sha512",
     "C:\\Users\\Fies\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\5.0.0\\npgsql.entityframeworkcore.postgresql.5.0.0.nupkg.sha512",
+    "C:\\Users\\Fies\\.nuget\\packages\\pagedlist.core\\1.17.4\\pagedlist.core.1.17.4.nupkg.sha512",
+    "C:\\Users\\Fies\\.nuget\\packages\\pagedlist.core.mvc\\3.0.0\\pagedlist.core.mvc.3.0.0.nupkg.sha512",
     "C:\\Users\\Fies\\.nuget\\packages\\portable.bouncycastle\\1.8.1.3\\portable.bouncycastle.1.8.1.3.nupkg.sha512",
     "C:\\Users\\Fies\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\Fies\\.nuget\\packages\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",

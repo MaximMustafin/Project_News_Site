@@ -162,7 +162,7 @@ namespace Maganizer_Project.Controllers
         public IActionResult DeleteTag(string tag)
         {
             tagService.DeleteTag(tag);
-            return View("Index");
+            return RedirectToAction("Index", "Admin");
         }
 
 
