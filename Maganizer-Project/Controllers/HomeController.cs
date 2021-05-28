@@ -28,7 +28,7 @@ namespace Maganizer_Project.Controllers
         }
 
         [HttpGet]
-        public IActionResult Home()
+        public IActionResult Index()
         {      
             HomeViewModel homeView = new HomeViewModel()
             {

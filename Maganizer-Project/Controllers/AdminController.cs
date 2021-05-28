@@ -159,9 +159,10 @@ namespace Maganizer_Project.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public void DeleteTag(string tag)
+        public IActionResult DeleteTag(string tag)
         {
             tagService.DeleteTag(tag);
+            return RedirectToAction("Index", "Admin");
         }
 
 
