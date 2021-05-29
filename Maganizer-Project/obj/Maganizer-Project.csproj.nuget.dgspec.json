@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Study\\Course 2\\IT\\Семестровая работа 2\\Backend\\Project_News_Site\\Maganizer-Project\\Maganizer-Project.csproj": {}
+    "C:\\NewProgram\\GithubRepository\\Project_News_Site\\Maganizer-Project\\Maganizer-Project.csproj": {}
   },
   "projects": {
-    "D:\\Study\\Course 2\\IT\\Семестровая работа 2\\Backend\\Project_News_Site\\Maganizer-Project.BLL\\Maganizer-Project.BLL.csproj": {
+    "C:\\NewProgram\\GithubRepository\\Project_News_Site\\Maganizer-Project.BLL\\Maganizer-Project.BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Study\\Course 2\\IT\\Семестровая работа 2\\Backend\\Project_News_Site\\Maganizer-Project.BLL\\Maganizer-Project.BLL.csproj",
+        "projectUniqueName": "C:\\NewProgram\\GithubRepository\\Project_News_Site\\Maganizer-Project.BLL\\Maganizer-Project.BLL.csproj",
         "projectName": "Maganizer-Project.BLL",
-        "projectPath": "D:\\Study\\Course 2\\IT\\Семестровая работа 2\\Backend\\Project_News_Site\\Maganizer-Project.BLL\\Maganizer-Project.BLL.csproj",
-        "packagesPath": "C:\\Users\\Пользователь\\.nuget\\packages\\",
-        "outputPath": "D:\\Study\\Course 2\\IT\\Семестровая работа 2\\Backend\\Project_News_Site\\Maganizer-Project.BLL\\obj\\",
+        "projectPath": "C:\\NewProgram\\GithubRepository\\Project_News_Site\\Maganizer-Project.BLL\\Maganizer-Project.BLL.csproj",
+        "packagesPath": "C:\\Users\\Fies\\.nuget\\packages\\",
+        "outputPath": "C:\\NewProgram\\GithubRepository\\Project_News_Site\\Maganizer-Project.BLL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Пользователь\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Fies\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,9 +26,10 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "D:\\Study\\Course 2\\IT\\Семестровая работа 2\\Backend\\Project_News_Site\\Maganizer_Project.DAL\\Maganizer-Project.DAL.csproj": {
-                "projectPath": "D:\\Study\\Course 2\\IT\\Семестровая работа 2\\Backend\\Project_News_Site\\Maganizer_Project.DAL\\Maganizer-Project.DAL.csproj"
+              "C:\\NewProgram\\GithubRepository\\Project_News_Site\\Maganizer_Project.DAL\\Maganizer-Project.DAL.csproj": {
+                "projectPath": "C:\\NewProgram\\GithubRepository\\Project_News_Site\\Maganizer_Project.DAL\\Maganizer-Project.DAL.csproj"
               }
             }
           }
@@ -41,6 +42,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
@@ -66,21 +68,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.406\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Study\\Course 2\\IT\\Семестровая работа 2\\Backend\\Project_News_Site\\Maganizer-Project\\Maganizer-Project.csproj": {
+    "C:\\NewProgram\\GithubRepository\\Project_News_Site\\Maganizer-Project\\Maganizer-Project.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Study\\Course 2\\IT\\Семестровая работа 2\\Backend\\Project_News_Site\\Maganizer-Project\\Maganizer-Project.csproj",
+        "projectUniqueName": "C:\\NewProgram\\GithubRepository\\Project_News_Site\\Maganizer-Project\\Maganizer-Project.csproj",
         "projectName": "Maganizer-Project",
-        "projectPath": "D:\\Study\\Course 2\\IT\\Семестровая работа 2\\Backend\\Project_News_Site\\Maganizer-Project\\Maganizer-Project.csproj",
-        "packagesPath": "C:\\Users\\Пользователь\\.nuget\\packages\\",
-        "outputPath": "D:\\Study\\Course 2\\IT\\Семестровая работа 2\\Backend\\Project_News_Site\\Maganizer-Project\\obj\\",
+        "projectPath": "C:\\NewProgram\\GithubRepository\\Project_News_Site\\Maganizer-Project\\Maganizer-Project.csproj",
+        "packagesPath": "C:\\Users\\Fies\\.nuget\\packages\\",
+        "outputPath": "C:\\NewProgram\\GithubRepository\\Project_News_Site\\Maganizer-Project\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Пользователь\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Fies\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -92,9 +94,10 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "D:\\Study\\Course 2\\IT\\Семестровая работа 2\\Backend\\Project_News_Site\\Maganizer-Project.BLL\\Maganizer-Project.BLL.csproj": {
-                "projectPath": "D:\\Study\\Course 2\\IT\\Семестровая работа 2\\Backend\\Project_News_Site\\Maganizer-Project.BLL\\Maganizer-Project.BLL.csproj"
+              "C:\\NewProgram\\GithubRepository\\Project_News_Site\\Maganizer-Project.BLL\\Maganizer-Project.BLL.csproj": {
+                "projectPath": "C:\\NewProgram\\GithubRepository\\Project_News_Site\\Maganizer-Project.BLL\\Maganizer-Project.BLL.csproj"
               }
             }
           }
@@ -107,6 +110,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
@@ -153,21 +157,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.406\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Study\\Course 2\\IT\\Семестровая работа 2\\Backend\\Project_News_Site\\Maganizer_Project.DAL\\Maganizer-Project.DAL.csproj": {
+    "C:\\NewProgram\\GithubRepository\\Project_News_Site\\Maganizer_Project.DAL\\Maganizer-Project.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Study\\Course 2\\IT\\Семестровая работа 2\\Backend\\Project_News_Site\\Maganizer_Project.DAL\\Maganizer-Project.DAL.csproj",
+        "projectUniqueName": "C:\\NewProgram\\GithubRepository\\Project_News_Site\\Maganizer_Project.DAL\\Maganizer-Project.DAL.csproj",
         "projectName": "Maganizer-Project.DAL",
-        "projectPath": "D:\\Study\\Course 2\\IT\\Семестровая работа 2\\Backend\\Project_News_Site\\Maganizer_Project.DAL\\Maganizer-Project.DAL.csproj",
-        "packagesPath": "C:\\Users\\Пользователь\\.nuget\\packages\\",
-        "outputPath": "D:\\Study\\Course 2\\IT\\Семестровая работа 2\\Backend\\Project_News_Site\\Maganizer_Project.DAL\\obj\\",
+        "projectPath": "C:\\NewProgram\\GithubRepository\\Project_News_Site\\Maganizer_Project.DAL\\Maganizer-Project.DAL.csproj",
+        "packagesPath": "C:\\Users\\Fies\\.nuget\\packages\\",
+        "outputPath": "C:\\NewProgram\\GithubRepository\\Project_News_Site\\Maganizer_Project.DAL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Пользователь\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Fies\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -179,6 +183,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -190,6 +195,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Microsoft.AspNetCore.Identity": {
               "target": "Package",
@@ -229,7 +235,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.406\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }
