@@ -39,7 +39,7 @@ namespace Maganizer_Project.DAL.Repositories
 
         public IEnumerable<UserProfile> GetAll()
         {
-            return db.UserProfiles;
+            return db.UserProfiles.Include(x => x.ApplicationUser);
         }
 
         public UserProfile GetByAccountId(string id)
