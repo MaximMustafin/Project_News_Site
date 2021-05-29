@@ -34,7 +34,7 @@ namespace Maganizer_Project.DAL.Repositories
             return db.Comments.Include(x => x.ApplicationUser).Where(predicate).ToList();
         }
 
-        public Comment Get(Guid id)
+        public Comment Get(int id)
         {
             return db.Comments.Find(id);
         }

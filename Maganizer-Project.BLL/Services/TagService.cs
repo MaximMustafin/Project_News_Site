@@ -41,13 +41,17 @@ namespace Maganizer_Project.BLL.Services
 
                 foreach(var x in tag.Posts) 
                 {
+                    var AuthorName = DataBase.Posts.Get(x.Id).ApplicationUser.UserName;
                     tagArchiveDTO.Posts.Add(new PostOfTagDTO()
                     {
                         PostName = x.Name,
                         FirstTagName = x.Tags.FirstOrDefault().Name,
                         PostedOn = x.DateOfCreation,
-                        FeaturedPostImage = x.FeaturedImage
+                        FeaturedPostImage = x.FeaturedImage,
+                        AuthorName = AuthorName
                     });
+
+                    
                 }
 
                 return tagArchiveDTO;

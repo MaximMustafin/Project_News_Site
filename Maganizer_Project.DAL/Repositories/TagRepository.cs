@@ -34,7 +34,7 @@ namespace Maganizer_Project.DAL.Repositories
             return db.Tags.Include(x => x.Posts).Where(predicate).ToList();
         }
 
-        public Tag Get(Guid id)
+        public Tag Get(int id)
         {
             return db.Tags.Find(id);
         }

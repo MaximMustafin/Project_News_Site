@@ -36,7 +36,8 @@ namespace Maganizer_Project.Controllers
                         PostName = x.PostName,
                         FirstTagName = x.FirstTagName,
                         PostedOn = x.PostedOn,
-                        FeaturedPostImage = x.FeaturedPostImage
+                        FeaturedPostImage = x.FeaturedPostImage,
+                        AuthorName = x.AuthorName
                     });
                 }
 

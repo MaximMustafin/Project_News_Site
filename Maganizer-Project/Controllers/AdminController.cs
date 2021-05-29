@@ -165,7 +165,42 @@ namespace Maganizer_Project.Controllers
             return RedirectToAction("Index", "Admin");
         }
 
+        [Authorize(Roles = "Admin")]
+        [HttpGet("MessagesFromUsers")]
+        public IActionResult MessagesFromUsers()
+        {
+            var messages = accountService.GetMessagesToAdmin();
+            if(messages != null)
+            {
+                MessagesFromUsersViewModel messagesModel = new MessagesFromUsersViewModel()
+                {
+                    Messages = new List<MessageFromUser>()
+                };
 
+                foreach (var x in messages)
+                {
+                    messagesModel.Messages.Add(new MessageFromUser()
+                    {
+                        Id = x.Id,
+                        Content = x.Content,
+                        Subject = x.Subject,
+                        AuthorName = x.Username,
+                        SentOn = x.SentOn
+                    });
+                }
+                messagesModel.Messages = messagesModel.Messages.OrderByDescending(x => x.SentOn).ToList();
 
+                return View("MessagesFromUsers", messagesModel);
+            }
+
+            return View("MessagesFromUsers", new MessagesFromUsersViewModel() { Messages = new List<MessageFromUser>() });
+        }
+
+        [HttpPost]
+        public IActionResult DeleteMessageFromUser(int id)
+        {
+            accountService.DeleteMessageToAdmin(id);
+            return RedirectToAction("MessagesFromUsers");
+        }
     }
 }

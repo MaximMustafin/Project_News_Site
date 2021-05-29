@@ -24,7 +24,7 @@
                 <div class="content-section-right">
                     <div class="post-meta-data">
                         <span class="posted-by black">By</span>
-                        <a href="https://preview.spraythemes.com/maganizer/author/admin/" class="meta-links author redlink">@x.AuthorName</a>
+                        <a asp-controller="UserProfile" asp-action="GetProfile" asp-route-username="@x.AuthorName" class="meta-links author redlink">@x.AuthorName</a>
 
                         @if ((DateTime.Now.Month - x.PostedOn.Month) + 12 * (DateTime.Now.Year - x.PostedOn.Year) > 0)
                         {

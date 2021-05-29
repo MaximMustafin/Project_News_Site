@@ -61,6 +61,9 @@
                     <li>
                         <a asp-controller="Admin" asp-action="PostEditor"><i class="material-icons">edit</i>Edition</a>
                     </li>
+                    <li>
+                        <a asp-controller="Admin" asp-action="MessagesFromUsers"><i class="material-icons">email</i>Messages From Users</a>
+                    </li>
                 }
                 @if (ViewData["Active"].ToString() == "PostEditor")
                 {
@@ -70,9 +73,24 @@
                     <li>
                         <a asp-controller="Admin" asp-action="PostEditor" class="active"><i class="material-icons">edit</i>Edition</a>
                     </li>
+                    <li>
+                        <a asp-controller="Admin" asp-action="MessagesFromUsers"><i class="material-icons">email</i>Messages From Users</a>
+                    </li>
+                }
+                @if (ViewData["Active"].ToString() == "Messages")
+                {
+                    <li>
+                        <a asp-controller="Admin" asp-action="Index"><i class="material-icons">dashboard</i>Main page</a>
+                    </li>
+                    <li>
+                        <a asp-controller="Admin" asp-action="PostEditor"><i class="material-icons">edit</i>Edition</a>
+                    </li>
+                    <li>
+                        <a asp-controller="Admin" asp-action="MessagesFromUsers" class="active"><i class="material-icons">email</i>Messages From Users</a>
+                    </li>
                 }
                 <li>
-                    <a asp-controller="Home" asp-action="Home"><i class="material-icons">home</i>Return To Site</a>
+                    <a asp-controller="Home" asp-action="Index"><i class="material-icons">home</i>Return To Site</a>
                 </li>
             </ul>
         </div>
@@ -113,15 +131,15 @@
                 <div class="col-md-4">
                     <ul class="search-result-list user-search">
                         <li>
-                            <img src="~/images/avatar2.png" alt>
+                            <img src="~/images/avatar2.png">
                             <p>Tom Manchester<br>(Works at <span class="search-input-value"></span>)</p>
                         </li>
                         <li>
-                            <img src="~/images/avatar5.png" alt>
+                            <img src="~/images/avatar5.png">
                             <p>Luke Williams<br>(Lives in <span class="search-input-value"></span>)</p>
                         </li>
                         <li>
-                            <img src="~/images/avatar4.png" alt>
+                            <img src="~/images/avatar4.png">
                             <p>People near:<br><span class="search-input-value"></span></p>
                         </li>
                     </ul>

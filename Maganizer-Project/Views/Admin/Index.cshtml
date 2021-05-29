@@ -1,7 +1,8 @@
 ﻿@model Maganizer_Project.Models.AdminIndexViewModel 
 @{
-  Layout = "_AdminLayout";
-  ViewData["Active"] = "Index";
+    Layout = "_AdminLayout";
+    ViewData["Active"] = "Index";
+    ViewData["Title"] = "Lists | Admin";
 }
 
 <body>
@@ -48,11 +49,15 @@
                   {
                     <div class="social-media-item">
                         <div class="social-text">
-                            <p>@item.Name
-                                <form asp-controller="Admin" asp-action="DeleteTag" method="post">
-                                    <input hidden name="tag" value="@item.Name" />
+                            
+                            <form asp-controller="Admin" asp-action="DeleteTag" method="post">
+                                <p>
+                                    @item.Name
                                     <button type="submit" class="btn btn-danger">Delete</button>
-                                </form></p>
+                                </p>
+                                <input hidden name="tag" value="@item.Name" />
+                                
+                            </form>
                             
                         </div>
                   </div>

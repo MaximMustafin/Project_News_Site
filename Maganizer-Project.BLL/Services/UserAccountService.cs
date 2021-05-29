@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 using System.Security.Policy;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace Maganizer_Project.BLL.Services
 {
@@ -138,6 +139,38 @@ namespace Maganizer_Project.BLL.Services
             messageToAdmin.ApplicationUserId = DataBase.Accounts.GetByName(message.Username).Result.Id;
 
             DataBase.Accounts.CreateMessageToAdmin(messageToAdmin);
+            DataBase.Save();
+        }
+
+        public List<MessageToAdminDTO> GetMessagesToAdmin()
+        {
+            var messages = DataBase.Accounts.GetMessagesToAdmin().ToList();
+
+            if(messages.Count() != 0)
+            {
+                List<MessageToAdminDTO> messagesDTO = new List<MessageToAdminDTO>();
+                foreach (var x in messages)
+                {
+                    messagesDTO.Add(new MessageToAdminDTO()
+                    {
+                        Id = x.Id,
+                        Content = x.Content,
+                        Subject = x.Subject,
+                        Username = x.ApplicationUser.UserName,
+                        SentOn = x.SentOn
+                    });
+                    
+                }
+
+                return messagesDTO;
+            }
+
+            return null;
+        }
+
+        public void DeleteMessageToAdmin(int id)
+        {
+            DataBase.Accounts.DeleteMessageToAdmin(id);
             DataBase.Save();
         }
     }

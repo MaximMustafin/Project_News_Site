@@ -50,9 +50,9 @@ namespace Maganizer_Project.DAL.Repositories
             return db.Posts.Include(o => o.Tags).Include(o => o.ApplicationUser).Where(predicate).ToList();
         }
 
-        public Post Get(Guid id)
+        public Post Get(int id)
         {
-            return db.Posts.Find(id);
+            return db.Posts.Include(x => x.ApplicationUser).ToList().FirstOrDefault(x => x.Id == id);
         }
 
         public IEnumerable<Post> GetAll()

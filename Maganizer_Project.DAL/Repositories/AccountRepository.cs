@@ -4,6 +4,7 @@ using Maganizer_Project.DAL.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Maganizer_Project.DAL.Repositories
 {
@@ -66,9 +67,18 @@ namespace Maganizer_Project.DAL.Repositories
             db.MessagesToAdmin.Add(messageToAdmin);
         }
 
-        public void DeleteMessageToAdmin(MessageToAdmin messageToAdmin)
+        public IEnumerable<MessageToAdmin> GetMessagesToAdmin()
         {
-            throw new System.NotImplementedException();
+            return db.MessagesToAdmin.Include(x => x.ApplicationUser);
+        }
+
+        public void DeleteMessageToAdmin(int id)
+        {
+            MessageToAdmin item = db.MessagesToAdmin.Find(id);
+            if (item != null)
+            {
+                db.MessagesToAdmin.Remove(item);
+            }
         }
 
         //public void Delete(Guid id)

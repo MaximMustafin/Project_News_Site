@@ -1978,8 +1978,8 @@
                                                                         </a>
                                                                         <div class="post-meta-data">
                                                                             <span class="posted-by black">By</span>
-                                                                            <a href="https://preview.spraythemes.com/maganizer/author/admin/"
-                                                                               class="meta-links author redlink">WPSmart</a>
+                                                                            <a asp-controller="UserProfile" asp-action="GetProfile" asp-route-username="@x.AuthorName"
+                                                                               class="meta-links author redlink">@x.AuthorName</a>
                                                                             @if ((DateTime.Now.Month - x.PostedOn.Month) + 12 * (DateTime.Now.Year - x.PostedOn.Year) > 0)
                                                                             {
                                                                                 <span class="meta-links post-date black placeright">@((DateTime.Now.Month - x.PostedOn.Month) + 12 * (DateTime.Now.Year -x.PostedOn.Year)) months ago</span>
@@ -1999,16 +1999,7 @@
 
 
 
-                                                            <!-- <div class="full-pagination-design">
-       <div class='paginate'>
-          <div class="pagination-content"><span aria-current="page"
-                class="page-numbers current">1</span> <a class="page-numbers"
-                href="https://preview.spraythemes.com/maganizer/tag/color//page/2">2</a>
-             <a class="next page-numbers"
-                href="https://preview.spraythemes.com/maganizer/tag/color//page/2">Next</a>
-          </div>
-       </div>
-    </div> -->
+                                                            
                                                         </div>
                                                     </div>
                                                 </div>
@@ -2017,60 +2008,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-dad50bc"
-                                 data-id="dad50bc" data-element_type="column">
-                                <div class="elementor-column-wrap elementor-element-populated">
-                                    <div class="elementor-widget-wrap">
-
-                                        <div class="elementor-element elementor-element-de483e3 elementor-widget elementor-widget-sponsor-post-design"
-                                             data-id="de483e3" data-element_type="widget"
-                                             data-widget_type="sponsor-post-design.default">
-
-                                        </div>
-                                        <div class="elementor-element elementor-element-cca38c2 elementor-widget elementor-widget-simple-post-list"
-                                             data-id="cca38c2" data-element_type="widget"
-                                             data-widget_type="simple-post-list.default">
-                                            <div class="elementor-widget-container">
-                                                <div class="simple-post-list">
-                                                    <div class="main-title">
-                                                        <div class="left-side-text">
-                                                            <h2>
-                                                                <span class="first-class">Latest</span><span class="highlight">Post</span>
-                                                            </h2>
-                                                            <span class="sub-text-new">Most Recent Published post</span>
-                                                        </div>
-                                                        <span class="post-counter"> <a href="">See All</a> </span>
-                                                    </div>
-                                                    <div class="post-content">
-
-                                                        <div class="left-post-list-package text-only-post">
-                                                            <div class="list-post">
-                                                                <div class="content-section-right">
-                                                                    <div class="post-meta-data">
-                                                                        <span class="posted-by black">By</span>
-                                                                        <a href="https://preview.spraythemes.com/maganizer/author/admin/"
-                                                                           class="meta-links author redlink">WPSmart</a> <span class="meta-links post-date black placeright">
-                                                                            3 months
-                                                                            ago
-                                                                        </span>
-                                                                    </div>
-                                                                    <a href="https://preview.spraythemes.com/maganizer/2021/01/25/thousands-take-to-streets-protesting-brazils-bolsonaro/">
-                                                                        <h2 class="simple-title-color">
-                                                                            Thousands take to streets
-                                                                            protesting Brazil&#8217;s Bolsonaro
-                                                                        </h2>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </section>

@@ -56,7 +56,7 @@
                                                         <img height="600" src="data:image/jpeg; base64, @(Convert.ToBase64String(Model.FeaturedImage))" class="attachment-maganizer-extra-full-page-thumb size-maganizer-extra-full-page-thumb wp-post-image" alt="@Model.Name" loading="lazy" data-eio="j">
                                                     </div>
                                                     <div class="post-meta-data single-page">
-                                                        <span class="posted-by black">By</span> <a href="https://preview.spraythemes.com/maganizer/author/admin/" class="meta-links author redlink">@Model.AuthorName</a>
+                                                        <span class="posted-by black">By</span> <a asp-controller="UserProfile" asp-action="GetProfile" asp-route-username="@Model.AuthorName" class="meta-links author redlink">@Model.AuthorName</a>
                                                         @if ((DateTime.Now.Month - Model.PostedOn.Month) + 12 * (DateTime.Now.Year - Model.PostedOn.Year) > 0)
                                                         {
                                                             <span class="meta-links post-date black placeright">@((DateTime.Now.Month - Model.PostedOn.Month) + 12 * (DateTime.Now.Year - Model.PostedOn.Year)) months ago</span>

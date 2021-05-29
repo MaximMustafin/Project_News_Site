@@ -16,6 +16,7 @@ namespace Maganizer_Project.BLL.DTO
         public string FirstTagName { get; set; }
         public DateTime PostedOn { get; set; }
         public byte[] FeaturedPostImage { get; set; }
+        public string AuthorName { get; set; }
 
     }
 }

@@ -18,7 +18,7 @@ namespace Maganizer_Project.BLL.Services
         {
             DataBase = unitOfWork;
         }
-        public async void AddPost(EditPostDTO postDTO)
+        public void AddPost(EditPostDTO postDTO)
         {
             var tags = postDTO.Tags.Split().Distinct();
 

@@ -56,14 +56,23 @@ namespace Maganizer_Project.Controllers
 
                     usedNumbers[i] = number;
 
+                    string tag = "";
+
+                    if (posts.ElementAt(number).Tags.Count() != 0)
+                    {
+                        tag = posts.ElementAt(number).Tags.FirstOrDefault().Name;
+                    }
+
                     homeView.PostsSlider.Add(new PostForHomeSliderModel()
                     {
                         Name = posts.ElementAt(number).Name,
-                        Tag = posts.ElementAt(number).Tags.FirstOrDefault().Name,
+                        Tag = tag,
                         FeaturedImage = posts.ElementAt(number).FeaturedImage,
                         PostedOn = posts.ElementAt(number).DateOfCreation,
                         AuthorName = posts.ElementAt(number).AuthorName
                     });
+
+                    
 
                     i++;
                 }
@@ -119,7 +128,7 @@ namespace Maganizer_Project.Controllers
         }
 
         [Authorize]
-        [HttpPost]
+        [HttpPost("ContactUs")]
         public IActionResult SendContactMessage(ContactUsViewModel model)
         {
             if (ModelState.IsValid)
@@ -134,7 +143,9 @@ namespace Maganizer_Project.Controllers
 
                 accountService.CreateMessageToAdmin(contactUsMessage);
 
-                return View("ContactUs");
+                model.Success = true;
+
+                return View("ContactUs", model);
             }
 
             return View("ContactUs", model);

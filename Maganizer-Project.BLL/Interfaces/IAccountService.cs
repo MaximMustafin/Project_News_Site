@@ -15,6 +15,8 @@ namespace Maganizer_Project.BLL.Interfaces
         Task<EmailVerificationInfoDTO> GetEmailVerificationInfo(string username);
         List<UserInfoDTO> GetInfoUsers();
         void CreateMessageToAdmin(MessageToAdminDTO message);
+        List<MessageToAdminDTO> GetMessagesToAdmin();
+        void DeleteMessageToAdmin(int id);
 
     }
 }

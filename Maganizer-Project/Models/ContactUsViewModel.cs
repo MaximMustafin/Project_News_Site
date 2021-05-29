@@ -14,5 +14,6 @@ namespace Maganizer_Project.Models
 
         [StringLength(30, ErrorMessage = "Max length - 30")]
         public string Subject { get; set; }
+        public bool Success { get; set; }
     }
 }
